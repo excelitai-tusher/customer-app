@@ -13,7 +13,7 @@ class TodaysDealProducts extends StatefulWidget {
 }
 
 class _TodaysDealProductsState extends State<TodaysDealProducts> {
-  ScrollController _scrollController;
+  ScrollController? _scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class _TodaysDealProductsState extends State<TodaysDealProducts> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context).todays_deal_products_screen_todays_deal,
+        AppLocalizations.of(context)!.todays_deal_products_screen_todays_deal,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -74,10 +74,10 @@ class _TodaysDealProductsState extends State<TodaysDealProducts> {
                 itemBuilder: (context, index) {
                   // 3
                   return ProductCard(
-                    id: productResponse.products[index].id,
-                    image: productResponse.products[index].thumbnail_image,
-                    name: productResponse.products[index].name,
-                    main_price: productResponse.products[index].main_price,
+                    id: productResponse!.products[index].id,
+                    image: productResponse!.products[index].thumbnail_image,
+                    name: productResponse!.products[index].name,
+                    main_price: productResponse!.products[index].main_price,
                     stroked_price:
                         productResponse.products[index].stroked_price,
                     has_discount: productResponse.products[index].has_discount,
