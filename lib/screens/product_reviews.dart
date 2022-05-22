@@ -16,9 +16,9 @@ import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductReviews extends StatefulWidget {
-  int id;
+  int? id;
 
-  ProductReviews({Key key, this.id}) : super(key: key);
+  ProductReviews({Key? key, this.id}) : super(key: key);
 
   @override
   _ProductReviewsState createState() => _ProductReviewsState();
@@ -61,7 +61,7 @@ class _ProductReviewsState extends State<ProductReviews> {
 
   fetchData() async {
     var reviewResponse = await ReviewRepository().getReviewResponse(
-      widget.id,
+      widget.id!,
       page: _page,
     );
     _reviewList.addAll(reviewResponse.reviews);
@@ -99,7 +99,7 @@ class _ProductReviewsState extends State<ProductReviews> {
     //print(chatText);
     if (myReviewText == "") {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)
+          AppLocalizations.of(context)!
               .product_reviews_screen_review_empty_warning,
           context,
           gravity: Toast.CENTER,
@@ -107,7 +107,7 @@ class _ProductReviewsState extends State<ProductReviews> {
       return;
     } else if (_my_rating < 1.0) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context).product_reviews_screen_star_warning,
+          AppLocalizations.of(context)!.product_reviews_screen_star_warning,
           context,
           gravity: Toast.CENTER,
           duration: Toast.LENGTH_LONG);
@@ -115,7 +115,7 @@ class _ProductReviewsState extends State<ProductReviews> {
     }
 
     var reviewSubmitResponse = await ReviewRepository()
-        .getReviewSubmitResponse(widget.id, _my_rating.toInt(), myReviewText);
+        .getReviewSubmitResponse(widget.id!, _my_rating.toInt(), myReviewText);
 
     if (reviewSubmitResponse.result == false) {
       ToastComponent.showDialog(reviewSubmitResponse.message, context,
@@ -212,7 +212,7 @@ class _ProductReviewsState extends State<ProductReviews> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context).product_reviews_screen_reviews,
+        AppLocalizations.of(context)!.product_reviews_screen_reviews,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -245,7 +245,7 @@ class _ProductReviewsState extends State<ProductReviews> {
       return Container(
         height: 300,
         child: Center(
-            child: Text(AppLocalizations.of(context)
+            child: Text(AppLocalizations.of(context)!
                 .product_reviews_screen_no_reviews_yet)),
       );
     } else {
@@ -370,12 +370,12 @@ class _ProductReviewsState extends State<ProductReviews> {
                         var controller = ExpandableController.of(context);
                         return FlatButton(
                           child: Text(
-                            !controller.expanded ? AppLocalizations.of(context).common_view_more : AppLocalizations.of(context).common_show_less,
+                            !controller!.expanded ? AppLocalizations.of(context)!.common_view_more : AppLocalizations.of(context)!.common_show_less,
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 11),
                           ),
                           onPressed: () {
-                            controller.toggle();
+                            controller!.toggle();
                           },
                         );
                       },
@@ -395,8 +395,8 @@ class _ProductReviewsState extends State<ProductReviews> {
       color: Colors.white,
       child: Center(
         child: Text(_totalData == _reviewList.length
-            ? AppLocalizations.of(context).product_reviews_screen_no_more_reviews
-            : AppLocalizations.of(context).product_reviews_screen_loading_more_reviews),
+            ? AppLocalizations.of(context)!.product_reviews_screen_no_more_reviews
+            : AppLocalizations.of(context)!.product_reviews_screen_loading_more_reviews),
       ),
     );
   }
@@ -441,7 +441,7 @@ class _ProductReviewsState extends State<ProductReviews> {
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Color.fromRGBO(251, 251, 251, 1),
-                    hintText: AppLocalizations.of(context).product_reviews_screen_type_your_review_here,
+                    hintText: AppLocalizations.of(context)!.product_reviews_screen_type_your_review_here,
                     hintStyle: TextStyle(
                         fontSize: 14.0, color: MyTheme.textfield_grey),
                     enabledBorder: OutlineInputBorder(

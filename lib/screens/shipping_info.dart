@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:active_ecommerce_flutter/custom/scroll_to_hide_widget.dart';
 import 'package:active_ecommerce_flutter/data_model/pickup_points_response.dart';
 import 'package:active_ecommerce_flutter/repositories/pickup_points_repository.dart';
 import 'package:active_ecommerce_flutter/screens/checkout.dart';
-
 import 'package:flutter/material.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:flutter_icons/flutter_icons.dart';
@@ -19,9 +17,9 @@ import 'package:active_ecommerce_flutter/screens/address.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ShippingInfo extends StatefulWidget {
-  int owner_id;
+  int? owner_id;
 
-  ShippingInfo({Key key, this.owner_id}) : super(key: key);
+  ShippingInfo({Key? key, this.owner_id}) : super(key: key);
 
   @override
   _ShippingInfoState createState() => _ShippingInfoState();
@@ -188,7 +186,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
       if (_seleted_shipping_address == 0) {
         ToastComponent.showDialog(
             AppLocalizations
-                .of(context)
+                .of(context)!
                 .shipping_info_screen_address_choice_warning,
             context,
             gravity: Toast.CENTER,
@@ -200,7 +198,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
     // pickup point is enable now we want to check address or pickup point is selected
     if (_seleted_shipping_address == 0 && _seleted_shipping_pickup_point == 0) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)
+          AppLocalizations.of(context)!
               .shipping_info_screen_address_or_pickup_choice_warning,
           context,
           gravity: Toast.CENTER,
@@ -228,7 +226,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return Checkout(title: AppLocalizations.of(context).checkout_screen_checkout,isWalletRecharge: false);
+      return Checkout(title: AppLocalizations.of(context)!.checkout_screen_checkout,isWalletRecharge: false);
     })).then((value) {
       onPopped(value);
     });
@@ -295,7 +293,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Text(
-                                        AppLocalizations.of(context)
+                                        AppLocalizations.of(context)!
                                             .shipping_info_screen_go_to_address,
                                         style: TextStyle(
                                             fontSize: 14,
@@ -332,7 +330,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
         ),
       ),
       title: Text(
-        "${AppLocalizations.of(context).shipping_info_screen_shipping_cost} ${_shipping_cost_string}",
+        "${AppLocalizations.of(context)!.shipping_info_screen_shipping_cost} ${_shipping_cost_string}",
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -346,7 +344,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
           height: 100,
           child: Center(
               child: Text(
-            AppLocalizations.of(context).common_login_warning,
+            AppLocalizations.of(context)!.common_login_warning,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else if (_isInitial && _shippingAddressList.length == 0) {
@@ -373,7 +371,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
           height: 100,
           child: Center(
               child: Text(
-            AppLocalizations.of(context).common_no_address_added,
+            AppLocalizations.of(context)!.common_no_address_added,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     }
@@ -411,7 +409,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context)
+                        AppLocalizations.of(context)!
                             .shipping_info_screen_address,
                         style: TextStyle(
                           color: MyTheme.grey_153,
@@ -443,7 +441,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context).shipping_info_screen_city,
+                        AppLocalizations.of(context)!.shipping_info_screen_city,
                         style: TextStyle(
                           color: MyTheme.grey_153,
                         ),
@@ -470,7 +468,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context).shipping_info_screen_state,
+                        AppLocalizations.of(context)!.shipping_info_screen_state,
                         style: TextStyle(
                           color: MyTheme.grey_153,
                         ),
@@ -497,7 +495,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context)
+                        AppLocalizations.of(context)!
                             .shipping_info_screen_country,
                         style: TextStyle(
                           color: MyTheme.grey_153,
@@ -525,7 +523,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context)
+                        AppLocalizations.of(context)!
                             .order_details_screen_postal_code,
                         style: TextStyle(
                           color: MyTheme.grey_153,
@@ -553,7 +551,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context).shipping_info_screen_phone,
+                        AppLocalizations.of(context)!.shipping_info_screen_phone,
                         style: TextStyle(
                           color: MyTheme.grey_153,
                         ),
@@ -579,13 +577,13 @@ class _ShippingInfoState extends State<ShippingInfo> {
     );
   }
 
-  Widget buildPickupPoint() {
+  Widget? buildPickupPoint() {
     if (is_logged_in.$ == false) {
       return Container(
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context).common_login_warning,
+                AppLocalizations.of(context)!.common_login_warning,
                 style: TextStyle(color: MyTheme.font_grey),
               )));
     } else if (_isInitial && _pickupList.length == 0) {
@@ -612,7 +610,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context).no_pickup_point,
+                AppLocalizations.of(context)!.no_pickup_point,
                 style: TextStyle(color: MyTheme.font_grey),
               )));
     }
@@ -651,7 +649,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context)
+                        AppLocalizations.of(context)!
                             .shipping_info_screen_address,
                         style: TextStyle(
                           color: MyTheme.grey_153,
@@ -682,7 +680,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context).address_screen_phone,
+                        AppLocalizations.of(context)!.address_screen_phone,
                         style: TextStyle(
                           color: MyTheme.grey_153,
                         ),
@@ -739,7 +737,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                 borderRadius: BorderRadius.circular(0.0),
               ),
               child: Text(
-                AppLocalizations.of(context)
+                AppLocalizations.of(context)!
                     .shipping_info_screen_btn_proceed_to_checkout,
                 style: TextStyle(
                     color: Colors.white,
@@ -779,7 +777,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                   Container(
                     width: MediaQuery.of(context).size.width - 40,
                     child: Text(
-                      "${AppLocalizations.of(context).shipping_info_screen_shipping_cost} ${_shipping_cost_string}",
+                      "${AppLocalizations.of(context)!.shipping_info_screen_shipping_cost} ${_shipping_cost_string}",
                       style:
                           TextStyle(fontSize: 16, color: MyTheme.accent_color),
                     ),
@@ -814,7 +812,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                             width: (mWidth / 2) - 1,
                             alignment: Alignment.center,
                             child: Text(
-                              AppLocalizations.of(context).address_screen_address,
+                              AppLocalizations.of(context)!.address_screen_address,
                               style: TextStyle(
                                   color: _shippingOptionIsAddress
                                       ? MyTheme.dark_grey
@@ -836,7 +834,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                             height: 50,
                             width: (mWidth / 2) - 1,
                             child: Text(
-                              AppLocalizations.of(context).pickup_point,
+                              AppLocalizations.of(context)!.pickup_point,
                               style: TextStyle(
                                   color: _shippingOptionIsAddress
                                       ? MyTheme.medium_grey_50

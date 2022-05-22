@@ -110,7 +110,7 @@ class _OrderListState extends State<OrderList> {
         buildDropdownDeliveryStatusItems(_deliveryStatusList);
 
     for (int x = 0; x < _dropdownPaymentStatusItems!.length; x++) {
-      if (_dropdownPaymentStatusItems[x].value!.option_key ==
+      if (_dropdownPaymentStatusItems![x].value!.option_key ==
           _defaultPaymentStatusKey) {
         _selectedPaymentStatus = _dropdownPaymentStatusItems![x].value;
       }
@@ -143,9 +143,9 @@ class _OrderListState extends State<OrderList> {
     reset();
     resetFilterKeys();
     for (int x = 0; x < _dropdownPaymentStatusItems1.length; x++) {
-      if (_dropdownPaymentStatusItems[x].value!.option_key ==
+      if (_dropdownPaymentStatusItems![x].value!.option_key ==
           _defaultPaymentStatusKey) {
-        _selectedPaymentStatus = _dropdownPaymentStatusItems[x].value;
+        _selectedPaymentStatus = _dropdownPaymentStatusItems![x].value;
       }
     }
 

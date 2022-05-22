@@ -90,56 +90,56 @@ class _SplashState extends State<Splash> {
 
 class CustomSplashScreen extends StatefulWidget {
   /// Seconds to navigate after for time based navigation
-  final int seconds;
+  final int? seconds;
 
   /// App title, shown in the middle of screen in case of no image available
-  final Text title;
+  final Text? title;
 
   /// Page background color
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// Style for the laodertext
-  final TextStyle styleTextUnderTheLoader;
+  final TextStyle? styleTextUnderTheLoader;
 
   /// The page where you want to navigate if you have chosen time based navigation
-  final dynamic navigateAfterSeconds;
+  final dynamic? navigateAfterSeconds;
 
   /// Main image size
-  final double photoSize;
+  final double? photoSize;
 
-  final double backgroundPhotoSize;
+  final double? backgroundPhotoSize;
 
   /// Triggered if the user clicks the screen
-  final dynamic onClick;
+  final dynamic? onClick;
 
   /// Loader color
-  final Color loaderColor;
+  final Color? loaderColor;
 
   /// Main image mainly used for logos and like that
-  final Image image;
+  final Image? image;
 
-  final Image backgroundImage;
+  final Image? backgroundImage;
 
   /// Loading text, default: "Loading"
-  final Text loadingText;
+  final Text? loadingText;
 
   ///  Background image for the entire screen
-  final ImageProvider imageBackground;
+  final ImageProvider? imageBackground;
 
   /// Background gradient for the entire screen
-  final Gradient gradientBackground;
+  final Gradient? gradientBackground;
 
   /// Whether to display a loader or not
-  final bool useLoader;
+  final bool? useLoader;
 
   /// Custom page route if you have a custom transition you want to play
-  final Route pageRoute;
+  final Route? pageRoute;
 
   /// RouteSettings name for pushing a route with custom name (if left out in MaterialApp route names) to navigator stack (Contribution by Ramis Mustafa)
-  final String routeName;
+  final String? routeName;
 
   /// expects a function that returns a future, when this future is returned it will navigate
-  final Future<dynamic> navigateAfterFuture;
+  final Future<dynamic>? navigateAfterFuture;
 
   /// Use one of the provided factory constructors instead of.
   @protected
@@ -166,73 +166,73 @@ class CustomSplashScreen extends StatefulWidget {
   });
 
   factory CustomSplashScreen.timer(
-          {@required int seconds,
-          Color loaderColor,
-          Color backgroundColor,
-          double photoSize,
-          Text loadingText,
-          Image image,
-          Route pageRoute,
+          {int? seconds,
+          Color? loaderColor,
+          Color? backgroundColor,
+          double? photoSize,
+          Text? loadingText,
+          Image? image,
+          Route? pageRoute,
           dynamic onClick,
           dynamic navigateAfterSeconds,
-          Text title,
-          TextStyle styleTextUnderTheLoader,
-          ImageProvider imageBackground,
-          Gradient gradientBackground,
-          bool useLoader,
-          String routeName}) =>
+          Text? title,
+          TextStyle? styleTextUnderTheLoader,
+          ImageProvider? imageBackground,
+          Gradient? gradientBackground,
+          bool? useLoader,
+          String? routeName}) =>
       CustomSplashScreen(
-        loaderColor: loaderColor,
-        seconds: seconds,
-        photoSize: photoSize,
-        loadingText: loadingText,
-        backgroundColor: backgroundColor,
-        image: image,
-        pageRoute: pageRoute,
+        loaderColor: loaderColor!,
+        seconds: seconds!,
+        photoSize: photoSize!,
+        loadingText: loadingText!,
+        backgroundColor: backgroundColor!,
+        image: image!,
+        pageRoute: pageRoute!,
         onClick: onClick,
         navigateAfterSeconds: navigateAfterSeconds,
-        title: title,
-        styleTextUnderTheLoader: styleTextUnderTheLoader,
-        imageBackground: imageBackground,
-        gradientBackground: gradientBackground,
-        useLoader: useLoader,
-        routeName: routeName,
+        title: title!,
+        styleTextUnderTheLoader: styleTextUnderTheLoader!,
+        imageBackground: imageBackground!,
+        gradientBackground: gradientBackground!,
+        useLoader: useLoader!,
+        routeName: routeName!,
       );
 
   factory CustomSplashScreen.network(
-          {@required Future<dynamic> navigateAfterFuture,
-          Color loaderColor,
-          Color backgroundColor,
-          double photoSize,
-          double backgroundPhotoSize,
-          Text loadingText,
-          Image image,
-          Route pageRoute,
+          {Future<dynamic>? navigateAfterFuture,
+          Color? loaderColor,
+          Color? backgroundColor,
+          double? photoSize,
+          double? backgroundPhotoSize,
+          Text? loadingText,
+          Image? image,
+          Route? pageRoute,
           dynamic onClick,
           dynamic navigateAfterSeconds,
-          Text title,
-          TextStyle styleTextUnderTheLoader,
-          ImageProvider imageBackground,
-          Gradient gradientBackground,
-          bool useLoader,
-          String routeName}) =>
+          Text? title,
+          TextStyle? styleTextUnderTheLoader,
+          ImageProvider? imageBackground,
+          Gradient? gradientBackground,
+          bool? useLoader,
+          String? routeName}) =>
       CustomSplashScreen(
-        loaderColor: loaderColor,
-        navigateAfterFuture: navigateAfterFuture,
-        photoSize: photoSize,
-        backgroundPhotoSize: backgroundPhotoSize,
-        loadingText: loadingText,
-        backgroundColor: backgroundColor,
-        image: image,
-        pageRoute: pageRoute,
+        loaderColor: loaderColor!,
+        navigateAfterFuture: navigateAfterFuture!,
+        photoSize: photoSize!,
+        backgroundPhotoSize: backgroundPhotoSize!,
+        loadingText: loadingText!,
+        backgroundColor: backgroundColor!,
+        image: image!,
+        pageRoute: pageRoute!,
         onClick: onClick,
         navigateAfterSeconds: navigateAfterSeconds,
-        title: title,
-        styleTextUnderTheLoader: styleTextUnderTheLoader,
-        imageBackground: imageBackground,
-        gradientBackground: gradientBackground,
-        useLoader: useLoader,
-        routeName: routeName,
+        title: title!,
+        styleTextUnderTheLoader: styleTextUnderTheLoader!,
+        imageBackground: imageBackground!,
+        gradientBackground: gradientBackground!,
+        useLoader: useLoader!,
+        routeName: routeName!,
       );
 
   @override
@@ -245,12 +245,12 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
     super.initState();
     if (widget.routeName != null &&
         widget.routeName is String &&
-        "${widget.routeName[0]}" != "/") {
+        "${widget.routeName![0]}" != "/") {
       throw ArgumentError(
           "widget.routeName must be a String beginning with forward slash (/)");
     }
     if (widget.navigateAfterFuture == null) {
-      Timer(Duration(seconds: widget.seconds), () {
+      Timer(Duration(seconds: widget.seconds!), () {
         if (widget.navigateAfterSeconds is String) {
           // It's fairly safe to assume this is using the in-built material
           // named route component
@@ -271,7 +271,7 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
         }
       });
     } else {
-      widget.navigateAfterFuture.then((navigateTo) {
+      widget.navigateAfterFuture!.then((navigateTo) {
         if (navigateTo is String) {
           // It's fairly safe to assume this is using the in-built material
           // named route component
@@ -345,11 +345,11 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
                                 radius: widget.photoSize,
                               ),
                             ),
-                            widget.title,
+                            widget.title!,
                             Padding(
                               padding: const EdgeInsets.only(top: 10.0),
                             ),
-                            widget.loadingText
+                            widget.loadingText!
                           ],
                         )),
                   ),

@@ -18,7 +18,6 @@ import 'package:active_ecommerce_flutter/app_config.dart';
 import 'package:active_ecommerce_flutter/helpers/shimmer_helper.dart';
 import 'package:active_ecommerce_flutter/helpers/color_helper.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
-
 import 'package:active_ecommerce_flutter/custom/toast_component.dart';
 import 'package:active_ecommerce_flutter/repositories/chat_repository.dart';
 import 'package:active_ecommerce_flutter/screens/chat.dart';
@@ -32,9 +31,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class ProductDetails extends StatefulWidget {
-  int id;
+  int? id;
 
-  ProductDetails({Key key, this.id}) : super(key: key);
+  ProductDetails({Key? key, this.id}) : super(key: key);
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -98,7 +97,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   fetchProductDetails() async {
     var productDetailsResponse =
-        await ProductRepository().getProductDetails(id: widget.id);
+        await ProductRepository().getProductDetails(id: widget.id!);
 
     if (productDetailsResponse.detailed_products.length > 0) {
       _productDetails = productDetailsResponse.detailed_products[0];
@@ -113,7 +112,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   fetchRelatedProducts() async {
     var relatedProductResponse =
-        await ProductRepository().getRelatedProducts(id: widget.id);
+        await ProductRepository().getRelatedProducts(id: widget.id!);
     _relatedProducts.addAll(relatedProductResponse.products);
     _relatedProductInit = true;
 
@@ -122,7 +121,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   fetchTopProducts() async {
     var topProductResponse =
-        await ProductRepository().getTopFromThisSellerProducts(id: widget.id);
+        await ProductRepository().getTopFromThisSellerProducts(id: widget.id!);
     _topProducts.addAll(topProductResponse.products);
     _topProductInit = true;
   }
@@ -194,7 +193,7 @@ class _ProductDetailsState extends State<ProductDetails> {
 
   onWishTap() {
     if (is_logged_in.$ == false) {
-      ToastComponent.showDialog(AppLocalizations.of(context).common_login_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context)!.common_login_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -219,7 +218,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     return;*/
 
     var variantResponse = await ProductRepository().getVariantWiseInfo(
-        id: widget.id, color: color_string, variants: _choiceString);
+        id: widget.id!, color: color_string, variants: _choiceString);
 
     /*print("vr"+variantResponse.toJson().toString());
     return;*/
@@ -323,7 +322,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     // print(_quantity);
 
     var cartAddResponse = await CartRepository()
-        .getCartAddResponse(widget.id, _variant, user_id.$, _quantity);
+        .getCartAddResponse(widget.id!, _variant, user_id.$, _quantity);
 
     if (cartAddResponse.result == false) {
       ToastComponent.showDialog(cartAddResponse.message, context,
@@ -389,7 +388,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               side:
                                   BorderSide(color: Colors.black, width: 1.0)),
                           child: Text(
-                            AppLocalizations.of(context).product_details_screen_copy_product_link,
+                            AppLocalizations.of(context)!.product_details_screen_copy_product_link,
                             style: TextStyle(
                               color: MyTheme.medium_grey,
                             ),
@@ -404,7 +403,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           ? Padding(
                               padding: const EdgeInsets.only(bottom: 8.0),
                               child: Text(
-                                AppLocalizations.of(context).common_copied,
+                                AppLocalizations.of(context)!.common_copied,
                                 style: TextStyle(
                                     color: MyTheme.medium_grey, fontSize: 12),
                               ),
@@ -421,7 +420,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               side:
                                   BorderSide(color: Colors.black, width: 1.0)),
                           child: Text(
-                            AppLocalizations.of(context).product_details_screen_share_options,
+                            AppLocalizations.of(context)!.product_details_screen_share_options,
                             style: TextStyle(color: Colors.white),
                           ),
                           onPressed: () {
@@ -486,7 +485,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
-                          child: Text(AppLocalizations.of(context).product_details_screen_seller_chat_title,
+                          child: Text(AppLocalizations.of(context)!.product_details_screen_seller_chat_title,
                               style: TextStyle(
                                   color: MyTheme.font_grey, fontSize: 12)),
                         ),
@@ -498,7 +497,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               controller: sellerChatTitleController,
                               autofocus: false,
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context).product_details_screen_seller_chat_enter_title,
+                                  hintText: AppLocalizations.of(context)!.product_details_screen_seller_chat_enter_title,
                                   hintStyle: TextStyle(
                                       fontSize: 12.0,
                                       color: MyTheme.textfield_grey),
@@ -525,7 +524,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
-                          child: Text("${AppLocalizations.of(context).product_details_screen_seller_chat_messasge} *",
+                          child: Text("${AppLocalizations.of(context)!.product_details_screen_seller_chat_messasge} *",
                               style: TextStyle(
                                   color: MyTheme.font_grey, fontSize: 12)),
                         ),
@@ -539,7 +538,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               maxLines: null,
                               keyboardType: TextInputType.multiline,
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context).product_details_screen_seller_chat_enter_messasge,
+                                  hintText: AppLocalizations.of(context)!.product_details_screen_seller_chat_enter_messasge,
                                   hintStyle: TextStyle(
                                       fontSize: 12.0,
                                       color: MyTheme.textfield_grey),
@@ -586,7 +585,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               side: BorderSide(
                                   color: MyTheme.light_grey, width: 1.0)),
                           child: Text(
-                            AppLocalizations.of(context).common_close_in_all_capital,
+                            AppLocalizations.of(context)!.common_close_in_all_capital,
                             style: TextStyle(
                               color: MyTheme.font_grey,
                             ),
@@ -610,7 +609,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                               side: BorderSide(
                                   color: MyTheme.light_grey, width: 1.0)),
                           child: Text(
-                            AppLocalizations.of(context).common_send_in_all_capital,
+                            AppLocalizations.of(context)!.common_send_in_all_capital,
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -633,7 +632,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     var message = sellerChatMessageController.text.toString();
 
     if (title == "" || message == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).product_details_screen_seller_chat_title_message_empty_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context)!.product_details_screen_seller_chat_title_message_empty_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -643,7 +642,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             product_id: widget.id, title: title, message: message);
 
     if (conversationCreateResponse.result == false) {
-      ToastComponent.showDialog(AppLocalizations.of(context).product_details_screen_seller_chat_creation_unable_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context)!.product_details_screen_seller_chat_creation_unable_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -671,13 +670,13 @@ class _ProductDetailsState extends State<ProductDetails> {
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     SnackBar _addedToCartSnackbar = SnackBar(
       content: Text(
-        AppLocalizations.of(context).product_details_screen_snackbar_added_to_cart,
+        AppLocalizations.of(context)!.product_details_screen_snackbar_added_to_cart,
         style: TextStyle(color: MyTheme.font_grey),
       ),
       backgroundColor: MyTheme.soft_accent_color,
       duration: const Duration(seconds: 3),
       action: SnackBarAction(
-        label: AppLocalizations.of(context).product_details_screen_snackbar_show_cart,
+        label: AppLocalizations.of(context)!.product_details_screen_snackbar_show_cart,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return Cart(has_bottomnav: false);
@@ -894,7 +893,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         0.0,
                       ),
                       child: Text(
-                        AppLocalizations.of(context).product_details_screen_description,
+                        AppLocalizations.of(context)!.product_details_screen_description,
                         style: TextStyle(
                             color: MyTheme.font_grey,
                             fontSize: 14,
@@ -924,7 +923,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       onTap: () {
                         if (_productDetails.video_link == "") {
                           ToastComponent.showDialog(
-                              AppLocalizations.of(context).product_details_screen_video_not_available, context,
+                              AppLocalizations.of(context)!.product_details_screen_video_not_available, context,
                               gravity: Toast.CENTER,
                               duration: Toast.LENGTH_LONG);
                           return;
@@ -951,7 +950,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           child: Row(
                             children: [
                               Text(
-                                AppLocalizations.of(context).product_details_screen_video,
+                                AppLocalizations.of(context)!.product_details_screen_video,
                                 style: TextStyle(
                                     color: MyTheme.font_grey,
                                     fontSize: 14,
@@ -975,7 +974,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return ProductReviews(id: widget.id);
+                          return ProductReviews(id: widget.id!);
                         })).then((value) {
                           onPopped(value);
                         });
@@ -992,7 +991,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           child: Row(
                             children: [
                               Text(
-                                AppLocalizations.of(context).product_details_screen_reviews,
+                                AppLocalizations.of(context)!.product_details_screen_reviews,
                                 style: TextStyle(
                                     color: MyTheme.font_grey,
                                     fontSize: 14,
@@ -1019,7 +1018,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           return CommonWebviewScreen(
                             url:
                                 "${AppConfig.RAW_BASE_URL}/mobile-page/seller-policy",
-                            page_name: AppLocalizations.of(context).product_details_screen_seller_policy,
+                            page_name: AppLocalizations.of(context)!.product_details_screen_seller_policy,
                           );
                         }));
                       },
@@ -1035,7 +1034,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           child: Row(
                             children: [
                               Text(
-                                AppLocalizations.of(context).product_details_screen_seller_policy,
+                                AppLocalizations.of(context)!.product_details_screen_seller_policy,
                                 style: TextStyle(
                                     color: MyTheme.font_grey,
                                     fontSize: 14,
@@ -1062,7 +1061,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           return CommonWebviewScreen(
                             url:
                                 "${AppConfig.RAW_BASE_URL}/mobile-page/return-policy",
-                            page_name: AppLocalizations.of(context).product_details_screen_return_policy,
+                            page_name: AppLocalizations.of(context)!.product_details_screen_return_policy,
                           );
                         }));
                       },
@@ -1078,7 +1077,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           child: Row(
                             children: [
                               Text(
-                                AppLocalizations.of(context).product_details_screen_return_policy,
+                                AppLocalizations.of(context)!.product_details_screen_return_policy,
                                 style: TextStyle(
                                     color: MyTheme.font_grey,
                                     fontSize: 14,
@@ -1105,7 +1104,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           return CommonWebviewScreen(
                             url:
                                 "${AppConfig.RAW_BASE_URL}/mobile-page/support-policy",
-                            page_name: AppLocalizations.of(context).product_details_screen_support_policy,
+                            page_name: AppLocalizations.of(context)!.product_details_screen_support_policy,
                           );
                         }));
                       },
@@ -1121,7 +1120,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                           child: Row(
                             children: [
                               Text(
-                                AppLocalizations.of(context).product_details_screen_support_policy,
+                                AppLocalizations.of(context)!.product_details_screen_support_policy,
                                 style: TextStyle(
                                     color: MyTheme.font_grey,
                                     fontSize: 14,
@@ -1153,7 +1152,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         0.0,
                       ),
                       child: Text(
-                        AppLocalizations.of(context).product_details_screen_products_may_like,
+                        AppLocalizations.of(context)!.product_details_screen_products_may_like,
                         style: TextStyle(
                             color: MyTheme.font_grey,
                             fontSize: 16,
@@ -1181,7 +1180,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         0.0,
                       ),
                       child: Text(
-                        AppLocalizations.of(context).top_selling_products_screen_top_selling_products,
+                        AppLocalizations.of(context)!.top_selling_products_screen_top_selling_products,
                         style: TextStyle(
                             color: MyTheme.font_grey,
                             fontSize: 16,
@@ -1234,7 +1233,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(AppLocalizations.of(context).product_details_screen_seller,
+              Text(AppLocalizations.of(context)!.product_details_screen_seller,
                   style: TextStyle(
                     color: Color.fromRGBO(153, 153, 153, 1),
                   )),
@@ -1265,7 +1264,7 @@ class _ProductDetailsState extends State<ProductDetails> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Text(
-                  AppLocalizations.of(context).product_details_screen_chat_with_seller,
+                  AppLocalizations.of(context)!.product_details_screen_chat_with_seller,
                   style: TextStyle(
                       decoration: TextDecoration.underline,
                       color: Color.fromRGBO(7, 101, 136, 1),
@@ -1289,7 +1288,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Container(
             width: 75,
             child: Text(
-              AppLocalizations.of(context).product_details_screen_total_price,
+              AppLocalizations.of(context)!.product_details_screen_total_price,
               style: TextStyle(color: Color.fromRGBO(153, 153, 153, 1)),
             ),
           ),
@@ -1313,7 +1312,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Container(
             width: 75,
             child: Text(
-              AppLocalizations.of(context).product_details_screen_quantity,
+              AppLocalizations.of(context)!.product_details_screen_quantity,
               style: TextStyle(color: Color.fromRGBO(153, 153, 153, 1)),
             ),
           ),
@@ -1345,7 +1344,7 @@ class _ProductDetailsState extends State<ProductDetails> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
-            "(${_stock} ${AppLocalizations.of(context).product_details_screen_available})",
+            "(${_stock} ${AppLocalizations.of(context)!.product_details_screen_available})",
             style: TextStyle(
                 color: Color.fromRGBO(152, 152, 153, 1), fontSize: 14),
           ),
@@ -1529,7 +1528,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Container(
             width: 75,
             child: Text(
-              AppLocalizations.of(context).product_details_screen_color,
+              AppLocalizations.of(context)!.product_details_screen_color,
               style: TextStyle(color: Color.fromRGBO(153, 153, 153, 1)),
             ),
           ),
@@ -1614,7 +1613,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Container(
             width: 75,
             child: Text(
-              AppLocalizations.of(context).product_details_screen_club_point,
+              AppLocalizations.of(context)!.product_details_screen_club_point,
               style: TextStyle(color: Color.fromRGBO(153, 153, 153, 1)),
             ),
           ),
@@ -1645,7 +1644,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           child: Container(
             width: 75,
             child: Text(
-              AppLocalizations.of(context).product_details_screen_price,
+              AppLocalizations.of(context)!.product_details_screen_price,
               style: TextStyle(color: Color.fromRGBO(153, 153, 153, 1)),
             ),
           ),
@@ -1729,7 +1728,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: Text(
-                  AppLocalizations.of(context).product_details_screen_button_add_to_cart,
+                  AppLocalizations.of(context)!.product_details_screen_button_add_to_cart,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -1750,7 +1749,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: Text(
-                  AppLocalizations.of(context).product_details_screen_button_buy_now,
+                  AppLocalizations.of(context)!.product_details_screen_button_buy_now,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
@@ -1836,7 +1835,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                   child: Container(
                     width: 75,
                     child: Text(
-                      AppLocalizations.of(context).product_details_screen_brand,
+                      AppLocalizations.of(context)!.product_details_screen_brand,
                       style: TextStyle(color: Color.fromRGBO(153, 153, 153, 1)),
                     ),
                   ),
@@ -1892,11 +1891,11 @@ class _ProductDetailsState extends State<ProductDetails> {
                   var controller = ExpandableController.of(context);
                   return FlatButton(
                     child: Text(
-                      !controller.expanded ? AppLocalizations.of(context).common_view_more : AppLocalizations.of(context).common_show_less,
+                      !controller!.expanded ? AppLocalizations.of(context)!.common_view_more : AppLocalizations.of(context)!.common_show_less,
                       style: TextStyle(color: MyTheme.font_grey, fontSize: 11),
                     ),
                     onPressed: () {
-                      controller.toggle();
+                      controller!.toggle();
                     },
                   );
                 },
@@ -1954,7 +1953,7 @@ class _ProductDetailsState extends State<ProductDetails> {
       return Container(
           height: 100,
           child: Center(
-              child: Text(AppLocalizations.of(context).product_details_screen_no_top_selling_product,
+              child: Text(AppLocalizations.of(context)!.product_details_screen_no_top_selling_product,
                   style: TextStyle(color: MyTheme.font_grey))));
     }
   }
@@ -2008,7 +2007,7 @@ class _ProductDetailsState extends State<ProductDetails> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context).product_details_screen_no_related_product,
+                AppLocalizations.of(context)!.product_details_screen_no_related_product,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     }

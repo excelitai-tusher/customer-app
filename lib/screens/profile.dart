@@ -16,7 +16,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class Profile extends StatefulWidget {
-  Profile({Key key, this.show_back_button = false}) : super(key: key);
+  Profile({Key? key, this.show_back_button = false}) : super(key: key);
 
   bool show_back_button;
 
@@ -140,7 +140,7 @@ class _ProfileState extends State<Profile> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context).profile_screen_please_log_in,
+                AppLocalizations.of(context)!.profile_screen_please_log_in,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else {
@@ -209,7 +209,7 @@ class _ProfileState extends State<Profile> {
               Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
-                  AppLocalizations.of(context).profile_screen_orders,
+                  AppLocalizations.of(context)!.profile_screen_orders,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: MyTheme.font_grey, fontWeight: FontWeight.w300),
@@ -245,7 +245,7 @@ class _ProfileState extends State<Profile> {
               Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
-                  AppLocalizations.of(context).profile_screen_profile,
+                  AppLocalizations.of(context)!.profile_screen_profile,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: MyTheme.font_grey, fontWeight: FontWeight.w300),
@@ -279,7 +279,7 @@ class _ProfileState extends State<Profile> {
               Padding(
                 padding: const EdgeInsets.only(top: 8),
                 child: Text(
-                  AppLocalizations.of(context).profile_screen_address,
+                  AppLocalizations.of(context)!.profile_screen_address,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: MyTheme.font_grey, fontWeight: FontWeight.w300),
@@ -331,7 +331,7 @@ class _ProfileState extends State<Profile> {
         children: [
           InkWell(
             onTap: () {
-              ToastComponent.showDialog(AppLocalizations.of(context).common_coming_soon, context,
+              ToastComponent.showDialog(AppLocalizations.of(context)!.common_coming_soon, context,
                   gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
             },
             child: Visibility(
@@ -357,7 +357,7 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
-                        AppLocalizations.of(context).profile_screen_notification,
+                        AppLocalizations.of(context)!.profile_screen_notification,
                         textAlign: TextAlign.center,
                         style:
                             TextStyle(color: MyTheme.font_grey, fontSize: 14),
@@ -395,7 +395,7 @@ class _ProfileState extends State<Profile> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      AppLocalizations.of(context).profile_screen_purchase_history,
+                      AppLocalizations.of(context)!.profile_screen_purchase_history,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: MyTheme.font_grey, fontSize: 14),
                     ),
@@ -433,7 +433,7 @@ class _ProfileState extends State<Profile> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
-                            AppLocalizations.of(context).profile_screen_earning_points,
+                            AppLocalizations.of(context)!.profile_screen_earning_points,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 14),
@@ -473,7 +473,7 @@ class _ProfileState extends State<Profile> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      AppLocalizations.of(context).profile_screen_refund_requests,
+                      AppLocalizations.of(context)!.profile_screen_refund_requests,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: MyTheme.font_grey, fontSize: 14),
@@ -508,7 +508,7 @@ class _ProfileState extends State<Profile> {
             Padding(
                 padding: const EdgeInsets.only(top: 4.0),
                 child: Text(
-                  AppLocalizations.of(context).profile_screen_in_your_cart,
+                  AppLocalizations.of(context)!.profile_screen_in_your_cart,
                   style: TextStyle(
                     color: MyTheme.medium_grey,
                   ),
@@ -530,7 +530,7 @@ class _ProfileState extends State<Profile> {
             Padding(
                 padding: const EdgeInsets.only(top: 4.0),
                 child: Text(
-                  AppLocalizations.of(context).profile_screen_in_wishlist,
+                  AppLocalizations.of(context)!.profile_screen_in_wishlist,
                   style: TextStyle(
                     color: MyTheme.medium_grey,
                   ),
@@ -552,7 +552,7 @@ class _ProfileState extends State<Profile> {
             Padding(
                 padding: const EdgeInsets.only(top: 4.0),
                 child: Text(
-                  AppLocalizations.of(context).profile_screen_in_ordered,
+                  AppLocalizations.of(context)!.profile_screen_in_ordered,
                   style: TextStyle(
                     color: MyTheme.medium_grey,
                   ),
@@ -626,7 +626,7 @@ class _ProfileState extends State<Profile> {
                   bottomRight: const Radius.circular(16.0),
                 )),
                 child: Text(
-                  AppLocalizations.of(context).profile_screen_check_balance,
+                  AppLocalizations.of(context)!.profile_screen_check_balance,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 11,
@@ -660,7 +660,7 @@ backgroundColor: Colors.white,
             : Builder(
                 builder: (context) => GestureDetector(
                   onTap: () {
-                    _scaffoldKey.currentState.openDrawer();
+                    _scaffoldKey.currentState!.openDrawer();
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
@@ -677,7 +677,7 @@ backgroundColor: Colors.white,
               ),
       ),
       title: Text(
-        AppLocalizations.of(context).profile_screen_account,
+        AppLocalizations.of(context)!.profile_screen_account,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
