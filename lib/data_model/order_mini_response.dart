@@ -19,14 +19,14 @@ class OrderMiniResponse {
 
   List<Order> orders;
   OrderMiniResponseLinks links;
-  Meta meta;
+  Meta? meta;
   bool success;
   int status;
 
   factory OrderMiniResponse.fromJson(Map<String, dynamic> json) => OrderMiniResponse(
     orders: List<Order>.from(json["data"].map((x) => Order.fromJson(x))),
     links: OrderMiniResponseLinks.fromJson(json["links"]),
-    meta: json["meta"] == null ? null : Meta!.fromJson(json["meta"]),
+    meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
     success: json["success"],
     status: json["status"],
   );
@@ -34,7 +34,7 @@ class OrderMiniResponse {
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(orders.map((x) => x.toJson())),
     "links": links.toJson(),
-    "meta": meta == null ? null : meta.toJson(),
+    "meta": meta == null ? null : meta!.toJson(),
     "success": success,
     "status": status,
   };

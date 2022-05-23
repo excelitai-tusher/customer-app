@@ -18,20 +18,20 @@ class ShopResponse {
   });
 
   List<Shop> shops;
-  Meta meta;
+  Meta? meta;
   bool success;
   int status;
 
   factory ShopResponse.fromJson(Map<String, dynamic> json) => ShopResponse(
     shops: List<Shop>.from(json["data"].map((x) => Shop.fromJson(x))),
-    meta: json["meta"] == null ? null :  Meta!.fromJson(json["meta"]),
+    meta: json["meta"] == null ? null :  Meta.fromJson(json["meta"]),
     success: json["success"],
     status: json["status"],
   );
 
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(shops.map((x) => x.toJson())),
-    "meta": meta == null ? null : meta.toJson(),
+    "meta": meta == null ? null : meta!.toJson(),
     "success": success,
     "status": status,
   };

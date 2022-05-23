@@ -14,11 +14,10 @@ import 'package:active_ecommerce_flutter/screens/main.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class Wallet extends StatefulWidget {
 
   Wallet({Key? key, this.from_recharge = false}) : super(key: key);
-  final bool? from_recharge;
+  final bool from_recharge;
 
   @override
   _WalletState createState() => _WalletState();
@@ -128,11 +127,14 @@ class _WalletState extends State<Wallet> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        if (widget.from_recharge!) {
+        if (widget.from_recharge) {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return Main();
-          }));
-        }
+          }
+          ));
+        }throw(){
+          return Wallet();
+        };
       },
       child: Directionality(
         textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,

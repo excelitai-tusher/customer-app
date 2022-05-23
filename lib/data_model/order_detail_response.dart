@@ -57,27 +57,27 @@ class DetailedOrder {
     required this.cancelRequest
   });
 
-  int id;
-  String code;
-  int user_id;
-  bool manually_payable;
-  ShippingAddress shipping_address;
-  PickupPoint pickupPoint;
-  String shipping_type;
-  String shipping_type_string;
-  String payment_type;
-  String payment_status;
-  String payment_status_string;
-  String delivery_status;
-  String delivery_status_string;
-  String grand_total;
-  String coupon_discount;
-  String shipping_cost;
-  String subtotal;
-  String tax;
-  String date;
-  Links links;
-  bool cancelRequest;
+  int? id;
+  String? code;
+  int? user_id;
+  bool? manually_payable;
+  ShippingAddress? shipping_address;
+  PickupPoint? pickupPoint;
+  String? shipping_type;
+  String? shipping_type_string;
+  String? payment_type;
+  String? payment_status;
+  String? payment_status_string;
+  String? delivery_status;
+  String? delivery_status_string;
+  String? grand_total;
+  String? coupon_discount;
+  String? shipping_cost;
+  String? subtotal;
+  String? tax;
+  String? date;
+  Links? links;
+  bool? cancelRequest;
 
   factory DetailedOrder.fromJson(Map<String, dynamic> json) => DetailedOrder(
     id: json["id"],
@@ -85,8 +85,8 @@ class DetailedOrder {
     user_id: json["user_id"],
     manually_payable: json["manually_payable"],
     //shipping_address: ShippingAddress.fromJson(json["shipping_address"]),
-    shipping_address: json["shipping_address"].isEmpty ? null : ShippingAddress!.fromJson(json["shipping_address"]),
-    pickupPoint: json["pickup_point"] == null ? null : PickupPoint!.fromJson(json["pickup_point"]),
+    shipping_address: json["shipping_address"].isEmpty ? null : ShippingAddress.fromJson(json["shipping_address"]),
+    pickupPoint: json["pickup_point"] == null ? null : PickupPoint.fromJson(json["pickup_point"]),
     shipping_type: json["shipping_type"],
     shipping_type_string: json["shipping_type_string"],
     payment_type: json["payment_type"],
@@ -101,6 +101,7 @@ class DetailedOrder {
     tax: json["tax"],
     date: json["date"],
     links: Links.fromJson(json["links"]),
+    cancelRequest: null,
   );
 
   Map<String, dynamic> toJson() => {
@@ -108,8 +109,8 @@ class DetailedOrder {
     "code": code,
     "user_id": user_id,
     "manually_payable": manually_payable,
-    "shipping_address": shipping_address.toJson(),
-    "pickup_point": pickupPoint == null ? null : pickupPoint.toJson(),
+    "shipping_address": shipping_address!.toJson(),
+    "pickup_point": pickupPoint == null ? null : pickupPoint!.toJson(),
     "shipping_type": shipping_type,
     "shipping_type_string": shipping_type_string,
     "payment_type": payment_type,
@@ -123,7 +124,7 @@ class DetailedOrder {
     "subtotal": subtotal,
     "tax": tax,
     "date": date,
-    "links": links.toJson(),
+    "links": links!.toJson(),
   };
 }
 
@@ -204,15 +205,15 @@ class PickupPoint {
     required this.updatedAt,
   });
 
-  int id;
-  int staffId;
-  String name;
-  String address;
-  String phone;
-  int pickUpStatus;
+  int? id;
+  int? staffId;
+  String? name;
+  String? address;
+  String? phone;
+  int? pickUpStatus;
   dynamic cashOnPickupStatus;
-  DateTime createdAt;
-  DateTime updatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
 
   factory PickupPoint.fromJson(Map<String, dynamic> json) => PickupPoint(
     id: json["id"] == null ? null : json["id"],
@@ -222,8 +223,8 @@ class PickupPoint {
     phone: json["phone"] == null ? null : json["phone"],
     pickUpStatus: json["pick_up_status"] == null ? null : json["pick_up_status"],
     cashOnPickupStatus: json["cash_on_pickup_status"],
-    createdAt: json["created_at"] == null ? null : DateTime!.parse(json["created_at"]),
-    updatedAt: json["updated_at"] == null ? null : DateTime!.parse(json["updated_at"]),
+    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -234,7 +235,7 @@ class PickupPoint {
     "phone": phone == null ? null : phone,
     "pick_up_status": pickUpStatus == null ? null : pickUpStatus,
     "cash_on_pickup_status": cashOnPickupStatus,
-    "created_at": createdAt == null ? null : createdAt.toIso8601String(),
-    "updated_at": updatedAt == null ? null : updatedAt.toIso8601String(),
+    "created_at": createdAt == null ? null : createdAt!.toIso8601String(),
+    "updated_at": updatedAt == null ? null : updatedAt!.toIso8601String(),
   };
 }

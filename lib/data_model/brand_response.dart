@@ -17,9 +17,9 @@ class BrandResponse {
   });
 
   List<Brands> brands;
-  Meta meta;
-  bool success;
-  int status;
+  Meta? meta;
+  bool? success;
+  int? status;
 
   factory BrandResponse.fromJson(Map<String, dynamic> json) => BrandResponse(
     brands: List<Brands>.from(json["data"].map((x) => Brands.fromJson(x))),
@@ -30,7 +30,7 @@ class BrandResponse {
 
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(brands.map((x) => x.toJson())),
-    "meta": meta == null ? null : meta.toJson(),
+    "meta": meta == null ? null : meta!.toJson(),
     "success": success,
     "status": status,
   };

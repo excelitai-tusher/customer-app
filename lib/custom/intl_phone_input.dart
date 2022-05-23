@@ -140,7 +140,7 @@ class _InputWidgetState extends State<CustomInternationalPhoneNumberInput> {
   @override
   void initState() {
     super.initState();
-    loadCountries();
+    loadCountries(previouslySelectedCountry: null);
     controller = widget.textFieldController ?? TextEditingController();
     initialiseWidget();
   }

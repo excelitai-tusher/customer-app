@@ -18,12 +18,12 @@ class LoginResponse {
     required this.user,
   });
 
-  bool result;
-  String message;
-  String access_token;
-  String token_type;
-  DateTime expires_at;
-  User user;
+  bool? result;
+  String? message;
+  String? access_token;
+  String? token_type;
+  DateTime? expires_at;
+  User? user;
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
     result: json["result"],
@@ -39,8 +39,8 @@ class LoginResponse {
     "message": message,
     "access_token": access_token == null ? null : access_token,
     "token_type": token_type == null ? null : token_type,
-    "expires_at": expires_at == null ? null : expires_at.toIso8601String(),
-    "user": user == null ? null : user.toJson(),
+    "expires_at": expires_at == null ? null : expires_at!.toIso8601String(),
+    "user": user == null ? null : user!.toJson(),
   };
 }
 

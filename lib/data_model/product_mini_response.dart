@@ -19,18 +19,18 @@ class ProductMiniResponse {
   List<Product> products;
   bool success;
   int status;
-  Meta meta;
+  Meta? meta;
 
   factory ProductMiniResponse.fromJson(Map<String, dynamic> json) => ProductMiniResponse(
     products: List<Product>.from(json["data"].map((x) => Product.fromJson(x))),
-    meta: json["meta"] == null ? null : Meta!.fromJson(json["meta"]),
+    meta: json["meta"] == null ? null : Meta.fromJson(json["meta"]),
     success: json["success"],
     status: json["status"],
   );
 
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(products.map((x) => x.toJson())),
-    "meta": meta == null ? null : meta.toJson(),
+    "meta": meta == null ? null : meta!.toJson(),
     "success": success,
     "status": status,
   };
