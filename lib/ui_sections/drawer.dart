@@ -17,7 +17,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainDrawer extends StatefulWidget {
   const MainDrawer({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -67,7 +67,7 @@ class _MainDrawerState extends State<MainDrawer> {
                           "${user_email.$ != "" && user_email.$ != null ? user_email.$ : user_phone.$ != "" && user_phone.$ != null ? user_phone.$ : ''}",
                         ))
                     : Text(
-                        AppLocalizations.of(context).main_drawer_not_logged_in,
+                        AppLocalizations.of(context)!.main_drawer_not_logged_in,
                         style: TextStyle(
                             color: Color.fromRGBO(153, 153, 153, 1),
                             fontSize: 14)),
@@ -77,7 +77,7 @@ class _MainDrawerState extends State<MainDrawer> {
                     leading: Image.asset("assets/language.png",
                         height: 16, color: Color.fromRGBO(153, 153, 153, 1)),
                     title: Text(
-                        AppLocalizations.of(context)
+                        AppLocalizations.of(context)!
                             .main_drawer_change_language,
                         style: TextStyle(
                             color: Color.fromRGBO(153, 153, 153, 1),
@@ -92,7 +92,7 @@ class _MainDrawerState extends State<MainDrawer> {
                     visualDensity: VisualDensity(horizontal: -4, vertical: -4),
                     leading: Image.asset("assets/home.png",
                         height: 16, color: Color.fromRGBO(153, 153, 153, 1)),
-                    title: Text(AppLocalizations.of(context).main_drawer_home,
+                    title: Text(AppLocalizations.of(context)!.main_drawer_home,
                         style: TextStyle(
                             color: Color.fromRGBO(153, 153, 153, 1),
                             fontSize: 14)),
@@ -112,7 +112,7 @@ class _MainDrawerState extends State<MainDrawer> {
                                   height: 16,
                                   color: Color.fromRGBO(153, 153, 153, 1)),
                               title: Text(
-                                  AppLocalizations.of(context)
+                                  AppLocalizations.of(context)!
                                       .main_drawer_profile,
                                   style: TextStyle(
                                       color: Color.fromRGBO(153, 153, 153, 1),
@@ -130,7 +130,7 @@ class _MainDrawerState extends State<MainDrawer> {
                                   height: 16,
                                   color: Color.fromRGBO(153, 153, 153, 1)),
                               title: Text(
-                                  AppLocalizations.of(context)
+                                  AppLocalizations.of(context)!
                                       .main_drawer_orders,
                                   style: TextStyle(
                                       color: Color.fromRGBO(153, 153, 153, 1),
@@ -148,7 +148,7 @@ class _MainDrawerState extends State<MainDrawer> {
                                   height: 16,
                                   color: Color.fromRGBO(153, 153, 153, 1)),
                               title: Text(
-                                  AppLocalizations.of(context)
+                                  AppLocalizations.of(context)!
                                       .main_drawer_my_wishlist,
                                   style: TextStyle(
                                       color: Color.fromRGBO(153, 153, 153, 1),
@@ -166,7 +166,7 @@ class _MainDrawerState extends State<MainDrawer> {
                                   height: 16,
                                   color: Color.fromRGBO(153, 153, 153, 1)),
                               title: Text(
-                                  AppLocalizations.of(context)
+                                  AppLocalizations.of(context)!
                                       .main_drawer_messages,
                                   style: TextStyle(
                                       color: Color.fromRGBO(153, 153, 153, 1),
@@ -185,7 +185,7 @@ class _MainDrawerState extends State<MainDrawer> {
                                       height: 16,
                                       color: Color.fromRGBO(153, 153, 153, 1)),
                                   title: Text(
-                                      AppLocalizations.of(context)
+                                      AppLocalizations.of(context)!
                                           .main_drawer_wallet,
                                       style: TextStyle(
                                           color:
@@ -210,7 +210,7 @@ class _MainDrawerState extends State<MainDrawer> {
                             height: 16,
                             color: Color.fromRGBO(153, 153, 153, 1)),
                         title: Text(
-                            AppLocalizations.of(context).main_drawer_login,
+                            AppLocalizations.of(context)!.main_drawer_login,
                             style: TextStyle(
                                 color: Color.fromRGBO(153, 153, 153, 1),
                                 fontSize: 14)),
@@ -230,7 +230,7 @@ class _MainDrawerState extends State<MainDrawer> {
                             height: 16,
                             color: Color.fromRGBO(153, 153, 153, 1)),
                         title: Text(
-                            AppLocalizations.of(context).main_drawer_logout,
+                            AppLocalizations.of(context)!.main_drawer_logout,
                             style: TextStyle(
                                 color: Color.fromRGBO(153, 153, 153, 1),
                                 fontSize: 14)),

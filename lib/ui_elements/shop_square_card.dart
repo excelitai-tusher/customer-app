@@ -4,11 +4,11 @@ import 'package:active_ecommerce_flutter/app_config.dart';
 import 'package:active_ecommerce_flutter/screens/seller_details.dart';
 
 class ShopSquareCard extends StatefulWidget {
-  int id;
-  String image;
-  String name;
+  int? id;
+  String? image;
+  String? name;
 
-  ShopSquareCard({Key key,this.id, this.image, this.name}) : super(key: key);
+  ShopSquareCard({Key? key,this.id, this.image, this.name}) : super(key: key);
 
   @override
   _ShopSquareCardState createState() => _ShopSquareCardState();
@@ -20,7 +20,7 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
     return InkWell(
       onTap: (){
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return SellerDetails(id: widget.id,);
+          return SellerDetails(id: widget.id!,);
         }));
       },
       child: Card(
@@ -42,7 +42,7 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
                           top: Radius.circular(16), bottom: Radius.zero),
                       child: FadeInImage.assetNetwork(
                         placeholder: 'assets/placeholder.png',
-                        image:  widget.image,
+                        image:  widget.image!,
                         fit: BoxFit.scaleDown,
                       ))),
               Container(
@@ -50,7 +50,7 @@ class _ShopSquareCardState extends State<ShopSquareCard> {
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
                   child: Text(
-                    widget.name,
+                    widget.name!,
                     textAlign: TextAlign.left,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
