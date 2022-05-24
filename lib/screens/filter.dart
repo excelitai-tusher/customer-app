@@ -35,7 +35,7 @@ class WhichFilter {
 
 class Filter extends StatefulWidget {
   Filter({
-    Key? key,
+    Key key,
     this.selected_filter = "product",
   }) : super(key: key);
 

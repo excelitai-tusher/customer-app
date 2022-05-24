@@ -8,7 +8,7 @@ class CommonWebviewScreen extends StatefulWidget {
   String url;
   String page_name;
 
-  CommonWebviewScreen({Key? key, this.url = "", this.page_name = ""})
+  CommonWebviewScreen({Key key, this.url = "", this.page_name = ""})
       : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class CommonWebviewScreen extends StatefulWidget {
 }
 
 class _CommonWebviewScreenState extends State<CommonWebviewScreen> {
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -44,7 +44,7 @@ class _CommonWebviewScreenState extends State<CommonWebviewScreen> {
           javascriptMode: JavascriptMode.unrestricted,
           onWebViewCreated: (controller) {
             _webViewController = controller;
-            _webViewController!.loadUrl(widget.url);
+            _webViewController.loadUrl(widget.url);
           },
           onWebResourceError: (error) {},
           onPageFinished: (page) {

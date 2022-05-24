@@ -106,13 +106,13 @@ class _ClubpointState extends State<Clubpoint> {
 
     SnackBar _convertedSnackbar = SnackBar(
       content: Text(
-        AppLocalizations.of(context)!.club_point_screen_snackbar_points_converted,
+        AppLocalizations.of(context).club_point_screen_snackbar_points_converted,
         style: TextStyle(color: MyTheme.font_grey),
       ),
       backgroundColor: MyTheme.soft_accent_color,
       duration: const Duration(seconds: 3),
       action: SnackBarAction(
-        label: AppLocalizations.of(context)!.club_point_screen_snackbar_show_wallet,
+        label: AppLocalizations.of(context).club_point_screen_snackbar_show_wallet,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return Wallet();
@@ -168,8 +168,8 @@ class _ClubpointState extends State<Clubpoint> {
       color: Colors.white,
       child: Center(
         child: Text(_totalData == _list.length
-            ? AppLocalizations.of(context)!.common_no_more_items
-            : AppLocalizations.of(context)!.common_loading_more_items),
+            ? AppLocalizations.of(context).common_no_more_items
+            : AppLocalizations.of(context).common_loading_more_items),
       ),
     );
   }
@@ -185,7 +185,7 @@ backgroundColor: Colors.white,
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.club_point_screen_earned_points,
+        AppLocalizations.of(context).club_point_screen_earned_points,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -212,7 +212,7 @@ backgroundColor: Colors.white,
         ),
       );
     } else if (_totalData == 0) {
-      return Center(child: Text(AppLocalizations.of(context)!.common_no_data_available));
+      return Center(child: Text(AppLocalizations.of(context).common_no_data_available));
     } else {
       return Container(); // should never be happening
     }
@@ -246,7 +246,7 @@ backgroundColor: Colors.white,
                       height: 10,
                     ),
                     Text(
-                      AppLocalizations.of(context)!.club_point_screen_converted_question,
+                      AppLocalizations.of(context).club_point_screen_converted_question,
                       style: TextStyle(
                         color: MyTheme.dark_grey,
                       ),
@@ -276,7 +276,7 @@ backgroundColor: Colors.white,
                       height: 10,
                     ),
                     _list[index].convert_status == 1 || _converted_ids.contains(_list[index].id) ? Text(
-                      AppLocalizations.of(context)!.club_point_screen_done,
+                      AppLocalizations.of(context).club_point_screen_done,
                       style: TextStyle(
                         color: Colors.green,
                       ),
@@ -287,7 +287,7 @@ backgroundColor: Colors.white,
                       child: FlatButton(
                         color: MyTheme.accent_color,
                         child: Text(
-                          AppLocalizations.of(context)!.club_point_screen_convert,
+                          AppLocalizations.of(context).club_point_screen_convert,
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () {
