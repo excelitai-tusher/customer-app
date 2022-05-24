@@ -12,7 +12,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoryList extends StatefulWidget {
   CategoryList(
-      {Key? key,
+      {Key key,
       this.parent_category_id = 0,
       this.parent_category_name = "",
       this.is_base_category = false,
@@ -71,7 +71,7 @@ class _CategoryListState extends State<CategoryList> {
       leading: widget.is_base_category
           ? GestureDetector(
               onTap: () {
-                _scaffoldKey.currentState!.openDrawer();
+                _scaffoldKey.currentState.openDrawer();
               },
               child: Builder(
                 builder: (context) => Padding(
@@ -104,7 +104,7 @@ class _CategoryListState extends State<CategoryList> {
 
   String getAppBarTitle() {
     String name = widget.parent_category_name == ""
-        ? (widget.is_top_category ? AppLocalizations.of(context)!.category_list_screen_top_categories : AppLocalizations.of(context)!.category_list_screen_categories)
+        ? (widget.is_top_category ? AppLocalizations.of(context).category_list_screen_top_categories : AppLocalizations.of(context).category_list_screen_categories)
         : widget.parent_category_name;
 
     return name;
@@ -267,13 +267,13 @@ class _CategoryListState extends State<CategoryList> {
                           }));
                         } else {
                           ToastComponent.showDialog(
-                              AppLocalizations.of(context)!.category_list_screen_no_subcategories, context,
+                              AppLocalizations.of(context).category_list_screen_no_subcategories, context,
                               gravity: Toast.CENTER,
                               duration: Toast.LENGTH_LONG);
                         }
                       },
                       child: Text(
-                        AppLocalizations.of(context)!.category_list_screen_view_subcategories,
+                        AppLocalizations.of(context).category_list_screen_view_subcategories,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -305,7 +305,7 @@ class _CategoryListState extends State<CategoryList> {
                         }));
                       },
                       child: Text(
-                        AppLocalizations.of(context)!.category_list_screen_view_products,
+                        AppLocalizations.of(context).category_list_screen_view_products,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -349,7 +349,7 @@ class _CategoryListState extends State<CategoryList> {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(8.0))),
                   child: Text(
-                    AppLocalizations.of(context)!.category_list_screen_all_products_of + " " + widget.parent_category_name,
+                    AppLocalizations.of(context).category_list_screen_all_products_of + " " + widget.parent_category_name,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,

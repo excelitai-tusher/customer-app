@@ -7,10 +7,10 @@ import 'package:http/http.dart' as http;
 
 class OfflineWalletRechargeRepository{
  Future<OfflineWalletRechargeResponse> getOfflineWalletRechargeResponse({
-   String? amount,
-   String? name,
-   String? trx_id,
-   int? photo})async{
+   String amount,
+   String name,
+   String trx_id,
+   int photo})async{
 
 
     var post_body = jsonEncode({

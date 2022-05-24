@@ -15,7 +15,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class Address extends StatefulWidget {
-  Address({Key? key,this.from_shipping_info = false}) : super(key: key);
+  Address({Key key,this.from_shipping_info = false}) : super(key: key);
   bool from_shipping_info;
   @override
   _AddressState createState() => _AddressState();
@@ -24,10 +24,10 @@ class Address extends StatefulWidget {
 class _AddressState extends State<Address> {
   ScrollController _mainScrollController = ScrollController();
 
-  int _default_shipping_address = 0;
-  late City _selected_city;
-  late Country _selected_country;
-  late MyState _selected_state;
+   int _default_shipping_address = 0;
+   City _selected_city;
+   Country _selected_country;
+   MyState _selected_state;
 
   bool _isInitial = true;
   List<dynamic> _shippingAddressList = [];
@@ -192,7 +192,7 @@ class _AddressState extends State<Address> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
                 child: Text(
-                  AppLocalizations.of(context)!
+                  AppLocalizations.of(context)
                       .address_screen_address_remove_warning,
                   maxLines: 3,
                   style: TextStyle(color: MyTheme.font_grey, fontSize: 14),
@@ -201,7 +201,7 @@ class _AddressState extends State<Address> {
               actions: [
                 FlatButton(
                   child: Text(
-                    AppLocalizations.of(context)!.common_cancel_ucfirst,
+                    AppLocalizations.of(context).common_cancel_ucfirst,
                     style: TextStyle(color: MyTheme.medium_grey),
                   ),
                   onPressed: () {
@@ -211,7 +211,7 @@ class _AddressState extends State<Address> {
                 FlatButton(
                   color: MyTheme.soft_accent_color,
                   child: Text(
-                    AppLocalizations.of(context)!.common_confirm_ucfirst,
+                    AppLocalizations.of(context).common_confirm_ucfirst,
                     style: TextStyle(color: MyTheme.dark_grey),
                   ),
                   onPressed: () {
@@ -246,28 +246,28 @@ class _AddressState extends State<Address> {
 
     if (address == "") {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.address_screen_address_warning, context,
+          AppLocalizations.of(context).address_screen_address_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
 
     if (_selected_country == null) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.address_screen_country_warning, context,
+          AppLocalizations.of(context).address_screen_country_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
 
     if (_selected_state == null) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.address_screen_state_warning, context,
+          AppLocalizations.of(context).address_screen_state_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
 
     if (_selected_city == null) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.address_screen_city_warning, context,
+          AppLocalizations.of(context).address_screen_city_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -300,21 +300,21 @@ class _AddressState extends State<Address> {
 
     if (address == "") {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.address_screen_address_warning, context,
+          AppLocalizations.of(context).address_screen_address_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
 
     if (_selected_country_list_for_update[index] == null) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.address_screen_country_warning, context,
+          AppLocalizations.of(context).address_screen_country_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
 
     if (_selected_state_list_for_update[index] == null) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.address_screen_state_warning, context,
+          AppLocalizations.of(context).address_screen_state_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -322,7 +322,7 @@ class _AddressState extends State<Address> {
 
     if (_selected_city_list_for_update[index] == null) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.address_screen_city_warning, context,
+          AppLocalizations.of(context).address_screen_city_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -528,7 +528,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            "${AppLocalizations.of(context)!.address_screen_address} *",
+                            "${AppLocalizations.of(context).address_screen_address} *",
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -542,7 +542,7 @@ class _AddressState extends State<Address> {
                             maxLines: null,
                             keyboardType: TextInputType.multiline,
                             decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context)!
+                                hintText: AppLocalizations.of(context)
                                     .address_screen_enter_address,
                                 hintStyle: TextStyle(
                                     fontSize: 12.0,
@@ -571,7 +571,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            "${AppLocalizations.of(context)!.address_screen_country} *",
+                            "${AppLocalizations.of(context).address_screen_country} *",
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -590,7 +590,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_loading_countries,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -612,7 +612,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_no_country_available,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -629,7 +629,7 @@ class _AddressState extends State<Address> {
                                 // keep this blank
                               },
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!
+                                  hintText: AppLocalizations.of(context)
                                       .address_screen_enter_country,
                                   hintStyle: TextStyle(
                                       fontSize: 12.0,
@@ -659,7 +659,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            "${AppLocalizations.of(context)!.address_screen_state} *",
+                            "${AppLocalizations.of(context).address_screen_state} *",
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -685,7 +685,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_loading_states,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -707,7 +707,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_no_state_available,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -726,7 +726,7 @@ class _AddressState extends State<Address> {
                                 // _onSearchSubmit();
                               },
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!
+                                  hintText: AppLocalizations.of(context)
                                       .address_screen_enter_state,
                                   hintStyle: TextStyle(
                                       fontSize: 12.0,
@@ -756,7 +756,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            "${AppLocalizations.of(context)!.address_screen_city} *",
+                            "${AppLocalizations.of(context).address_screen_city} *",
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -781,7 +781,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_loading_cities,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -803,7 +803,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_no_city_available,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -820,7 +820,7 @@ class _AddressState extends State<Address> {
                                 // keep blank
                               },
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!
+                                  hintText: AppLocalizations.of(context)
                                       .address_screen_enter_city,
                                   hintStyle: TextStyle(
                                       fontSize: 12.0,
@@ -850,7 +850,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .address_screen_postal_code,
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
@@ -863,7 +863,7 @@ class _AddressState extends State<Address> {
                             controller: _postalCodeController,
                             autofocus: false,
                             decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context)!
+                                hintText: AppLocalizations.of(context)
                                     .address_screen_enter_postal_code,
                                 hintStyle: TextStyle(
                                     fontSize: 12.0,
@@ -892,7 +892,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            AppLocalizations.of(context)!.address_screen_phone,
+                            AppLocalizations.of(context).address_screen_phone,
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -904,7 +904,7 @@ class _AddressState extends State<Address> {
                             controller: _phoneController,
                             autofocus: false,
                             decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context)!
+                                hintText: AppLocalizations.of(context)
                                     .address_screen_enter_phone,
                                 hintStyle: TextStyle(
                                     fontSize: 12.0,
@@ -1012,7 +1012,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            "${AppLocalizations.of(context)!.address_screen_address} *",
+                            "${AppLocalizations.of(context).address_screen_address} *",
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -1026,7 +1026,7 @@ class _AddressState extends State<Address> {
                             maxLines: null,
                             keyboardType: TextInputType.multiline,
                             decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context)!
+                                hintText: AppLocalizations.of(context)
                                     .address_screen_enter_address,
                                 hintStyle: TextStyle(
                                     fontSize: 12.0,
@@ -1055,7 +1055,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            "${AppLocalizations.of(context)!.address_screen_country} *",
+                            "${AppLocalizations.of(context).address_screen_country} *",
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -1074,7 +1074,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_loading_countries,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -1096,7 +1096,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_no_country_available,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -1115,7 +1115,7 @@ class _AddressState extends State<Address> {
                                 // keep this blank
                               },
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!
+                                  hintText: AppLocalizations.of(context)
                                       .address_screen_enter_country,
                                   hintStyle: TextStyle(
                                       fontSize: 12.0,
@@ -1145,7 +1145,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            "${AppLocalizations.of(context)!.address_screen_state} *",
+                            "${AppLocalizations.of(context).address_screen_state} *",
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -1175,7 +1175,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_loading_states,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -1197,7 +1197,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_no_state_available,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -1217,7 +1217,7 @@ class _AddressState extends State<Address> {
                                 // _onSearchSubmit();
                               },
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!
+                                  hintText: AppLocalizations.of(context)
                                       .address_screen_enter_state,
                                   hintStyle: TextStyle(
                                       fontSize: 12.0,
@@ -1247,7 +1247,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            "${AppLocalizations.of(context)!. address_screen_city} *",
+                            "${AppLocalizations.of(context). address_screen_city} *",
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -1272,7 +1272,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_loading_cities,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -1294,7 +1294,7 @@ class _AddressState extends State<Address> {
                                 height: 50,
                                 child: Center(
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .address_screen_no_city_available,
                                         style: TextStyle(
                                             color: MyTheme.medium_grey))),
@@ -1312,7 +1312,7 @@ class _AddressState extends State<Address> {
                                 // keep blank
                               },
                               decoration: InputDecoration(
-                                  hintText: AppLocalizations.of(context)!
+                                  hintText: AppLocalizations.of(context)
                                       .address_screen_enter_city,
                                   hintStyle: TextStyle(
                                       fontSize: 12.0,
@@ -1342,7 +1342,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .address_screen_postal_code,
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
@@ -1356,7 +1356,7 @@ class _AddressState extends State<Address> {
                                 _postalCodeControllerListForUpdate[index],
                             autofocus: false,
                             decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context)!
+                                hintText: AppLocalizations.of(context)
                                     .address_screen_enter_postal_code,
                                 hintStyle: TextStyle(
                                     fontSize: 12.0,
@@ -1385,7 +1385,7 @@ class _AddressState extends State<Address> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                            AppLocalizations.of(context)!.address_screen_phone,
+                            AppLocalizations.of(context).address_screen_phone,
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 12)),
                       ),
@@ -1397,7 +1397,7 @@ class _AddressState extends State<Address> {
                             controller: _phoneControllerListForUpdate[index],
                             autofocus: false,
                             decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context)!
+                                hintText: AppLocalizations.of(context)
                                     .address_screen_enter_phone,
                                 hintStyle: TextStyle(
                                     fontSize: 12.0,
@@ -1442,7 +1442,7 @@ class _AddressState extends State<Address> {
                             side: BorderSide(
                                 color: MyTheme.light_grey, width: 1.0)),
                         child: Text(
-                          AppLocalizations.of(context)!
+                          AppLocalizations.of(context)
                               .common_close_in_all_capital,
                           style: TextStyle(
                             color: MyTheme.font_grey,
@@ -1467,7 +1467,7 @@ class _AddressState extends State<Address> {
                             side: BorderSide(
                                 color: MyTheme.light_grey, width: 1.0)),
                         child: Text(
-                          AppLocalizations.of(context)!
+                          AppLocalizations.of(context)
                               .common_update_in_all_capital,
                           style: TextStyle(
                               color: Colors.white,
@@ -1501,11 +1501,11 @@ class _AddressState extends State<Address> {
       title: Column(
         children: [
           Text(
-            AppLocalizations.of(context)!.address_screen_addresses_of_user,
+            AppLocalizations.of(context).address_screen_addresses_of_user,
             style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
           ),
           Text(
-            "* ${AppLocalizations.of(context)!.address_screen_addresses_to_make_default}",
+            "* ${AppLocalizations.of(context).address_screen_addresses_to_make_default}",
             style: TextStyle(fontSize: 10, color: MyTheme.medium_grey),
           ),
         ],
@@ -1522,7 +1522,7 @@ class _AddressState extends State<Address> {
           height: 100,
           child: Center(
               child: Text(
-            AppLocalizations.of(context)!.common_login_warning,
+            AppLocalizations.of(context).common_login_warning,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else if (_isInitial && _shippingAddressList.length == 0) {
@@ -1549,7 +1549,7 @@ class _AddressState extends State<Address> {
           height: 100,
           child: Center(
               child: Text(
-            AppLocalizations.of(context)!.common_no_address_added,
+            AppLocalizations.of(context).common_no_address_added,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     }
@@ -1585,7 +1585,7 @@ class _AddressState extends State<Address> {
                         Container(
                           width: 75,
                           child: Text(
-                            AppLocalizations.of(context)!.address_screen_address,
+                            AppLocalizations.of(context).address_screen_address,
                             style: TextStyle(
                               color: MyTheme.grey_153,
                             ),
@@ -1612,7 +1612,7 @@ class _AddressState extends State<Address> {
                         Container(
                           width: 75,
                           child: Text(
-                            AppLocalizations.of(context)!.address_screen_city,
+                            AppLocalizations.of(context).address_screen_city,
                             style: TextStyle(
                               color: MyTheme.grey_153,
                             ),
@@ -1639,7 +1639,7 @@ class _AddressState extends State<Address> {
                         Container(
                           width: 75,
                           child: Text(
-                            AppLocalizations.of(context)!.address_screen_state,
+                            AppLocalizations.of(context).address_screen_state,
                             style: TextStyle(
                               color: MyTheme.grey_153,
                             ),
@@ -1666,7 +1666,7 @@ class _AddressState extends State<Address> {
                         Container(
                           width: 75,
                           child: Text(
-                            AppLocalizations.of(context)!.address_screen_country,
+                            AppLocalizations.of(context).address_screen_country,
                             style: TextStyle(
                               color: MyTheme.grey_153,
                             ),
@@ -1693,7 +1693,7 @@ class _AddressState extends State<Address> {
                         Container(
                           width: 75,
                           child: Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .address_screen_postal_code,
                             style: TextStyle(
                               color: MyTheme.grey_153,
@@ -1721,7 +1721,7 @@ class _AddressState extends State<Address> {
                         Container(
                           width: 75,
                           child: Text(
-                            AppLocalizations.of(context)!.address_screen_phone,
+                            AppLocalizations.of(context).address_screen_phone,
                             style: TextStyle(
                               color: MyTheme.grey_153,
                             ),
@@ -1862,7 +1862,7 @@ class _AddressState extends State<Address> {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: Text(
-                  AppLocalizations.of(context)!
+                  AppLocalizations.of(context)
                       .address_screen_back_to_shipping_info,
                   style: TextStyle(
                       color: Colors.white,

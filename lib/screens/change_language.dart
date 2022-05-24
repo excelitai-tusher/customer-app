@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:active_ecommerce_flutter/my_theme.dart';
-
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:active_ecommerce_flutter/repositories/language_repository.dart';
 import 'package:active_ecommerce_flutter/repositories/coupon_repository.dart';
@@ -13,9 +11,11 @@ import 'package:active_ecommerce_flutter/providers/locale_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../my_theme.dart';
+
 
 class ChangeLanguage extends StatefulWidget {
-  ChangeLanguage({Key? key}) : super(key: key);
+  ChangeLanguage({Key key}) : super(key: key);
 
   @override
   _ChangeLanguageState createState() => _ChangeLanguageState();
@@ -158,7 +158,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
         ),
       ),
       title: Text(
-        "${AppLocalizations.of(context)!.change_language_change_language} (${app_language.$}) - (${app_mobile_language.$})",
+        "${AppLocalizations.of(context).change_language_change_language} (${app_language.$}) - (${app_mobile_language.$})",
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -191,7 +191,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context)!.change_language_no_language_is_added,
+                AppLocalizations.of(context).change_language_no_language_is_added,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     }

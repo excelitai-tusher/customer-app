@@ -6,9 +6,9 @@ import 'package:active_ecommerce_flutter/helpers/shimmer_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BrandProducts extends StatefulWidget {
-  BrandProducts({Key? key, this.id, this.brand_name}) : super(key: key);
-  final int? id;
-  final String? brand_name;
+  BrandProducts({Key key, this.id, this.brand_name}) : super(key: key);
+  final int id;
+  final String brand_name;
 
   @override
   _BrandProductsState createState() => _BrandProductsState();
@@ -19,12 +19,12 @@ class _BrandProductsState extends State<BrandProducts> {
   ScrollController _xcrollController = ScrollController();
   TextEditingController _searchController = TextEditingController();
 
-  List<dynamic>? _productList = [];
-  bool? _isInitial = true;
-  int? _page = 1;
-  String? _searchKey = "";
-  int? _totalData = 0;
-  bool? _showLoadingContainer = false;
+  List<dynamic> _productList = [];
+  bool _isInitial = true;
+  int _page = 1;
+  String _searchKey = "";
+  int _totalData = 0;
+  bool _showLoadingContainer = false;
 
   @override
   void initState() {
@@ -59,7 +59,7 @@ class _BrandProductsState extends State<BrandProducts> {
 
   fetchData() async {
     var productResponse = await ProductRepository()
-        .getBrandProducts(id: widget.id!, page: _page, name: _searchKey);
+        .getBrandProducts(id: widget.id, page: _page, name: _searchKey);
     _productList?.addAll(productResponse.products);
     _isInitial = false;
     _totalData = productResponse.meta.total;
@@ -68,7 +68,7 @@ class _BrandProductsState extends State<BrandProducts> {
   }
 
   reset() {
-    _productList!.clear();
+    _productList.clear();
     _isInitial = true;
     _totalData = 0;
     _page = 1;
@@ -98,13 +98,13 @@ class _BrandProductsState extends State<BrandProducts> {
 
   Container buildLoadingContainer() {
     return Container(
-      height: _showLoadingContainer! ? 36 : 0,
+      height: _showLoadingContainer ? 36 : 0,
       width: double.infinity,
       color: Colors.white,
       child: Center(
-        child: Text(_totalData == _productList!.length
-            ? AppLocalizations.of(context)!.common_no_more_products
-            : AppLocalizations.of(context)!.common_loading_more_products),
+        child: Text(_totalData == _productList.length
+            ? AppLocalizations.of(context).common_no_more_products
+            : AppLocalizations.of(context).common_loading_more_products),
       ),
     );
   }
@@ -136,8 +136,8 @@ class _BrandProductsState extends State<BrandProducts> {
             autofocus: true,
             decoration: InputDecoration(
                 hintText:
-                    "${AppLocalizations.of(context)!.brand_products_screen_search_product_of_brand} : " +
-                        widget.brand_name!,
+                    "${AppLocalizations.of(context).brand_products_screen_search_product_of_brand} : " +
+                        widget.brand_name,
                 hintStyle:
                     TextStyle(fontSize: 14.0, color: MyTheme.textfield_grey),
                 enabledBorder: OutlineInputBorder(
@@ -168,11 +168,11 @@ class _BrandProductsState extends State<BrandProducts> {
   }
 
   buildProductList() {
-    if (_isInitial! && _productList!.length == 0) {
+    if (_isInitial && _productList.length == 0) {
       return SingleChildScrollView(
           child: ShimmerHelper()
               .buildProductGridShimmer(scontroller: _scrollController));
-    } else if (_productList!.length > 0) {
+    } else if (_productList.length > 0) {
       return RefreshIndicator(
         color: MyTheme.accent_color,
         backgroundColor: Colors.white,
@@ -185,7 +185,7 @@ class _BrandProductsState extends State<BrandProducts> {
           child: GridView.builder(
             // 2
             //addAutomaticKeepAlives: true,
-            itemCount: _productList!.length,
+            itemCount: _productList.length,
             controller: _scrollController,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -198,19 +198,19 @@ class _BrandProductsState extends State<BrandProducts> {
             itemBuilder: (context, index) {
               // 3
               return ProductCard(
-                  id: _productList![index].id,
-                  image: _productList![index].thumbnail_image,
-                  name: _productList![index].name,
-                  main_price: _productList![index].main_price,
-                  stroked_price: _productList![index].stroked_price,
-                  has_discount: _productList![index].has_discount);
+                  id: _productList[index].id,
+                  image: _productList[index].thumbnail_image,
+                  name: _productList[index].name,
+                  main_price: _productList[index].main_price,
+                  stroked_price: _productList[index].stroked_price,
+                  has_discount: _productList[index].has_discount);
             },
           ),
         ),
       );
     } else if (_totalData == 0) {
       return Center(
-          child: Text(AppLocalizations.of(context)!.common_no_data_available));
+          child: Text(AppLocalizations.of(context).common_no_data_available));
     } else {
       return Container(); // should never be happening
     }

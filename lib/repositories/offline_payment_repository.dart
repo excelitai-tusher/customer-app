@@ -7,11 +7,11 @@ import 'package:flutter/foundation.dart';
 
 class OfflinePaymentRepository {
   Future<OfflinePaymentSubmitResponse> getOfflinePaymentSubmitResponse(
-      {required int order_id,
-      required String amount,
-      required String name,
-      required String trx_id,
-      required int photo}) async {
+      {int order_id,
+      String amount,
+      String name,
+      String trx_id,
+      int photo}) async {
     var post_body = jsonEncode({
       "order_id": "$order_id",
       "amount": "$amount",

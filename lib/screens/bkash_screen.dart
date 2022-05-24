@@ -15,7 +15,7 @@ class BkashScreen extends StatefulWidget {
   String payment_method_key;
 
   BkashScreen(
-      {Key? key,
+      {Key key,
       this.amount = 0.00,
       this.payment_type = "",
       this.payment_method_key = ""})
@@ -31,7 +31,7 @@ class _BkashScreenState extends State<BkashScreen> {
   String _initial_url = "";
   bool _initial_url_fetched = false;
 
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -98,7 +98,7 @@ class _BkashScreenState extends State<BkashScreen> {
 
   void getData() {
     var payment_details = '';
-    _webViewController!
+    _webViewController
         .evaluateJavascript("document.body.innerText")
         .then((data) {
       var decodedJSON = jsonDecode(data);
@@ -148,13 +148,13 @@ class _BkashScreenState extends State<BkashScreen> {
         widget.payment_type == "cart_payment") {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.common_creating_order),
+          child: Text(AppLocalizations.of(context).common_creating_order),
         ),
       );
     } else if (_initial_url_fetched == false) {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.bkash_screen_fetching_bkash_url),
+          child: Text(AppLocalizations.of(context).bkash_screen_fetching_bkash_url),
         ),
       );
     } else {
@@ -167,7 +167,7 @@ class _BkashScreenState extends State<BkashScreen> {
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
               _webViewController = controller;
-              _webViewController!.loadUrl(_initial_url);
+              _webViewController.loadUrl(_initial_url);
             },
             onWebResourceError: (error) {},
             onPageFinished: (page) {
@@ -199,7 +199,7 @@ backgroundColor: Colors.white,
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.bkash_screen_pay_with_bkash,
+        AppLocalizations.of(context).bkash_screen_pay_with_bkash,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

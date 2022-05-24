@@ -6,10 +6,10 @@ import 'package:active_ecommerce_flutter/helpers/shimmer_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoryProducts extends StatefulWidget {
-  CategoryProducts({Key? key, this.category_name, this.category_id})
+  CategoryProducts({Key key, this.category_name, this.category_id})
       : super(key: key);
-  final String? category_name;
-  final int? category_id;
+  final String category_name;
+  final int category_id;
 
   @override
   _CategoryProductsState createState() => _CategoryProductsState();
@@ -59,7 +59,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
 
   fetchData() async {
     var productResponse = await ProductRepository().getCategoryProducts(
-        id: widget.category_id!, page: _page, name: _searchKey);
+        id: widget.category_id, page: _page, name: _searchKey);
     _productList.addAll(productResponse.products);
     _isInitial = false;
     _totalData = productResponse.meta.total;
@@ -103,8 +103,8 @@ class _CategoryProductsState extends State<CategoryProducts> {
       color: Colors.white,
       child: Center(
         child: Text(_totalData == _productList.length
-            ? AppLocalizations.of(context)!.common_no_more_products
-            : AppLocalizations.of(context)!.common_loading_more_products),
+            ? AppLocalizations.of(context).common_no_more_products
+            : AppLocalizations.of(context).common_loading_more_products),
       ),
     );
   }
@@ -143,8 +143,8 @@ class _CategoryProductsState extends State<CategoryProducts> {
             autofocus: false,
             decoration: InputDecoration(
                 hintText:
-                    "${AppLocalizations.of(context)!.category_products_screen_search_products_from} : " +
-                        widget.category_name!,
+                    "${AppLocalizations.of(context).category_products_screen_search_products_from} : " +
+                        widget.category_name,
                 hintStyle:
                     TextStyle(fontSize: 14.0, color: MyTheme.textfield_grey),
                 enabledBorder: OutlineInputBorder(
@@ -216,7 +216,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
       );
     } else if (_totalData == 0) {
       return Center(
-          child: Text(AppLocalizations.of(context)!.common_no_data_available));
+          child: Text(AppLocalizations.of(context).common_no_data_available));
     } else {
       return Container(); // should never be happening
     }

@@ -34,12 +34,12 @@ class AddressRepository {
 
   Future<AddressAddResponse> getAddressAddResponse(
       {
-      required String address,
-      required int country_id,
-      required int state_id,
-      required int city_id,
-      required String postal_code,
-      required String phone}) async {
+      String address,
+      int country_id,
+      int state_id,
+      int city_id,
+      String postal_code,
+      String phone}) async {
     var post_body = jsonEncode({
       "user_id": "${user_id.$}",
       "address": "$address",
@@ -64,13 +64,13 @@ class AddressRepository {
 
   Future<AddressUpdateResponse> getAddressUpdateResponse(
       {
-      required int id,
-      required String address,
-      required int country_id,
-      required int state_id,
-      required int city_id,
-      required String postal_code,
-      required String phone}) async {
+      int id,
+      String address,
+      int country_id,
+      int state_id,
+      int city_id,
+      String postal_code,
+      String phone}) async {
     var post_body = jsonEncode({
       "id": "${id}",
       "user_id": "${user_id.$}",
@@ -178,7 +178,7 @@ class AddressRepository {
   }
 
   Future<ShippingCostResponse> getShippingCostResponse(
-      {@required int? user_id,
+      {@required int user_id,
       int address_id = 0,
       int pick_up_id = 0,
       shipping_type = "home_delivery"}) async {

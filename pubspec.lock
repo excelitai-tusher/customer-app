@@ -218,6 +218,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  color:
+    dependency: transitive
+    description:
+      name: color
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   connectivity:
     dependency: "direct main"
     description:
@@ -288,6 +295,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
+  dartx:
+    dependency: transitive
+    description:
+      name: dartx
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.0"
   dotted_line:
     dependency: "direct main"
     description:
@@ -440,6 +454,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.6.0+2"
+  flutter_gen:
+    dependency: "direct main"
+    description:
+      name: flutter_gen
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.3"
+  flutter_gen_core:
+    dependency: transitive
+    description:
+      name: flutter_gen_core
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.3"
   flutter_html:
     dependency: "direct main"
     description:
@@ -1258,6 +1286,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.8"
+  time:
+    dependency: transitive
+    description:
+      name: time
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.0"
   timeline_list:
     dependency: "direct main"
     description:

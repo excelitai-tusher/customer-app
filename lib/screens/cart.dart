@@ -13,8 +13,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class Cart extends StatefulWidget {
-  Cart({Key? key, this.has_bottomnav}) : super(key: key);
-  final bool? has_bottomnav;
+  Cart({Key key, this.has_bottomnav}) : super(key: key);
+  final bool has_bottomnav;
 
   @override
   _CartState createState() => _CartState();
@@ -101,7 +101,7 @@ class _CartState extends State<Cart> {
       setState(() {});
     } else {
       ToastComponent.showDialog(
-          "${AppLocalizations.of(context)!.cart_screen_cannot_order_more_than} ${_shopList[seller_index].cart_items[item_index].upper_limit} ${AppLocalizations.of(context)!.cart_screen_items_of_this}",
+          "${AppLocalizations.of(context).cart_screen_cannot_order_more_than} ${_shopList[seller_index].cart_items[item_index].upper_limit} ${AppLocalizations.of(context).cart_screen_items_of_this}",
           context,
           gravity: Toast.CENTER,
           duration: Toast.LENGTH_LONG);
@@ -116,7 +116,7 @@ class _CartState extends State<Cart> {
       setState(() {});
     } else {
       ToastComponent.showDialog(
-          "${AppLocalizations.of(context)!.cart_screen_cannot_order_more_than} ${_shopList[seller_index].cart_items[item_index].lower_limit} ${AppLocalizations.of(context)!.cart_screen_items_of_this}",
+          "${AppLocalizations.of(context).cart_screen_cannot_order_more_than} ${_shopList[seller_index].cart_items[item_index].lower_limit} ${AppLocalizations.of(context).cart_screen_items_of_this}",
           context,
           gravity: Toast.CENTER,
           duration: Toast.LENGTH_LONG);
@@ -133,7 +133,7 @@ class _CartState extends State<Cart> {
             padding:
             const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: Text(
-              AppLocalizations.of(context)!.cart_screen_sure_remove_item,
+              AppLocalizations.of(context).cart_screen_sure_remove_item,
               maxLines: 3,
               style: TextStyle(color: MyTheme.font_grey, fontSize: 14),
             ),
@@ -141,7 +141,7 @@ class _CartState extends State<Cart> {
           actions: [
             FlatButton(
               child: Text(
-                AppLocalizations.of(context)!.cart_screen_cancel,
+                AppLocalizations.of(context).cart_screen_cancel,
                 style: TextStyle(color: MyTheme.medium_grey),
               ),
               onPressed: () {
@@ -151,7 +151,7 @@ class _CartState extends State<Cart> {
             FlatButton(
               color: MyTheme.soft_accent_color,
               child: Text(
-                AppLocalizations.of(context)!.cart_screen_confirm,
+                AppLocalizations.of(context).cart_screen_confirm,
                 style: TextStyle(color: MyTheme.dark_grey),
               ),
               onPressed: () {
@@ -202,7 +202,7 @@ class _CartState extends State<Cart> {
     }
 
     if (cart_ids.length == 0) {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.cart_screen_cart_empty, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).cart_screen_cart_empty, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -285,7 +285,7 @@ class _CartState extends State<Cart> {
                           child: buildCartSellerList(),
                         ),
                         Container(
-                          height: widget.has_bottomnav! ? 140 : 100,
+                          height: widget.has_bottomnav ? 140 : 100,
                         )
                       ]),
                     )
@@ -310,7 +310,7 @@ class _CartState extends State<Cart> {
                 )*/
       ),
 
-      height: widget.has_bottomnav! ? 200 : 120,
+      height: widget.has_bottomnav ? 200 : 120,
       //color: Colors.white,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -329,7 +329,7 @@ class _CartState extends State<Cart> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
-                        AppLocalizations.of(context)!.cart_screen_total_amount,
+                        AppLocalizations.of(context).cart_screen_total_amount,
                         style:
                         TextStyle(color: MyTheme.font_grey, fontSize: 14),
                       ),
@@ -390,7 +390,7 @@ class _CartState extends State<Cart> {
                             bottomRight: const Radius.circular(0.0),
                           )),
                       child: Text(
-                        AppLocalizations.of(context)!.cart_screen_update_cart,
+                        AppLocalizations.of(context).cart_screen_update_cart,
                         style: TextStyle(
                             color: MyTheme.medium_grey,
                             fontSize: 13,
@@ -443,7 +443,7 @@ class _CartState extends State<Cart> {
                             bottomRight: const Radius.circular(8.0),
                           )),
                       child: Text(
-                        AppLocalizations.of(context)!.cart_screen_proceed_to_shipping,
+                        AppLocalizations.of(context).cart_screen_proceed_to_shipping,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 13,
@@ -469,7 +469,7 @@ class _CartState extends State<Cart> {
       centerTitle: true,
       leading: GestureDetector(
         onTap: () {
-          _scaffoldKey.currentState!.openDrawer();
+          _scaffoldKey.currentState.openDrawer();
         },
         child: Builder(
           builder: (context) => Padding(
@@ -486,7 +486,7 @@ class _CartState extends State<Cart> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.cart_screen_shopping_cart,
+        AppLocalizations.of(context).cart_screen_shopping_cart,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -502,7 +502,7 @@ class _CartState extends State<Cart> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context)!.cart_screen_please_log_in,
+                AppLocalizations.of(context).cart_screen_please_log_in,
                 style: TextStyle(color: MyTheme.font_grey),
               )));
     } else if (_isInitial && _shopList.length == 0) {
@@ -558,7 +558,7 @@ class _CartState extends State<Cart> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context)!.cart_screen_cart_empty,
+                AppLocalizations.of(context).cart_screen_cart_empty,
                 style: TextStyle(color: MyTheme.font_grey),
               )));
     }

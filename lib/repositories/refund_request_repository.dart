@@ -23,7 +23,7 @@ class RefundRequestRepository {
     return refundRequestResponseFromJson(response.body);
   }
 
-  Future<RefundRequestSendResponse> getRefundRequestSendResponse({int? id,String? reason}
+  Future<RefundRequestSendResponse> getRefundRequestSendResponse({int id,String reason}
       ) async {
     var post_body = jsonEncode({
       "id": "${id}",

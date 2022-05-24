@@ -16,17 +16,17 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Chat extends StatefulWidget {
   Chat({
-    Key? key,
+    Key key,
     this.conversation_id,
     this.messenger_name,
     this.messenger_title,
     this.messenger_image,
   }) : super(key: key);
 
-  final int? conversation_id;
-  final String? messenger_name;
-  final String? messenger_title;
-  final String? messenger_image;
+  final int conversation_id;
+  final String messenger_name;
+  final String messenger_title;
+  final String messenger_image;
 
   @override
   _ChatState createState() => _ChatState();
@@ -178,7 +178,7 @@ class _ChatState extends State<Chat> {
                           borderRadius: BorderRadius.circular(0.0),
                         ),
                         child: Text(
-                          AppLocalizations.of(context)!.home_screen_featured_categories,
+                          AppLocalizations.of(context).home_screen_featured_categories,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -232,8 +232,8 @@ class _ChatState extends State<Chat> {
       color: Colors.white,
       child: Center(
         child: Text(_totalData == _list.length
-            ? AppLocalizations.of(context)!.common_no_more_items
-            : AppLocalizations.of(context)!.common_loading_more_items),
+            ? AppLocalizations.of(context).common_no_more_items
+            : AppLocalizations.of(context).common_loading_more_items),
       ),
     );
   }
@@ -269,7 +269,7 @@ backgroundColor: Colors.white,
                         borderRadius: BorderRadius.circular(35),
                         child: FadeInImage.assetNetwork(
                           placeholder: 'assets/placeholder.png',
-                          image:  widget.messenger_image!,
+                          image:  widget.messenger_image,
                           fit: BoxFit.contain,
                         )),
                   ),
@@ -281,7 +281,7 @@ backgroundColor: Colors.white,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            widget.messenger_name!,
+                            widget.messenger_name,
                             textAlign: TextAlign.left,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
@@ -292,7 +292,7 @@ backgroundColor: Colors.white,
                                 fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            widget.messenger_title!,
+                            widget.messenger_title,
                             textAlign: TextAlign.left,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
@@ -350,7 +350,7 @@ backgroundColor: Colors.white,
         ),
       );
     } else if (_totalData == 0) {
-      return Center(child: Text(AppLocalizations.of(context)!.common_no_data_available));
+      return Center(child: Text(AppLocalizations.of(context).common_no_data_available));
     } else {
       return Container(); // should never be happening
     }
@@ -382,7 +382,7 @@ backgroundColor: Colors.white,
             decoration: InputDecoration(
                 filled: true,
                 fillColor: Color.fromRGBO(251, 251, 251, 1),
-                hintText: AppLocalizations.of(context)!.chat_screen_type_message_here,
+                hintText: AppLocalizations.of(context).chat_screen_type_message_here,
                 hintStyle:
                     TextStyle(fontSize: 14.0, color: MyTheme.textfield_grey),
                 enabledBorder: OutlineInputBorder(

@@ -37,7 +37,7 @@ class ChatRepository {
   }
 
   Future<MessageResponse> getInserMessageResponse(
-      {@required conversation_id, @required String? message}) async {
+      {@required conversation_id, @required String message}) async {
     var post_body = jsonEncode({
       "user_id": "${user_id.$}",
       "conversation_id": "${conversation_id}",
@@ -72,9 +72,9 @@ class ChatRepository {
   }
 
   Future<ConversationCreateResponse> getCreateConversationResponse(
-      {required product_id,
-      required String title,
-      required String message}) async {
+      {product_id,
+      String title,
+      String message}) async {
     var post_body = jsonEncode({
       "user_id": "${user_id.$}",
       "product_id": "${product_id}",
