@@ -33,13 +33,13 @@ class Checkout extends StatefulWidget {
   final String title;
 
   Checkout(
-      {Key? key,
+      {Key key,
       this.order_id = 0,
       this.manual_payment_from_order_details = false,
       this.list = "both",
       this.isWalletRecharge = false,
       this.rechargeAmount =0.0,
-      required this.title})
+      this.title})
       : super(key: key);
 
   @override
@@ -54,7 +54,7 @@ class _CheckoutState extends State<Checkout> {
   ScrollController _mainScrollController = ScrollController();
   TextEditingController _couponController = TextEditingController();
   var _paymentTypeList = [];
-  bool? _isInitial = true;
+  bool _isInitial = true;
   var _totalString = ". . .";
   var _grandTotalValue = 0.00;
   var _subTotalString = ". . .";
@@ -63,9 +63,9 @@ class _CheckoutState extends State<Checkout> {
   var _discountString = ". . .";
   var _used_coupon_code = "";
   var _coupon_applied = false;
-  BuildContext? loadingcontext;
-  String? payment_type = "cart_payment";
-  String? _title;
+  BuildContext loadingcontext;
+  String payment_type = "cart_payment";
+  String _title;
 
   @override
   void initState() {
@@ -168,7 +168,7 @@ class _CheckoutState extends State<Checkout> {
     var coupon_code = _couponController.text.toString();
     if (coupon_code == "") {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.checkout_screen_coupon_code_warning,
+          AppLocalizations.of(context).checkout_screen_coupon_code_warning,
           context,
           gravity: Toast.CENTER,
           duration: Toast.LENGTH_LONG);
@@ -204,7 +204,7 @@ class _CheckoutState extends State<Checkout> {
   onPressPlaceOrderOrProceed() {
     if (_selected_payment_method == "") {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.common_payment_choice_warning, context,
+          AppLocalizations.of(context).common_payment_choice_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -212,7 +212,7 @@ class _CheckoutState extends State<Checkout> {
     if (_selected_payment_method == "stripe_payment") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -220,7 +220,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return StripeScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -229,7 +229,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "paypal_payment") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -237,7 +237,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return PaypalScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -247,7 +247,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "razorpay") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -255,7 +255,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return RazorpayScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -264,7 +264,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "paystack") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -272,7 +272,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return PaystackScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -281,7 +281,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "iyzico") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -289,7 +289,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return IyzicoScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -298,7 +298,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "bkash") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -306,7 +306,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return BkashScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -315,7 +315,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "nagad") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -323,7 +323,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return NagadScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -332,7 +332,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "sslcommerz_payment") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -340,7 +340,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return SslCommerzScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -349,7 +349,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "flutterwave") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -357,7 +357,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return FlutterwaveScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -366,7 +366,7 @@ class _CheckoutState extends State<Checkout> {
     } else if (_selected_payment_method == "paytm") {
       if (_grandTotalValue == 0.00) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_nothing_to_pay, context,
+            AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -374,7 +374,7 @@ class _CheckoutState extends State<Checkout> {
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return PaytmScreen(
           amount: _grandTotalValue,
-          payment_type: payment_type!,
+          payment_type: payment_type,
           payment_method_key: _selected_payment_method_key,
         );
       })).then((value) {
@@ -425,7 +425,7 @@ class _CheckoutState extends State<Checkout> {
     loading();
     var orderCreateResponse = await PaymentRepository()
         .getOrderCreateResponseFromCod(_selected_payment_method_key);
-    Navigator.of(loadingcontext!).pop();
+    Navigator.of(loadingcontext).pop();
     if (orderCreateResponse.result == false) {
       ToastComponent.showDialog(orderCreateResponse.message, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
@@ -442,7 +442,7 @@ class _CheckoutState extends State<Checkout> {
     loading();
     var orderCreateResponse = await PaymentRepository()
         .getOrderCreateResponseFromManualPayment(_selected_payment_method_key);
-Navigator.pop(loadingcontext!);
+Navigator.pop(loadingcontext);
     if (orderCreateResponse.result == false) {
       ToastComponent.showDialog(orderCreateResponse.message, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
@@ -488,7 +488,7 @@ Navigator.pop(loadingcontext!);
                               Container(
                                 width: 120,
                                 child: Text(
-                                  AppLocalizations.of(context)!
+                                  AppLocalizations.of(context)
                                       .checkout_screen_subtotal,
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
@@ -514,7 +514,7 @@ Navigator.pop(loadingcontext!);
                               Container(
                                 width: 120,
                                 child: Text(
-                                  AppLocalizations.of(context)!
+                                  AppLocalizations.of(context)
                                       .checkout_screen_tax,
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
@@ -540,7 +540,7 @@ Navigator.pop(loadingcontext!);
                               Container(
                                 width: 120,
                                 child: Text(
-                                  AppLocalizations.of(context)!
+                                  AppLocalizations.of(context)
                                       .checkout_screen_shipping_cost,
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
@@ -566,7 +566,7 @@ Navigator.pop(loadingcontext!);
                               Container(
                                 width: 120,
                                 child: Text(
-                                  AppLocalizations.of(context)!
+                                  AppLocalizations.of(context)
                                       .checkout_screen_discount,
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
@@ -593,7 +593,7 @@ Navigator.pop(loadingcontext!);
                               Container(
                                 width: 120,
                                 child: Text(
-                                  AppLocalizations.of(context)!
+                                  AppLocalizations.of(context)
                                       .checkout_screen_grand_total,
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
@@ -619,7 +619,7 @@ Navigator.pop(loadingcontext!);
               actions: [
                 FlatButton(
                   child: Text(
-                    AppLocalizations.of(context)!.common_close_in_all_lower,
+                    AppLocalizations.of(context).common_close_in_all_lower,
                     style: TextStyle(color: MyTheme.medium_grey),
                   ),
                   onPressed: () {
@@ -715,7 +715,7 @@ Navigator.pop(loadingcontext!);
             readOnly: _coupon_applied,
             autofocus: false,
             decoration: InputDecoration(
-                hintText: AppLocalizations.of(context)!
+                hintText: AppLocalizations.of(context)
                     .checkout_screen_enter_coupon_code,
                 hintStyle:
                     TextStyle(fontSize: 14.0, color: MyTheme.textfield_grey),
@@ -752,7 +752,7 @@ Navigator.pop(loadingcontext!);
                     bottomRight: const Radius.circular(8.0),
                   )),
                   child: Text(
-                    AppLocalizations.of(context)!.checkout_screen_apply_coupon,
+                    AppLocalizations.of(context).checkout_screen_apply_coupon,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
@@ -776,7 +776,7 @@ Navigator.pop(loadingcontext!);
                     bottomRight: const Radius.circular(8.0),
                   )),
                   child: Text(
-                    AppLocalizations.of(context)!.checkout_screen_remove,
+                    AppLocalizations.of(context).checkout_screen_remove,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,
@@ -811,7 +811,7 @@ Navigator.pop(loadingcontext!);
   }
 
   buildPaymentMethodList() {
-    if (_isInitial! && _paymentTypeList.length == 0) {
+    if (_isInitial && _paymentTypeList.length == 0) {
       return SingleChildScrollView(
           child: ShimmerHelper()
               .buildListShimmer(item_count: 5, item_height: 100.0));
@@ -830,12 +830,12 @@ Navigator.pop(loadingcontext!);
           },
         ),
       );
-    } else if (!_isInitial! && _paymentTypeList.length == 0) {
+    } else if (!_isInitial && _paymentTypeList.length == 0) {
       return Container(
           height: 100,
           child: Center(
               child: Text(
-            AppLocalizations.of(context)!.common_no_payment_method_added,
+            AppLocalizations.of(context).common_no_payment_method_added,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     }
@@ -955,12 +955,12 @@ Navigator.pop(loadingcontext!);
               ),
               child: Text(
                 widget.isWalletRecharge
-                    ? AppLocalizations.of(context)!
+                    ? AppLocalizations.of(context)
                         .recharge_wallet_screen_recharge_wallet
                     : widget.manual_payment_from_order_details
-                        ? AppLocalizations.of(context)!
+                        ? AppLocalizations.of(context)
                             .common_proceed_in_all_caps
-                        : AppLocalizations.of(context)!
+                        : AppLocalizations.of(context)
                             .checkout_screen_place_my_order,
                 style: TextStyle(
                     color: Colors.white,
@@ -993,7 +993,7 @@ Navigator.pop(loadingcontext!);
               padding:
               const EdgeInsets.only(left: 16.0),
               child: Text(
-                AppLocalizations.of(context)!
+                AppLocalizations.of(context)
                     .checkout_screen_total_amount,
                 style: TextStyle(
                     color: MyTheme.font_grey,
@@ -1010,7 +1010,7 @@ Navigator.pop(loadingcontext!);
                     onPressDetails();
                   },
                   child: Text(
-                    AppLocalizations.of(context)!
+                    AppLocalizations.of(context)
                         .common_see_details,
                     style: TextStyle(
                       color: MyTheme.font_grey,
@@ -1050,7 +1050,7 @@ Navigator.pop(loadingcontext!);
               SizedBox(
                 width: 10,
               ),
-              Text("${AppLocalizations.of(context)!.loading_text}"),
+              Text("${AppLocalizations.of(context).loading_text}"),
             ],
           ));
         });
