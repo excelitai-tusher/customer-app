@@ -10,9 +10,9 @@ String orderCreateResponseToJson(OrderCreateResponse data) => json.encode(data.t
 
 class OrderCreateResponse {
   OrderCreateResponse({
-    required this.combined_order_id,
-    required this.result,
-    required this.message,
+    this.combined_order_id,
+    this.result,
+    this.message,
   });
 
   int combined_order_id;

@@ -10,9 +10,9 @@ String countryResponseToJson(CountryResponse data) => json.encode(data.toJson())
 
 class CountryResponse {
   CountryResponse({
-    required this.countries,
-    required this.success,
-    required this.status,
+    this.countries,
+    this.success,
+    this.status,
   });
 
   List<Country> countries;
@@ -34,10 +34,10 @@ class CountryResponse {
 
 class Country {
   Country({
-    required this.id,
-    required this.code,
-    required this.name,
-    required this.status,
+    this.id,
+    this.code,
+    this.name,
+    this.status,
   });
 
   @override toString() => '$name';

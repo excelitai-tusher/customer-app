@@ -10,10 +10,10 @@ String reviewResponseToJson(ReviewResponse data) => json.encode(data.toJson());
 
 class ReviewResponse {
   ReviewResponse({
-    required this.reviews,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.reviews,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<Review> reviews;
@@ -38,12 +38,12 @@ class ReviewResponse {
 
 class Review {
   Review({
-    required this.user_id,
-    required this.user_name,
-    required this.avatar,
-    required this.rating,
-    required this.comment,
-    required this.time,
+    this.user_id,
+    this.user_name,
+    this.avatar,
+    this.rating,
+    this.comment,
+    this.time,
   });
 
   int user_id;
@@ -75,13 +75,13 @@ class Review {
 
 class Meta {
   Meta({
-    required this.current_page,
-    required this.from,
-    required this.last_page,
-    required this.path,
-    required this.per_page,
-    required this.to,
-    required this.total,
+    this.current_page,
+    this.from,
+    this.last_page,
+    this.path,
+    this.per_page,
+    this.to,
+    this.total,
   });
 
   int current_page;

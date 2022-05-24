@@ -10,8 +10,8 @@ String paystackPaymentSuccessResponseToJson(PaystackPaymentSuccessResponse data)
 
 class PaystackPaymentSuccessResponse {
   PaystackPaymentSuccessResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

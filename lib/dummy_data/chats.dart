@@ -4,7 +4,7 @@ class AChat {
   String time;
   bool is_sender;
 
-  AChat({required this.text,this.date="JAN 05, 2021", this.time: "10:02 AM", required this.is_sender});
+  AChat({this.text,this.date="JAN 05, 2021", this.time: "10:02 AM", this.is_sender});
 }
 
 final List<AChat> chatList = [

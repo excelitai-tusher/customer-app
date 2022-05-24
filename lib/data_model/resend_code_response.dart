@@ -10,8 +10,8 @@ String resendCodeResponseToJson(ResendCodeResponse data) => json.encode(data.toJ
 
 class ResendCodeResponse {
   ResendCodeResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

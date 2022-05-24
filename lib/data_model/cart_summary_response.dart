@@ -10,14 +10,14 @@ String cartSummaryResponseToJson(CartSummaryResponse data) => json.encode(data.t
 
 class CartSummaryResponse {
   CartSummaryResponse({
-    required this.sub_total,
-    required this.tax,
-    required this.shipping_cost,
-    required this.discount,
-    required this.grand_total,
-    required this.grand_total_value,
-    required this.coupon_code,
-    required this.coupon_applied
+    this.sub_total,
+    this.tax,
+    this.shipping_cost,
+    this.discount,
+    this.grand_total,
+    this.grand_total_value,
+    this.coupon_code,
+    this.coupon_applied
   });
 
   String sub_total;

@@ -10,9 +10,9 @@ String sliderResponseToJson(SliderResponse data) => json.encode(data.toJson());
 
 class SliderResponse {
   SliderResponse({
-    required this.sliders,
-    required this.success,
-    required this.status,
+    this.sliders,
+    this.success,
+    this.status,
   });
 
   List<Slider> sliders;
@@ -34,7 +34,7 @@ class SliderResponse {
 
 class Slider {
   Slider({
-    required this.photo,
+    this.photo,
   });
 
   String photo;

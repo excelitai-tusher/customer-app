@@ -10,8 +10,8 @@ String cartDeleteResponseToJson(CartDeleteResponse data) => json.encode(data.toJ
 
 class CartDeleteResponse {
   CartDeleteResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

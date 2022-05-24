@@ -10,9 +10,9 @@ String productDetailsResponseToJson(ProductDetailsResponse data) => json.encode(
 
 class ProductDetailsResponse {
   ProductDetailsResponse({
-    required this.detailed_products,
-    required this.success,
-    required this.status,
+    this.detailed_products,
+    this.success,
+    this.status,
   });
 
   List<DetailedProduct> detailed_products;
@@ -34,33 +34,32 @@ class ProductDetailsResponse {
 
 class DetailedProduct {
   DetailedProduct({
-    required this.id,
-    required this.name,
-    required this.added_by,
-    required this.seller_id,
-    required this.shop_id,
-    required this.shop_name,
-    required this.shop_logo,
-    required this.photos,
-    required this.thumbnail_image,
-    required this.tags,
-    required this.price_high_low,
-    required this.choice_options,
-    required this.colors,
-    required this.has_discount,
-    required this.stroked_price,
-    required this.main_price,
+    this.id,
+    this.name,
+    this.added_by,
+    this.seller_id,
+    this.shop_id,
+    this.shop_name,
+    this.shop_logo,
+    this.photos,
+    this.thumbnail_image,
+    this.tags,
+    this.price_high_low,
+    this.choice_options, this.colors,
+    this.has_discount,
+    this.stroked_price,
+    this.main_price,
     this.calculable_price,
-    required this.currency_symbol,
-    required this.current_stock,
-    required this.unit,
-    required this.rating,
-    required this.rating_count,
-    required this.earn_point,
-    required this.description,
-    required this.video_link,
-    required this.link,
-    required this.brand
+    this.currency_symbol,
+    this.current_stock,
+    this.unit,
+    this.rating,
+    this.rating_count,
+    this.earn_point,
+    this.description,
+    this.video_link,
+    this.link,
+    this.brand
   });
 
   int id;
@@ -154,9 +153,9 @@ class DetailedProduct {
 
 class Brand {
   Brand({
-    required this.id,
-    required this.name,
-    required this.logo,
+    this.id,
+    this.name,
+    this.logo,
   });
 
   int id;
@@ -178,8 +177,8 @@ class Brand {
 
 class Photo {
   Photo({
-    required this.variant,
-    required this.path,
+    this.variant,
+    this.path,
   });
 
   String variant;
@@ -200,9 +199,9 @@ class Photo {
 
 class ChoiceOption {
   ChoiceOption({
-    required this.name,
-    required this.title,
-    required this.options,
+    this.name,
+    this.title,
+    this.options,
   });
 
   String name;

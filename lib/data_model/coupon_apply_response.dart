@@ -10,8 +10,8 @@ String couponApplyResponseToJson(CouponApplyResponse data) => json.encode(data.t
 
 class CouponApplyResponse {
   CouponApplyResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

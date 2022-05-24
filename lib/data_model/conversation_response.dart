@@ -10,10 +10,10 @@ String conversationResponseToJson(ConversationResponse data) => json.encode(data
 
 class ConversationResponse {
   ConversationResponse({
-    required this.conversation_item_list,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.conversation_item_list,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<ConversationItem> conversation_item_list;
@@ -38,16 +38,16 @@ class ConversationResponse {
 
 class ConversationItem {
   ConversationItem({
-    required this.id,
-    required this.receiver_id,
-    required this.receiver_type,
-    required this.shop_id,
-    required this.shop_name,
-    required this.shop_logo,
-    required this.title,
-    required this.sender_viewed,
-    required this.receiver_viewed,
-    required this.date,
+    this.id,
+    this.receiver_id,
+    this.receiver_type,
+    this.shop_id,
+    this.shop_name,
+    this.shop_logo,
+    this.title,
+    this.sender_viewed,
+    this.receiver_viewed,
+    this.date,
   });
 
   int id;
@@ -92,13 +92,13 @@ class ConversationItem {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;

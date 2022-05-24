@@ -10,13 +10,13 @@ String userByTokenResponseToJson(UserByTokenResponse data) => json.encode(data.t
 
 class UserByTokenResponse {
   UserByTokenResponse({
-    required this.result,
-    required this.id,
-    required this.name,
-    required this.email,
-    required this.avatar,
-    required this.avatar_original,
-    required this.phone,
+    this.result,
+    this.id,
+    this.name,
+    this.email,
+    this.avatar,
+    this.avatar_original,
+    this.phone,
   });
 
   bool result;

@@ -10,8 +10,8 @@ String bkashPaymentProcessResponseToJson(BkashPaymentProcessResponse data) => js
 
 class BkashPaymentProcessResponse {
   BkashPaymentProcessResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

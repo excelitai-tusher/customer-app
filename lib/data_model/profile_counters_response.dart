@@ -10,9 +10,9 @@ String profileCountersResponseToJson(ProfileCountersResponse data) => json.encod
 
 class ProfileCountersResponse {
   ProfileCountersResponse({
-    required this.cart_item_count,
-    required this.wishlist_item_count,
-    required this.order_count,
+    this.cart_item_count,
+    this.wishlist_item_count,
+    this.order_count,
   });
 
   int cart_item_count;

@@ -10,8 +10,8 @@ String passwordForgetResponseToJson(PasswordForgetResponse data) => json.encode(
 
 class PasswordForgetResponse {
   PasswordForgetResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

@@ -10,16 +10,16 @@ String brandResponseToJson(BrandResponse data) => json.encode(data.toJson());
 
 class BrandResponse {
   BrandResponse({
-    required this.brands,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.brands,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<Brands> brands;
-  Meta? meta;
-  bool? success;
-  int? status;
+  Meta meta;
+  bool success;
+  int status;
 
   factory BrandResponse.fromJson(Map<String, dynamic> json) => BrandResponse(
     brands: List<Brands>.from(json["data"].map((x) => Brands.fromJson(x))),
@@ -30,7 +30,7 @@ class BrandResponse {
 
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(brands.map((x) => x.toJson())),
-    "meta": meta == null ? null : meta!.toJson(),
+    "meta": meta == null ? null : meta.toJson(),
     "success": success,
     "status": status,
   };
@@ -38,10 +38,10 @@ class BrandResponse {
 
 class Brands {
   Brands({
-    required this.id,
-    required this.name,
-    required this.logo,
-    required this.links,
+    this.id,
+    this.name,
+    this.logo,
+    this.links,
   });
 
   int id;
@@ -66,7 +66,7 @@ class Brands {
 
 class BrandsLinks {
   BrandsLinks({
-    required this.products,
+    this.products,
   });
 
   String products;
@@ -84,13 +84,13 @@ class BrandsLinks {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;

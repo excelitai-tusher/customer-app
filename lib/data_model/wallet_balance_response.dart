@@ -11,8 +11,8 @@ String walletBalanceResponseToJson(WalletBalanceResponse data) => json.encode(da
 
 class WalletBalanceResponse {
   WalletBalanceResponse({
-    required this.balance,
-    required this.last_recharged,
+    this.balance,
+    this.last_recharged,
   });
 
   String balance;

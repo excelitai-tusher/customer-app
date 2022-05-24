@@ -10,10 +10,10 @@ String bkashBeginResponseToJson(BkashBeginResponse data) => json.encode(data.toJ
 
 class BkashBeginResponse {
   BkashBeginResponse({
-    required this.token,
-    required this.result,
-    required this.url,
-    required this.message,
+    this.token,
+    this.result,
+    this.url,
+    this.message,
   });
 
   String token;

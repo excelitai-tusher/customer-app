@@ -11,14 +11,14 @@ String shopResponseToJson(ShopResponse data) => json.encode(data.toJson());
 
 class ShopResponse {
   ShopResponse({
-    required this.shops,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.shops,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<Shop> shops;
-  Meta? meta;
+  Meta meta;
   bool success;
   int status;
 
@@ -31,7 +31,7 @@ class ShopResponse {
 
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(shops.map((x) => x.toJson())),
-    "meta": meta == null ? null : meta!.toJson(),
+    "meta": meta == null ? null : meta.toJson(),
     "success": success,
     "status": status,
   };
@@ -39,9 +39,9 @@ class ShopResponse {
 
 class Shop {
   Shop({
-    required this.id,
-    required this.name,
-    required this.logo,
+    this.id,
+    this.name,
+    this.logo,
   });
 
   int id;
@@ -63,13 +63,13 @@ class Shop {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;

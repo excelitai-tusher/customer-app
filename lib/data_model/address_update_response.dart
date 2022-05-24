@@ -10,8 +10,8 @@ String addressUpdateResponseToJson(AddressUpdateResponse data) => json.encode(da
 
 class AddressUpdateResponse {
   AddressUpdateResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

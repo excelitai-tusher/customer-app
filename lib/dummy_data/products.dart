@@ -3,7 +3,7 @@ class Product {
   String name;
   String price;
 
-  Product({required this.image, required this.name, required this.price});
+  Product({this.image, this.name, this.price});
 }
 
 final List<Product> productList = [

@@ -10,8 +10,8 @@ String razorpayPaymentSuccessResponseToJson(RazorpayPaymentSuccessResponse data)
 
 class RazorpayPaymentSuccessResponse {
   RazorpayPaymentSuccessResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

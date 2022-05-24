@@ -8,13 +8,13 @@ class Order {
   String amount;
 
   Order(
-      {required this.code,
-      required this.date,
-      required this.payment_status,
-      required this.payment_status_string,
-      required this.delivery_status,
-      required this.delivery_status_string,
-      required this.amount});
+      {this.code,
+      this.date,
+      this.payment_status,
+      this.payment_status_string,
+      this.delivery_status,
+      this.delivery_status_string,
+      this.amount});
 }
 
 final List<Order> orderList = [

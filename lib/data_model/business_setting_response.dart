@@ -10,8 +10,8 @@ String businessSettingListResponseToJson(List<BusinessSettingListResponse> data)
 
 class BusinessSettingListResponse {
   BusinessSettingListResponse({
-    required this.id,
-    required this.type,
+    this.id,
+    this.type,
     this.value,
     this.lang,
   });

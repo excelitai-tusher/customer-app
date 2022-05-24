@@ -10,10 +10,10 @@ String shippingCostResponseToJson(ShippingCostResponse data) => json.encode(data
 
 class ShippingCostResponse {
   ShippingCostResponse({
-    required this.result,
-    required this.shipping_type,
-    required this.value,
-    required this.value_string,
+    this.result,
+    this.shipping_type,
+    this.value,
+    this.value_string,
   });
 
   bool result;

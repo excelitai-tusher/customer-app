@@ -10,10 +10,10 @@ String wishListChekResponseToJson(WishListChekResponse data) => json.encode(data
 
 class WishListChekResponse {
   WishListChekResponse({
-    required this.message,
-    required this.is_in_wishlist,
-    required this.product_id,
-    required this.wishlist_id,
+    this.message,
+    this.is_in_wishlist,
+    this.product_id,
+    this.wishlist_id,
   });
 
   String message;

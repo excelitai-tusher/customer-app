@@ -10,14 +10,14 @@ String cartResponseToJson(List<CartResponse> data) => json.encode(List<dynamic>.
 
 class CartResponse {
   CartResponse({
-    required this.name,
-    required this.owner_id,
-    required this.cart_items,
+    this.name,
+    this.owner_id,
+    this.cart_items,
   });
 
   String name;
   int owner_id;
-  List<CartItem>? cart_items;
+  List<CartItem> cart_items;
 
   factory CartResponse.fromJson(Map<String, dynamic> json) => CartResponse(
     name: json["name"] == null ? null : json["name"],
@@ -28,26 +28,26 @@ class CartResponse {
   Map<String, dynamic> toJson() => {
     "name": name == null ? null : name,
     "owner_id": owner_id == null ? null : owner_id,
-    "cart_items": cart_items == null ? null : List<dynamic>.from(cart_items!.map((x) => x.toJson())),
+    "cart_items": cart_items == null ? null : List<dynamic>.from(cart_items.map((x) => x.toJson())),
   };
 }
 
 class CartItem {
   CartItem({
-    required this.id,
-    required this.owner_id,
-    required this.user_id,
-    required this.product_id,
-    required this.product_name,
-    required this.product_thumbnail_image,
-    required this.variation,
-    required this.currency_symbol,
-    required this.price,
-    required this.tax,
-    required this.shipping_cost,
-    required this.quantity,
-    required this.lower_limit,
-    required this.upper_limit,
+    this.id,
+    this.owner_id,
+    this.user_id,
+    this.product_id,
+    this.product_name,
+    this.product_thumbnail_image,
+    this.variation,
+    this.currency_symbol,
+    this.price,
+    this.tax,
+    this.shipping_cost,
+    this.quantity,
+    this.lower_limit,
+    this.upper_limit,
   });
 
   int id;

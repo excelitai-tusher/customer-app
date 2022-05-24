@@ -10,8 +10,8 @@ String confirmCodeResponseToJson(ConfirmCodeResponse data) => json.encode(data.t
 
 class ConfirmCodeResponse {
   ConfirmCodeResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

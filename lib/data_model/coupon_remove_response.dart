@@ -10,8 +10,8 @@ String couponRemoveResponseToJson(CouponRemoveResponse data) => json.encode(data
 
 class CouponRemoveResponse {
   CouponRemoveResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

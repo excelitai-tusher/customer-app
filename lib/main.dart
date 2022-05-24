@@ -14,7 +14,6 @@ import 'app_config.dart';
 import 'package:active_ecommerce_flutter/services/push_notification_service.dart';
 import 'package:one_context/one_context.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:active_ecommerce_flutter/providers/locale_provider.dart';
 import 'lang_config.dart';

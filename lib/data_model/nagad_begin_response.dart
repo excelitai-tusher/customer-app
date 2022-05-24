@@ -10,10 +10,10 @@ String nagadBeginResponseToJson(NagadBeginResponse data) => json.encode(data.toJ
 
 class NagadBeginResponse {
   NagadBeginResponse({
-    required this.token,
-    required this.result,
-    required this.url,
-    required this.message,
+    this.token,
+    this.result,
+    this.url,
+    this.message,
   });
 
   String token;

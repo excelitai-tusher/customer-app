@@ -10,8 +10,8 @@ String addressUpdateLocationResponseToJson(AddressUpdateLocationResponse data) =
 
 class AddressUpdateLocationResponse {
   AddressUpdateLocationResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

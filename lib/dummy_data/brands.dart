@@ -3,7 +3,7 @@ class Brand {
   String image;
   String name;
 
-  Brand({required this.id,required this.image, required this.name,});
+  Brand({this.id,this.image, this.name,});
 }
 
 final List<Brand> dummyBrandList = [

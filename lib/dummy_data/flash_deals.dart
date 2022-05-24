@@ -5,7 +5,7 @@ class FlashDeal{
   String image;
   int end_date;
 
-  FlashDeal({required this.id,required this.name,required this.image,required this.end_date});
+  FlashDeal({this.id, this.name, this.image, this.end_date});
 }
 
 List<FlashDeal> flashDealList = [

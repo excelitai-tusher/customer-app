@@ -10,8 +10,8 @@ String offlineWalletRechargeResponseToJson(OfflineWalletRechargeResponse data) =
 
 class OfflineWalletRechargeResponse {
   OfflineWalletRechargeResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

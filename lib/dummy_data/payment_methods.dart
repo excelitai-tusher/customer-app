@@ -4,7 +4,7 @@ class PaymentMethod{
   String name;
   String image;
 
-  PaymentMethod({required this.id,required this.key,required this.name,required this.image});
+  PaymentMethod({this.id, this.key, this.name, this.image});
 }
 
 List<PaymentMethod> paymentMethodList = [

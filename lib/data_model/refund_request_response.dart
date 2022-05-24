@@ -10,11 +10,11 @@ String refundRequestResponseToJson(RefundRequestResponse data) => json.encode(da
 
 class RefundRequestResponse {
   RefundRequestResponse({
-    required this.refund_requests,
-    required this.links,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.refund_requests,
+    this.links,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<RefundRequest> refund_requests;
@@ -42,14 +42,14 @@ class RefundRequestResponse {
 
 class RefundRequest {
   RefundRequest({
-    required this.id,
-    required this.user_id,
-    required this.order_code,
-    required this.product_name,
-    required this.product_price,
-    required this.refund_status,
-    required this.refund_label,
-    required this.date,
+    this.id,
+    this.user_id,
+    this.order_code,
+    this.product_name,
+    this.product_price,
+    this.refund_status,
+    this.refund_label,
+    this.date,
   });
 
   int id;
@@ -86,10 +86,10 @@ class RefundRequest {
 
 class Links {
   Links({
-    required this.first,
-    required this.last,
+    this.first,
+    this.last,
     this.prev,
-    required this.next,
+    this.next,
   });
 
   String first;
@@ -114,13 +114,13 @@ class Links {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;

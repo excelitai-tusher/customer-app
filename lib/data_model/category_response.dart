@@ -10,9 +10,9 @@ String categoryResponseToJson(CategoryResponse data) => json.encode(data.toJson(
 
 class CategoryResponse {
   CategoryResponse({
-    required this.categories,
-    required this.success,
-    required this.status,
+    this.categories,
+    this.success,
+    this.status,
   });
 
   List<Category> categories;
@@ -34,12 +34,12 @@ class CategoryResponse {
 
 class Category {
   Category({
-    required this.id,
-    required this.name,
-    required this.banner,
-    required this.icon,
-    required this.number_of_children,
-    required this.links,
+    this.id,
+    this.name,
+    this.banner,
+    this.icon,
+    this.number_of_children,
+    this.links,
   });
 
   int id;
@@ -70,8 +70,8 @@ class Category {
 
 class Links {
   Links({
-    required this.products,
-    required this.subCategories,
+    this.products,
+    this.subCategories,
   });
 
   String products;

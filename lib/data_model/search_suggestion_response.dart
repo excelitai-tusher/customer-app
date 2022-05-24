@@ -10,11 +10,11 @@ String searchSuggestionResponseToJson(List<SearchSuggestionResponse> data) => js
 
 class SearchSuggestionResponse {
   SearchSuggestionResponse({
-    required this.id,
-    required this.query,
-    required this.count,
-    required this.type,
-    required this.type_string,
+    this.id,
+    this.query,
+    this.count,
+    this.type,
+    this.type_string,
   });
 
   int id;

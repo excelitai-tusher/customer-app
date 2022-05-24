@@ -10,9 +10,9 @@ String shopDetailsResponseToJson(ShopDetailsResponse data) => json.encode(data.t
 
 class ShopDetailsResponse {
   ShopDetailsResponse({
-    required this.shops,
-    required this.success,
-    required this.status,
+    this.shops,
+    this.success,
+    this.status,
   });
 
   List<Shop> shops;
@@ -34,17 +34,17 @@ class ShopDetailsResponse {
 
 class Shop {
   Shop({
-    required this.id,
-    required this.user_id,
-    required this.name,
-    required this.logo,
-    required this.sliders,
-    required this.address,
-    required this.facebook,
-    required this.google,
-    required this.twitter,
-    required this.true_rating,
-    required this.rating,
+    this.id,
+    this.user_id,
+    this.name,
+    this.logo,
+    this.sliders,
+    this.address,
+    this.facebook,
+    this.google,
+    this.twitter,
+    this.true_rating,
+    this.rating,
   });
 
   int id;

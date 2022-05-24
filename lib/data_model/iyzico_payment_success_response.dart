@@ -10,8 +10,8 @@ String iyzicoPaymentSuccessResponseToJson(IyzicoPaymentSuccessResponse data) => 
 
 class IyzicoPaymentSuccessResponse {
   IyzicoPaymentSuccessResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

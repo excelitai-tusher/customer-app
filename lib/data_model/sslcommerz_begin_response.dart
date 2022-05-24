@@ -10,9 +10,9 @@ String sslcommerzBeginResponseToJson(SslcommerzBeginResponse data) => json.encod
 
 class SslcommerzBeginResponse {
   SslcommerzBeginResponse({
-    required this.result,
-    required this.url,
-    required this.message,
+    this.result,
+    this.url,
+    this.message,
   });
 
   bool result;

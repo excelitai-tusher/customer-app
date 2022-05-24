@@ -10,9 +10,9 @@ String addressResponseToJson(AddressResponse data) => json.encode(data.toJson())
 
 class AddressResponse {
   AddressResponse({
-    required this.addresses,
-    required this.success,
-    required this.status,
+    this.addresses,
+    this.success,
+    this.status,
   });
 
   List<Address> addresses;
@@ -34,21 +34,21 @@ class AddressResponse {
 
 class Address {
   Address({
-    required this.id,
-    required this.user_id,
-    required this.address,
-    required this.country_id,
-    required this.state_id,
-    required this.city_id,
-    required this.country_name,
-    required this.state_name,
-    required this.city_name,
-    required this.postal_code,
-    required this.phone,
-    required this.set_default,
-    required this.location_available,
-    required this.lat,
-    required this.lang
+    this.id,
+    this.user_id,
+    this.address,
+    this.country_id,
+    this.state_id,
+    this.city_id,
+    this.country_name,
+    this.state_name,
+    this.city_name,
+    this.postal_code,
+    this.phone,
+    this.set_default,
+    this.location_available,
+    this.lat,
+    this.lang
   });
 
   int id;

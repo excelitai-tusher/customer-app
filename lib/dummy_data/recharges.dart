@@ -6,8 +6,8 @@ class Recharge {
 
   Recharge(
       {this.date = "15-12-2020",
-      required this.amount,
-      required this.payment_method,
+      this.amount,
+      this.payment_method,
       this.approval = "N/A"});
 }
 

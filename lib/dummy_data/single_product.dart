@@ -1,18 +1,18 @@
 class SingleProduct {
-  String? image;
-  List<String>? product_images;
-  String? name;
-  String? price;
-  String? discounted_price;
-  bool? has_disocunt;
-  String? price_range;
-  double? rating;
-  int? rating_count;
-  bool? in_user_wishlist;
-  double? club_point;
-  Seller? seller;
-  bool? is_inhouse_product;
-  String? description;
+  String image;
+  List<String> product_images;
+  String name;
+  String price;
+  String discounted_price;
+  bool has_disocunt;
+  String price_range;
+  double rating;
+  int rating_count;
+  bool in_user_wishlist;
+  double club_point;
+  Seller seller;
+  bool is_inhouse_product;
+  String description;
 
   SingleProduct(
       {this.image,
@@ -31,8 +31,8 @@ class SingleProduct {
 }
 
 class Seller {
-  String? shop_name;
-  String? shop_image;
+  String shop_name;
+  String shop_image;
 
   Seller({this.shop_name, this.shop_image});
 }

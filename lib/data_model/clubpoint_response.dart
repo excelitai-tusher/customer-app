@@ -10,11 +10,11 @@ String clubpointResponseToJson(ClubpointResponse data) => json.encode(data.toJso
 
 class ClubpointResponse {
   ClubpointResponse({
-    required this.clubpoints,
-    required this.links,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.clubpoints,
+    this.links,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<ClubPoint> clubpoints;
@@ -42,11 +42,11 @@ class ClubpointResponse {
 
 class ClubPoint {
   ClubPoint({
-    required this.id,
-    required this.user_id,
-    required this.points,
-    required this.convert_status,
-    required this.date,
+    this.id,
+    this.user_id,
+    this.points,
+    this.convert_status,
+    this.date,
   });
 
   int id;
@@ -74,10 +74,10 @@ class ClubPoint {
 
 class Links {
   Links({
-    required this.first,
-    required this.last,
+    this.first,
+    this.last,
     this.prev,
-    required this.next,
+    this.next,
   });
 
   String first;
@@ -102,13 +102,13 @@ class Links {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;

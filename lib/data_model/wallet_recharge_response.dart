@@ -10,11 +10,11 @@ String walletRechargeResponseToJson(WalletRechargeResponse data) => json.encode(
 
 class WalletRechargeResponse {
   WalletRechargeResponse({
-    required this.recharges,
-    required this.links,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.recharges,
+    this.links,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<Recharge> recharges;
@@ -42,10 +42,10 @@ class WalletRechargeResponse {
 
 class Recharge {
   Recharge({
-    required this.amount,
-    required this.payment_method,
-    required this.approval_string,
-    required this.date,
+    this.amount,
+    this.payment_method,
+    this.approval_string,
+    this.date,
   });
 
   String amount;
@@ -70,8 +70,8 @@ class Recharge {
 
 class Links {
   Links({
-    required this.first,
-    required this.last,
+    this.first,
+    this.last,
     this.prev,
     this.next,
   });
@@ -98,13 +98,13 @@ class Links {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;

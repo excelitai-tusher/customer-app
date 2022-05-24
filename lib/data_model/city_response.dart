@@ -10,9 +10,9 @@ String cityResponseToJson(CityResponse data) => json.encode(data.toJson());
 
 class CityResponse {
   CityResponse({
-    required this.cities,
-    required this.success,
-    required this.status,
+    this.cities,
+    this.success,
+    this.status,
   });
 
   List<City> cities;
@@ -34,9 +34,9 @@ class CityResponse {
 
 class City {
   City({
-    required this.id,
-    required this.state_id,
-    required this.name,
+    this.id,
+    this.state_id,
+    this.name,
   });
 
   @override toString() => '$name';

@@ -4,7 +4,7 @@ class FeaturedCategory {
   String name;
   bool has_children;
 
-  FeaturedCategory({required this.id,required this.image, required this.name,required this.has_children});
+  FeaturedCategory({this.id, this.image, this.name, this.has_children});
 }
 
 final List<FeaturedCategory> featuredCategoryList = [

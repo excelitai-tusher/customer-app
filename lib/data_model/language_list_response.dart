@@ -10,9 +10,9 @@ String languageListResponseToJson(LanguageListResponse data) => json.encode(data
 
 class LanguageListResponse {
   LanguageListResponse({
-    required this.languages,
-    required this.success,
-    required this.status,
+    this.languages,
+    this.success,
+    this.status,
   });
 
   List<Language> languages;
@@ -34,13 +34,13 @@ class LanguageListResponse {
 
 class Language {
   Language({
-    required this.id,
-    required this.name,
-    required this.image,
-    required this.code,
-    required this.mobile_app_code,
-    required this.rtl,
-    required this.is_default,
+    this.id,
+    this.name,
+    this.image,
+    this.code,
+    this.mobile_app_code,
+    this.rtl,
+    this.is_default,
   });
 
   int id;

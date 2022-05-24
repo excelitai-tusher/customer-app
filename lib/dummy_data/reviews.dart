@@ -6,11 +6,11 @@ class AReview {
   double rating;
 
   AReview(
-      {required this.name,
+      {this.name,
       this.image = "dummy_assets/profile_image_joya_ahsan.jpg",
-      required this.text,
+      this.text,
       this.date = "21-01-2021",
-      required this.rating});
+      this.rating});
 }
 
 String existing_review = "It was a very good product";

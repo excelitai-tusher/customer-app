@@ -10,10 +10,10 @@ String phoneEmailAvailabilityResponseToJson(PhoneEmailAvailabilityResponse data)
 
 class PhoneEmailAvailabilityResponse {
   PhoneEmailAvailabilityResponse({
-    required this.phone_available,
-    required this.email_available,
-    required this.phone_available_message,
-    required this.email_available_message,
+    this.phone_available,
+    this.email_available,
+    this.phone_available_message,
+    this.email_available_message,
   });
 
   bool phone_available;

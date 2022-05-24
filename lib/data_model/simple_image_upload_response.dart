@@ -10,10 +10,10 @@ String simpleImageUploadResponseToJson(SimpleImageUploadResponse data) => json.e
 
 class SimpleImageUploadResponse {
   SimpleImageUploadResponse({
-    required this.result,
-    required this.message,
-    required this.path,
-    required this.upload_id,
+    this.result,
+    this.message,
+    this.path,
+    this.upload_id,
   });
 
   bool result;

@@ -10,20 +10,20 @@ String loginResponseToJson(LoginResponse data) => json.encode(data.toJson());
 
 class LoginResponse {
   LoginResponse({
-    required this.result,
-    required this.message,
-    required this.access_token,
-    required this.token_type,
-    required this.expires_at,
-    required this.user,
+    this.result,
+    this.message,
+    this.access_token,
+    this.token_type,
+    this.expires_at,
+    this.user,
   });
 
-  bool? result;
-  String? message;
-  String? access_token;
-  String? token_type;
-  DateTime? expires_at;
-  User? user;
+  bool result;
+  String message;
+  String access_token;
+  String token_type;
+  DateTime expires_at;
+  User user;
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse(
     result: json["result"],
@@ -39,20 +39,20 @@ class LoginResponse {
     "message": message,
     "access_token": access_token == null ? null : access_token,
     "token_type": token_type == null ? null : token_type,
-    "expires_at": expires_at == null ? null : expires_at!.toIso8601String(),
-    "user": user == null ? null : user!.toJson(),
+    "expires_at": expires_at == null ? null : expires_at.toIso8601String(),
+    "user": user == null ? null : user.toJson(),
   };
 }
 
 class User {
   User({
-    required this.id,
-    required this.type,
-    required this.name,
-    required this.email,
-    required this.avatar,
-    required this.avatar_original,
-    required this.phone,
+    this.id,
+    this.type,
+    this.name,
+    this.email,
+    this.avatar,
+    this.avatar_original,
+    this.phone,
   });
 
   int id;

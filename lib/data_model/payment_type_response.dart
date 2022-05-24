@@ -10,13 +10,13 @@ String paymentTypeResponseToJson(List<PaymentTypeResponse> data) => json.encode(
 
 class PaymentTypeResponse {
   PaymentTypeResponse({
-    required this.payment_type,
-    required this.payment_type_key,
-    required this.image,
-    required this.name,
-    required this.title,
-    required this.offline_payment_id,
-    required this.details
+    this.payment_type,
+    this.payment_type_key,
+    this.image,
+    this.name,
+    this.title,
+    this.offline_payment_id,
+    this.details
   });
 
   String payment_type;

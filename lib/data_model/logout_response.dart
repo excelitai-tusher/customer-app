@@ -10,8 +10,8 @@ String logoutResponseToJson(LogoutResponse data) => json.encode(data.toJson());
 
 class LogoutResponse {
   LogoutResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

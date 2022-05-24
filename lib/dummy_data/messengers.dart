@@ -2,7 +2,7 @@ class Messenger {
   String id;
   String image;
   String name;
-  Messenger({required this.id, required this.image, required this.name});
+  Messenger({this.id, this.image, this.name});
 }
 
 final List<Messenger> messengerList = [

@@ -3,7 +3,7 @@ class CartSeller {
   String name;
   List<CartSellerItem> cartSellerItemList;
 
-  CartSeller({required this.id, required this.name, required this.cartSellerItemList});
+  CartSeller({this.id, this.name, this.cartSellerItemList});
 }
 
 class CartSellerItem {
@@ -17,7 +17,7 @@ class CartSellerItem {
 
 
   CartSellerItem(
-      {required this.id, required this.cart_item_id, required this.name, required this.image, required this.price,required this.quantity,this.currency_symbol="\$"});
+      {this.id, this.cart_item_id, this.name, this.image, this.price, this.quantity,this.currency_symbol="\$"});
 }
 
 List<CartSellerItem> cartSellerItemsList_1 = [

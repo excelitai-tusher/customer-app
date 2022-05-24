@@ -10,9 +10,9 @@ String orderItemlResponseToJson(OrderItemResponse data) => json.encode(data.toJs
 
 class OrderItemResponse {
   OrderItemResponse({
-    required this.ordered_items,
-    required this.success,
-    required this.status,
+    this.ordered_items,
+    this.success,
+    this.status,
   });
 
   List<OrderItem> ordered_items;
@@ -34,23 +34,23 @@ class OrderItemResponse {
 
 class OrderItem {
   OrderItem({
-    required this.id,
-    required this.product_id,
-    required this.product_name,
-    required this.variation,
-    required this.price,
-    required this.tax,
-    required this.shipping_cost,
-    required this.coupon_discount,
-    required this.quantity,
-    required this.payment_status,
-    required this.payment_status_string,
-    required this.delivery_status,
-    required this.delivery_status_string,
-    required this.refund_section,
-    required this.refund_button,
-    required this.refund_label,
-    required this.refund_request_status
+    this.id,
+    this.product_id,
+    this.product_name,
+    this.variation,
+    this.price,
+    this.tax,
+    this.shipping_cost,
+    this.coupon_discount,
+    this.quantity,
+    this.payment_status,
+    this.payment_status_string,
+    this.delivery_status,
+    this.delivery_status_string,
+    this.refund_section,
+    this.refund_button,
+    this.refund_label,
+    this.refund_request_status
   });
 
   int id;

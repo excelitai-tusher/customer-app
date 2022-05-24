@@ -10,9 +10,9 @@ String orderDetailResponseToJson(OrderDetailResponse data) => json.encode(data.t
 
 class OrderDetailResponse {
   OrderDetailResponse({
-    required this.detailed_orders,
-    required this.success,
-    required this.status,
+    this.detailed_orders,
+    this.success,
+    this.status,
   });
 
   List<DetailedOrder> detailed_orders;
@@ -34,50 +34,50 @@ class OrderDetailResponse {
 
 class DetailedOrder {
   DetailedOrder({
-    required this.id,
-    required this.code,
-    required this.user_id,
-    required this.manually_payable,
-    required this.shipping_address,
-    required this.pickupPoint,
-    required this.shipping_type,
-    required this.shipping_type_string,
-    required this.payment_type,
-    required this.payment_status,
-    required this.payment_status_string,
-    required this.delivery_status,
-    required this.delivery_status_string,
-    required this.grand_total,
-    required this.coupon_discount,
-    required this.shipping_cost,
-    required this.subtotal,
-    required this.tax,
-    required this.date,
-    required this.links,
-    required this.cancelRequest
+    this.id,
+    this.code,
+    this.user_id,
+    this.manually_payable,
+    this.shipping_address,
+    this.pickupPoint,
+    this.shipping_type,
+    this.shipping_type_string,
+    this.payment_type,
+    this.payment_status,
+    this.payment_status_string,
+    this.delivery_status,
+    this.delivery_status_string,
+    this.grand_total,
+    this.coupon_discount,
+    this.shipping_cost,
+    this.subtotal,
+    this.tax,
+    this.date,
+    this.links,
+    this.cancelRequest
   });
 
-  int? id;
-  String? code;
-  int? user_id;
-  bool? manually_payable;
-  ShippingAddress? shipping_address;
-  PickupPoint? pickupPoint;
-  String? shipping_type;
-  String? shipping_type_string;
-  String? payment_type;
-  String? payment_status;
-  String? payment_status_string;
-  String? delivery_status;
-  String? delivery_status_string;
-  String? grand_total;
-  String? coupon_discount;
-  String? shipping_cost;
-  String? subtotal;
-  String? tax;
-  String? date;
-  Links? links;
-  bool? cancelRequest;
+  int id;
+  String code;
+  int user_id;
+  bool manually_payable;
+  ShippingAddress shipping_address;
+  PickupPoint pickupPoint;
+  String shipping_type;
+  String shipping_type_string;
+  String payment_type;
+  String payment_status;
+  String payment_status_string;
+  String delivery_status;
+  String delivery_status_string;
+  String grand_total;
+  String coupon_discount;
+  String shipping_cost;
+  String subtotal;
+  String tax;
+  String date;
+  Links links;
+  bool cancelRequest;
 
   factory DetailedOrder.fromJson(Map<String, dynamic> json) => DetailedOrder(
     id: json["id"],
@@ -109,8 +109,8 @@ class DetailedOrder {
     "code": code,
     "user_id": user_id,
     "manually_payable": manually_payable,
-    "shipping_address": shipping_address!.toJson(),
-    "pickup_point": pickupPoint == null ? null : pickupPoint!.toJson(),
+    "shipping_address": shipping_address.toJson(),
+    "pickup_point": pickupPoint == null ? null : pickupPoint.toJson(),
     "shipping_type": shipping_type,
     "shipping_type_string": shipping_type_string,
     "payment_type": payment_type,
@@ -124,13 +124,13 @@ class DetailedOrder {
     "subtotal": subtotal,
     "tax": tax,
     "date": date,
-    "links": links!.toJson(),
+    "links": links.toJson(),
   };
 }
 
 class Links {
   Links({
-    required this.details,
+    this.details,
   });
 
   String details;
@@ -146,15 +146,15 @@ class Links {
 
 class ShippingAddress {
   ShippingAddress({
-    required this.name,
-    required this.email,
-    required this.address,
-    required this.country,
-    required this.state,
-    required this.city,
-    required this.postal_code,
-    required this.phone,
-    required this.checkout_type,
+    this.name,
+    this.email,
+    this.address,
+    this.country,
+    this.state,
+    this.city,
+    this.postal_code,
+    this.phone,
+    this.checkout_type,
   });
 
   String name;
@@ -194,26 +194,26 @@ class ShippingAddress {
 
 class PickupPoint {
   PickupPoint({
-    required this.id,
-    required this.staffId,
-    required this.name,
-    required this.address,
-    required this.phone,
-    required this.pickUpStatus,
+    this.id,
+    this.staffId,
+    this.name,
+    this.address,
+    this.phone,
+    this.pickUpStatus,
     this.cashOnPickupStatus,
-    required this.createdAt,
-    required this.updatedAt,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  int? id;
-  int? staffId;
-  String? name;
-  String? address;
-  String? phone;
-  int? pickUpStatus;
+  int id;
+  int staffId;
+  String name;
+  String address;
+  String phone;
+  int pickUpStatus;
   dynamic cashOnPickupStatus;
-  DateTime? createdAt;
-  DateTime? updatedAt;
+  DateTime createdAt;
+  DateTime updatedAt;
 
   factory PickupPoint.fromJson(Map<String, dynamic> json) => PickupPoint(
     id: json["id"] == null ? null : json["id"],
@@ -235,7 +235,7 @@ class PickupPoint {
     "phone": phone == null ? null : phone,
     "pick_up_status": pickUpStatus == null ? null : pickUpStatus,
     "cash_on_pickup_status": cashOnPickupStatus,
-    "created_at": createdAt == null ? null : createdAt!.toIso8601String(),
-    "updated_at": updatedAt == null ? null : updatedAt!.toIso8601String(),
+    "created_at": createdAt == null ? null : createdAt.toIso8601String(),
+    "updated_at": updatedAt == null ? null : updatedAt.toIso8601String(),
   };
 }

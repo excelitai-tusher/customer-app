@@ -10,8 +10,8 @@ String cartProcessResponseToJson(CartProcessResponse data) => json.encode(data.t
 
 class CartProcessResponse {
   CartProcessResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

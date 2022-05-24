@@ -1,7 +1,7 @@
 class Shop {
-  String? id;
-  String? image;
-  String? name;
+  String id;
+  String image;
+  String name;
 
   Shop({this.id,this.image, this.name,});
 }

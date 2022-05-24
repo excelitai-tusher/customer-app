@@ -10,9 +10,9 @@ String profileImageUpdateResponseToJson(ProfileImageUpdateResponse data) => json
 
 class ProfileImageUpdateResponse {
   ProfileImageUpdateResponse({
-    required this.result,
-    required this.message,
-    required this.path
+    this.result,
+    this.message,
+    this.path
   });
 
   bool result;

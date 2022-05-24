@@ -10,16 +10,16 @@ String productMiniResponseToJson(ProductMiniResponse data) => json.encode(data.t
 
 class ProductMiniResponse {
   ProductMiniResponse({
-    required this.products,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.products,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<Product> products;
   bool success;
   int status;
-  Meta? meta;
+  Meta meta;
 
   factory ProductMiniResponse.fromJson(Map<String, dynamic> json) => ProductMiniResponse(
     products: List<Product>.from(json["data"].map((x) => Product.fromJson(x))),
@@ -30,7 +30,7 @@ class ProductMiniResponse {
 
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(products.map((x) => x.toJson())),
-    "meta": meta == null ? null : meta!.toJson(),
+    "meta": meta == null ? null : meta.toJson(),
     "success": success,
     "status": status,
   };
@@ -38,15 +38,15 @@ class ProductMiniResponse {
 
 class Product {
   Product({
-    required this.id,
-    required this.name,
-    required this.thumbnail_image,
-    required this.main_price,
-    required this.stroked_price,
-    required this.has_discount,
-    required this.rating,
-    required this.sales,
-    required this.links,
+    this.id,
+    this.name,
+    this.thumbnail_image,
+    this.main_price,
+    this.stroked_price,
+    this.has_discount,
+    this.rating,
+    this.sales,
+    this.links,
   });
 
   int id;
@@ -86,7 +86,7 @@ class Product {
 
 class Links {
   Links({
-    required this.details,
+    this.details,
   });
 
   String details;
@@ -102,13 +102,13 @@ class Links {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;

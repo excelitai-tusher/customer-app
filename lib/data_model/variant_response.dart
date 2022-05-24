@@ -10,12 +10,12 @@ String variantResponseToJson(VariantResponse data) => json.encode(data.toJson())
 
 class VariantResponse {
   VariantResponse({
-    required this.product_id,
-    required this.variant,
-    required this.price,
-    required this.price_string,
-    required this.stock,
-    required this.image,
+    this.product_id,
+    this.variant,
+    this.price,
+    this.price_string,
+    this.stock,
+    this.image,
   });
 
   int product_id;

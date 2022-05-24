@@ -11,8 +11,8 @@ String wishlistDeleteResponseToJson(WishlistDeleteResponse data) => json.encode(
 
 class WishlistDeleteResponse {
   WishlistDeleteResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

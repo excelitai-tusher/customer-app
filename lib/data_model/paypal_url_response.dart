@@ -10,9 +10,9 @@ String paypalUrlResponseToJson(PaypalUrlResponse data) => json.encode(data.toJso
 
 class PaypalUrlResponse {
   PaypalUrlResponse({
-    required this.result,
-    required this.url,
-    required this.message,
+    this.result,
+    this.url,
+    this.message,
   });
 
   bool result;

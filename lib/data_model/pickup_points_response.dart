@@ -10,7 +10,7 @@ String pickupPointListResponseToJson(PickupPointListResponse data) => json.encod
 
 class PickupPointListResponse {
   PickupPointListResponse({
-    required this.data,
+    this.data,
   });
 
   List<PickupPoint> data;
@@ -26,12 +26,12 @@ class PickupPointListResponse {
 
 class PickupPoint {
   PickupPoint({
-    required this.id,
-    required this.staffId,
-    required this.name,
-    required this.address,
-    required this.phone,
-    required this.pickUpStatus,
+    this.id,
+    this.staffId,
+    this.name,
+    this.address,
+    this.phone,
+    this.pickUpStatus,
     this.cashOnPickupStatus,
   });
 

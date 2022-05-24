@@ -10,9 +10,9 @@ String flutterwaveUrlResponseToJson(FlutterwaveUrlResponse data) => json.encode(
 
 class FlutterwaveUrlResponse {
   FlutterwaveUrlResponse({
-    required this.result,
-    required this.url,
-    required this.message,
+    this.result,
+    this.url,
+    this.message,
   });
 
   bool result;

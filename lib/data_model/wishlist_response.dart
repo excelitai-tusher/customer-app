@@ -10,9 +10,9 @@ String wishlistResponseToJson(WishlistResponse data) => json.encode(data.toJson(
 
 class WishlistResponse {
   WishlistResponse({
-    required this.wishlist_items,
-    required this.success,
-    required this.status,
+    this.wishlist_items,
+    this.success,
+    this.status,
   });
 
   List<WishlistItem> wishlist_items;
@@ -34,8 +34,8 @@ class WishlistResponse {
 
 class WishlistItem {
   WishlistItem({
-    required this.id,
-    required this.product,
+    this.id,
+    this.product,
   });
 
   int id;
@@ -54,11 +54,11 @@ class WishlistItem {
 
 class Product {
   Product({
-    required this.id,
-    required this.name,
-    required this.thumbnail_image,
-    required this.base_price,
-    required this.rating,
+    this.id,
+    this.name,
+    this.thumbnail_image,
+    this.base_price,
+    this.rating,
   });
 
   int id;

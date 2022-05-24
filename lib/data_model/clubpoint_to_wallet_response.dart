@@ -10,8 +10,8 @@ String clubpointToWalletResponseToJson(ClubpointToWalletResponse data) => json.e
 
 class ClubpointToWalletResponse {
   ClubpointToWalletResponse({
-    required this.result,
-    required this.message,
+    this.result,
+   this.message,
   });
 
   bool result;

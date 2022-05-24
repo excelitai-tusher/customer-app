@@ -1,9 +1,9 @@
 class SingleShop {
-  String? logo;
-  List<String>? sliders;
-  String? name;
-  String? address;
-  double? rating;
+  String logo;
+  List<String> sliders;
+  String name;
+  String address;
+  double rating;
 
   SingleShop({
     this.logo,

@@ -10,8 +10,8 @@ String profileUpdateResponseToJson(ProfileUpdateResponse data) => json.encode(da
 
 class ProfileUpdateResponse {
   ProfileUpdateResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

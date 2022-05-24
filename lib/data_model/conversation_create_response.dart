@@ -10,12 +10,12 @@ String conversationCreateResponseToJson(ConversationCreateResponse data) => json
 
 class ConversationCreateResponse {
   ConversationCreateResponse({
-    required this.result,
-    required this.conversation_id,
-    required this.shop_name,
-    required this.title,
-    required this.shop_logo,
-    required this.message,
+    this.result,
+    this.conversation_id,
+    this.shop_name,
+    this.title,
+    this.shop_logo,
+    this.message,
   });
 
   bool result;

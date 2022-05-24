@@ -10,8 +10,8 @@ String passwordConfirmResponseToJson(PasswordConfirmResponse data) => json.encod
 
 class PasswordConfirmResponse {
   PasswordConfirmResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

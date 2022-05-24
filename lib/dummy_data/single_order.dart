@@ -1,21 +1,21 @@
 class SingleOrder {
-  String? code;
-  String? date;
-  String? payment_status;
-  String? payment_status_string;
-  String? delivery_status;
-  String? delivery_status_string;
-  String? payment_methood;
-  String? payment_method_string;
-  String? shipping_method;
-  String? shipping_method_string;
-  String? shipping_address;
-  String? subtotal;
-  String? tax;
-  String? shipping_cost;
-  String? discount;
-  String? total;
-  List<OrderedProduct>? orderedProducts;
+  String code;
+  String date;
+  String payment_status;
+  String payment_status_string;
+  String delivery_status;
+  String delivery_status_string;
+  String payment_methood;
+  String payment_method_string;
+  String shipping_method;
+  String shipping_method_string;
+  String shipping_address;
+  String subtotal;
+  String tax;
+  String shipping_cost;
+  String discount;
+  String total;
+  List<OrderedProduct> orderedProducts;
 
   SingleOrder(
       {this.code,
@@ -38,11 +38,11 @@ class SingleOrder {
 }
 
 class OrderedProduct {
-  String? name;
-  bool? has_variant;
-  String? variant_string;
-  String? amount;
-  int? quantity;
+  String name;
+  bool has_variant;
+  String variant_string;
+  String amount;
+  int quantity;
 
   OrderedProduct(
       {this.name,

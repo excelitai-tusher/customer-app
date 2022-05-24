@@ -8,7 +8,7 @@ class ShippingInformation {
   String country_name;
 
   ShippingInformation(
-      { required this.id, required this.address, required this.city, required this.postal_code, required this.phone, required this.country_id, required this.country_name});
+      { this.id, this.address, this.city,  this.postal_code,  this.phone,  this.country_id, this.country_name});
 }
 
 String default_shipping = "3";

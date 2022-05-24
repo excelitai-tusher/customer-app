@@ -11,8 +11,8 @@ String addonsListResponseToJson(List<AddonsListResponse> data) => json.encode(Li
 class AddonsListResponse {
   AddonsListResponse({
     this.id,
-    required this.name,
-    required this.uniqueIdentifier,
+    this.name,
+    this.uniqueIdentifier,
     this.activated,
   });
 

@@ -10,9 +10,9 @@ String flashDealResponseToJson(FlashDealResponse data) => json.encode(data.toJso
 
 class FlashDealResponse {
   FlashDealResponse({
-    required this.flash_deals,
-    required this.success,
-    required this.status,
+    this.flash_deals,
+    this.success,
+    this.status,
   });
 
   List<FlashDeal> flash_deals;
@@ -34,10 +34,10 @@ class FlashDealResponse {
 
 class FlashDeal {
   FlashDeal({
-    required this.id,
-    required this.title,
-    required this.date,
-    required this.banner,
+    this.id,
+    this.title,
+    this.date,
+    this.banner,
   });
 
   int id;

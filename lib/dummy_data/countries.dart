@@ -1,5 +1,5 @@
 class Countries {
-  List<Country>? countries;
+  List<Country> countries;
 
   Countries({this.countries});
 }
@@ -8,7 +8,7 @@ class Country {
   final String id;
   final String name;
 
-  Country({required this.id, required this.name});
+  Country({this.id, this.name});
   @override toString() => '$name';
 
 }

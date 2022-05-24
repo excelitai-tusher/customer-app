@@ -10,9 +10,9 @@ String myStateResponseToJson(MyStateResponse data) => json.encode(data.toJson())
 
 class MyStateResponse {
   MyStateResponse({
-    required this.states,
-    required this.success,
-    required this.status,
+    this.states,
+    this.success,
+    this.status,
   });
 
   List<MyState> states;
@@ -34,9 +34,9 @@ class MyStateResponse {
 
 class MyState {
   MyState({
-    required this.id,
-    required this.country_id,
-    required this.name,
+    this.id,
+    this.country_id,
+    this.name,
   });
 
   @override toString() => '$name';

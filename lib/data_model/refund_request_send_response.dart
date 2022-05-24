@@ -10,8 +10,8 @@ String refundRequestSendResponseToJson(RefundRequestSendResponse data) => json.e
 
 class RefundRequestSendResponse {
   RefundRequestSendResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

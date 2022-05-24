@@ -10,9 +10,9 @@ String signupResponseToJson(SignupResponse data) => json.encode(data.toJson());
 
 class SignupResponse {
   SignupResponse({
-    required this.result,
-    required this.message,
-    required this.user_id,
+    this.result,
+    this.message,
+    this.user_id,
   });
 
   bool result;

@@ -7,7 +7,7 @@ class ScrollToHideWidget extends StatefulWidget {
   final double childHeight;
 
   const ScrollToHideWidget(
-      {Key? key, required this.child, required this.scrollController, required this.childHeight})
+      {Key key, this.child, this.scrollController,this.childHeight})
       : super(key: key);
 
   @override

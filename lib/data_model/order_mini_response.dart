@@ -10,16 +10,16 @@ String orderMiniResponseToJson(OrderMiniResponse data) => json.encode(data.toJso
 
 class OrderMiniResponse {
   OrderMiniResponse({
-    required this.orders,
-    required this.links,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.orders,
+    this.links,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<Order> orders;
   OrderMiniResponseLinks links;
-  Meta? meta;
+  Meta meta;
   bool success;
   int status;
 
@@ -34,7 +34,7 @@ class OrderMiniResponse {
   Map<String, dynamic> toJson() => {
     "data": List<dynamic>.from(orders.map((x) => x.toJson())),
     "links": links.toJson(),
-    "meta": meta == null ? null : meta!.toJson(),
+    "meta": meta == null ? null : meta.toJson(),
     "success": success,
     "status": status,
   };
@@ -42,17 +42,17 @@ class OrderMiniResponse {
 
 class Order {
   Order({
-    required this.id,
-    required this.code,
-    required this.user_id,
-    required this.payment_type,
-    required this.payment_status,
-    required this.payment_status_string,
-    required this.delivery_status,
-    required this.delivery_status_string,
-    required this.grand_total,
-    required this.date,
-    required this.links,
+    this.id,
+    this.code,
+    this.user_id,
+    this.payment_type,
+    this.payment_status,
+    this.payment_status_string,
+    this.delivery_status,
+    this.delivery_status_string,
+    this.grand_total,
+    this.date,
+    this.links,
   });
 
   int id;
@@ -98,7 +98,7 @@ class Order {
 
 class OrderLinks {
   OrderLinks({
-    required this.details,
+    this.details,
   });
 
   String details;
@@ -144,13 +144,13 @@ class OrderMiniResponseLinks {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;

@@ -10,8 +10,8 @@ String addressMakeDefaultResponseToJson(AddressMakeDefaultResponse data) => json
 
 class AddressMakeDefaultResponse {
   AddressMakeDefaultResponse({
-    required this.result,
-    required this.message,
+    this.result,
+    this.message,
   });
 
   bool result;

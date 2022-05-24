@@ -10,10 +10,10 @@ String messageResponseToJson(MessageResponse data) => json.encode(data.toJson())
 
 class MessageResponse {
   MessageResponse({
-    required this.messages,
-    required this.meta,
-    required this.success,
-    required this.status,
+    this.messages,
+    this.meta,
+    this.success,
+    this.status,
   });
 
   List<Message> messages;
@@ -38,11 +38,11 @@ class MessageResponse {
 
 class Message {
   Message({
-    required this.id,
-    required this.user_id,
-    required this.message,
-    required this.date,
-    required this.time,
+    this.id,
+    this.user_id,
+    this.message,
+    this.date,
+    this.time,
   });
 
   int id;
@@ -71,13 +71,13 @@ class Message {
 
 class Meta {
   Meta({
-    required this.currentPage,
-    required this.from,
-    required this.lastPage,
-    required this.path,
-    required this.perPage,
-    required this.to,
-    required this.total,
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
   });
 
   int currentPage;
