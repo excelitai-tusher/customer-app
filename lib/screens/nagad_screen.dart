@@ -16,7 +16,7 @@ class NagadScreen extends StatefulWidget {
   String payment_method_key;
 
   NagadScreen(
-      {Key? key,
+      {Key key,
       this.amount = 0.00,
       this.payment_type = "",
       this.payment_method_key = ""})
@@ -32,7 +32,7 @@ class _NagadScreenState extends State<NagadScreen> {
   String _initial_url = "";
   bool _initial_url_fetched = false;
 
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -99,7 +99,7 @@ class _NagadScreenState extends State<NagadScreen> {
 
   void getData() {
     var payment_details = '';
-    _webViewController!
+    _webViewController
         .evaluateJavascript("document.body.innerText")
         .then((data) {
       var decodedJSON = jsonDecode(data);
@@ -149,13 +149,13 @@ class _NagadScreenState extends State<NagadScreen> {
         widget.payment_type == "cart_payment") {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.common_creating_order),
+          child: Text(AppLocalizations.of(context).common_creating_order),
         ),
       );
     } else if (_initial_url_fetched == false) {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.nagad_screen_fetching_nagad_url),
+          child: Text(AppLocalizations.of(context).nagad_screen_fetching_nagad_url),
         ),
       );
     } else {
@@ -168,7 +168,7 @@ class _NagadScreenState extends State<NagadScreen> {
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
               _webViewController = controller;
-              _webViewController!.loadUrl(_initial_url);
+              _webViewController.loadUrl(_initial_url);
             },
             onWebResourceError: (error) {},
             onPageFinished: (page) {
@@ -202,7 +202,7 @@ backgroundColor: Colors.white,
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.nagad_screen_pay_with_nagad,
+        AppLocalizations.of(context).nagad_screen_pay_with_nagad,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

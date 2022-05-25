@@ -15,12 +15,12 @@ import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OrderDetails extends StatefulWidget {
-  int? id;
-  final bool? from_notification;
-  bool? go_back;
+  int id;
+  final bool from_notification;
+  bool go_back;
 
   OrderDetails(
-      {Key? key, this.id, this.from_notification = false, this.go_back = true})
+      {Key key, this.id, this.from_notification = false, this.go_back = true})
       : super(key: key);
 
   @override
@@ -67,7 +67,7 @@ class _OrderDetailsState extends State<OrderDetails> {
 
   fetchOrderDetails() async {
     var orderDetailsResponse =
-        await OrderRepository().getOrderDetails(id: widget.id!);
+        await OrderRepository().getOrderDetails(id: widget.id);
 
     if (orderDetailsResponse.detailed_orders.length > 0) {
       _orderDetails = orderDetailsResponse.detailed_orders[0];
@@ -84,7 +84,7 @@ class _OrderDetailsState extends State<OrderDetails> {
 
   fetchOrderedItems() async {
     var orderItemResponse =
-        await OrderRepository().getOrderItems(id: widget.id!);
+        await OrderRepository().getOrderItems(id: widget.id);
     _orderedItemList.addAll(orderItemResponse.ordered_items);
     _orderItemsInit = true;
 
@@ -108,8 +108,8 @@ class _OrderDetailsState extends State<OrderDetails> {
   onPressOfflinePaymentButton() {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return Checkout(
-        order_id: widget.id!,
-        title: AppLocalizations.of(context)!.checkout_screen_checkout,
+        order_id: widget.id,
+        title: AppLocalizations.of(context).checkout_screen_checkout,
         list: "offline",
         manual_payment_from_order_details: true,
         rechargeAmount:double.parse(_orderDetails.grand_total.toString().replaceAll('\$','')),
@@ -140,7 +140,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         child: Row(
                           children: [
                             Text(
-                                AppLocalizations.of(context)!
+                                AppLocalizations.of(context)
                                     .order_details_screen_refund_product_name,
                                 style: TextStyle(
                                     color: MyTheme.font_grey, fontSize: 12)),
@@ -164,7 +164,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         child: Row(
                           children: [
                             Text(
-                                AppLocalizations.of(context)!
+                                AppLocalizations.of(context)
                                     .order_details_screen_refund_order_code,
                                 style: TextStyle(
                                     color: MyTheme.font_grey, fontSize: 12)),
@@ -182,7 +182,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         child: Row(
                           children: [
                             Text(
-                                "${AppLocalizations.of(context)!.order_details_screen_refund_reason} *",
+                                "${AppLocalizations.of(context).order_details_screen_refund_reason} *",
                                 style: TextStyle(
                                     color: MyTheme.font_grey, fontSize: 12)),
                             _showReasonWarning
@@ -191,7 +191,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                       left: 8.0,
                                     ),
                                     child: Text(
-                                        AppLocalizations.of(context)!
+                                        AppLocalizations.of(context)
                                             .order_details_screen_refund_reason_empty_warning,
                                         style: TextStyle(
                                             color: Colors.red, fontSize: 12)),
@@ -210,7 +210,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             maxLines: null,
                             keyboardType: TextInputType.multiline,
                             decoration: InputDecoration(
-                                hintText: AppLocalizations.of(context)!
+                                hintText: AppLocalizations.of(context)
                                     .order_details_screen_refund_enter_reason,
                                 hintStyle: TextStyle(
                                     fontSize: 12.0,
@@ -255,7 +255,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             side: BorderSide(
                                 color: MyTheme.light_grey, width: 1.0)),
                         child: Text(
-                          AppLocalizations.of(context)!
+                          AppLocalizations.of(context)
                               .common_close_in_all_capital,
                           style: TextStyle(
                             color: MyTheme.font_grey,
@@ -281,7 +281,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             side: BorderSide(
                                 color: MyTheme.light_grey, width: 1.0)),
                         child: Text(
-                          AppLocalizations.of(context)!.common_submit,
+                          AppLocalizations.of(context).common_submit,
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
@@ -339,7 +339,7 @@ class _OrderDetailsState extends State<OrderDetails> {
       backgroundColor: MyTheme.soft_accent_color,
       duration: const Duration(seconds: 3),
       action: SnackBarAction(
-        label: AppLocalizations.of(context)!
+        label: AppLocalizations.of(context)
             .order_details_screen_refund_snackbar_show_request_list,
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -367,7 +367,7 @@ class _OrderDetailsState extends State<OrderDetails> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () {
-        if (widget.from_notification! || widget.go_back == false) {
+        if (widget.from_notification || widget.go_back == false) {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
             return Main();
           }));
@@ -408,7 +408,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                     delegate: SliverChildListDelegate([
                   Center(
                     child: Text(
-                      AppLocalizations.of(context)!
+                      AppLocalizations.of(context)
                           .order_details_screen_ordered_product,
                       style: TextStyle(
                           color: MyTheme.font_grey,
@@ -425,7 +425,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                               : Container(
                                   height: 100,
                                   child: Text(
-                                    AppLocalizations.of(context)!
+                                    AppLocalizations.of(context)
                                         .order_details_screen_ordered_product,
                                     style: TextStyle(color: MyTheme.font_grey),
                                   ),
@@ -469,7 +469,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         Container(
                           width: 120,
                           child: Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .order_details_screen_sub_total,
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -495,7 +495,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         Container(
                           width: 120,
                           child: Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .order_details_screen_tax,
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -521,7 +521,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         Container(
                           width: 120,
                           child: Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .order_details_screen_shipping_cost,
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -547,7 +547,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         Container(
                           width: 120,
                           child: Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .order_details_screen_discount,
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -574,7 +574,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         Container(
                           width: 120,
                           child: Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .order_details_screen_grand_total,
                             textAlign: TextAlign.end,
                             style: TextStyle(
@@ -676,7 +676,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      AppLocalizations.of(context)!
+                      AppLocalizations.of(context)
                           .order_details_screen_timeline_tile_order_placed,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: MyTheme.font_grey),
@@ -740,7 +740,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      AppLocalizations.of(context)!
+                      AppLocalizations.of(context)
                           .order_details_screen_timeline_tile_confirmed,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: MyTheme.font_grey),
@@ -815,7 +815,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      AppLocalizations.of(context)!
+                      AppLocalizations.of(context)
                           .order_details_screen_timeline_tile_on_delivery,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: MyTheme.font_grey),
@@ -889,7 +889,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      AppLocalizations.of(context)!
+                      AppLocalizations.of(context)
                           .order_details_screen_timeline_tile_delivered,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: MyTheme.font_grey),
@@ -1090,7 +1090,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             children: [
                               _orderDetails.shipping_address.name != null
                                   ? Text(
-                                      "${AppLocalizations.of(context)!.order_details_screen_name}: ${_orderDetails.shipping_address.name}",
+                                      "${AppLocalizations.of(context).order_details_screen_name}: ${_orderDetails.shipping_address.name}",
                                       maxLines: 3,
                                       style: TextStyle(
                                         color: MyTheme.grey_153,
@@ -1099,7 +1099,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                                   : Container(),
                               _orderDetails.shipping_address.email != null
                                   ? Text(
-                                      "${AppLocalizations.of(context)!.order_details_screen_email}: ${_orderDetails.shipping_address.email}",
+                                      "${AppLocalizations.of(context).order_details_screen_email}: ${_orderDetails.shipping_address.email}",
                                       maxLines: 3,
                                       style: TextStyle(
                                         color: MyTheme.grey_153,
@@ -1107,42 +1107,42 @@ class _OrderDetailsState extends State<OrderDetails> {
                                     )
                                   : Container(),
                               Text(
-                                "${AppLocalizations.of(context)!.order_details_screen_address}: ${_orderDetails.shipping_address.address}",
+                                "${AppLocalizations.of(context).order_details_screen_address}: ${_orderDetails.shipping_address.address}",
                                 maxLines: 3,
                                 style: TextStyle(
                                   color: MyTheme.grey_153,
                                 ),
                               ),
                               Text(
-                                "${AppLocalizations.of(context)!.order_details_screen_city}: ${_orderDetails.shipping_address.city}",
+                                "${AppLocalizations.of(context).order_details_screen_city}: ${_orderDetails.shipping_address.city}",
                                 maxLines: 3,
                                 style: TextStyle(
                                   color: MyTheme.grey_153,
                                 ),
                               ),
                               Text(
-                                "${AppLocalizations.of(context)!.order_details_screen_country}: ${_orderDetails.shipping_address.country}",
+                                "${AppLocalizations.of(context).order_details_screen_country}: ${_orderDetails.shipping_address.country}",
                                 maxLines: 3,
                                 style: TextStyle(
                                   color: MyTheme.grey_153,
                                 ),
                               ),
                               Text(
-                                "${AppLocalizations.of(context)!.order_details_screen_state}: ${_orderDetails.shipping_address.state}",
+                                "${AppLocalizations.of(context).order_details_screen_state}: ${_orderDetails.shipping_address.state}",
                                 maxLines: 3,
                                 style: TextStyle(
                                   color: MyTheme.grey_153,
                                 ),
                               ),
                               Text(
-                                "${AppLocalizations.of(context)!.order_details_screen_phone}: ${_orderDetails.shipping_address.phone}",
+                                "${AppLocalizations.of(context).order_details_screen_phone}: ${_orderDetails.shipping_address.phone}",
                                 maxLines: 3,
                                 style: TextStyle(
                                   color: MyTheme.grey_153,
                                 ),
                               ),
                               Text(
-                                "${AppLocalizations.of(context)!.order_details_screen_postal_code}: ${_orderDetails.shipping_address.postal_code}",
+                                "${AppLocalizations.of(context).order_details_screen_postal_code}: ${_orderDetails.shipping_address.postal_code}",
                                 maxLines: 3,
                                 style: TextStyle(
                                   color: MyTheme.grey_153,
@@ -1155,7 +1155,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                             children: [
                               _orderDetails.pickupPoint.name != null
                                   ? Text(
-                                      "${AppLocalizations.of(context)!.order_details_screen_name}: ${_orderDetails.pickupPoint.name}",
+                                      "${AppLocalizations.of(context).order_details_screen_name}: ${_orderDetails.pickupPoint.name}",
                                       maxLines: 3,
                                       style: TextStyle(
                                         color: MyTheme.grey_153,
@@ -1163,14 +1163,14 @@ class _OrderDetailsState extends State<OrderDetails> {
                                     )
                                   : Container(),
                               Text(
-                                "${AppLocalizations.of(context)!.order_details_screen_address}: ${_orderDetails.pickupPoint.address}",
+                                "${AppLocalizations.of(context).order_details_screen_address}: ${_orderDetails.pickupPoint.address}",
                                 maxLines: 3,
                                 style: TextStyle(
                                   color: MyTheme.grey_153,
                                 ),
                               ),
                               Text(
-                                "${AppLocalizations.of(context)!.address_screen_phone}: ${_orderDetails.pickupPoint.phone}",
+                                "${AppLocalizations.of(context).address_screen_phone}: ${_orderDetails.pickupPoint.phone}",
                                 maxLines: 3,
                                 style: TextStyle(
                                   color: MyTheme.grey_153,
@@ -1271,7 +1271,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .order_details_screen_ask_for_refund,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
@@ -1300,7 +1300,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            AppLocalizations.of(context)!
+                            AppLocalizations.of(context)
                                 .order_details_screen_refund_status,
                             style: TextStyle(color: MyTheme.font_grey),
                           ),
@@ -1359,7 +1359,7 @@ class _OrderDetailsState extends State<OrderDetails> {
         builder: (context) => IconButton(
             icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
             onPressed: () {
-              if (widget.from_notification! || widget.go_back == false) {
+              if (widget.from_notification || widget.go_back == false) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return Main();
                 }));
@@ -1369,7 +1369,7 @@ class _OrderDetailsState extends State<OrderDetails> {
             }),
       ),
       title: Text(
-        AppLocalizations.of(context)!.order_details_screen_order_details,
+        AppLocalizations.of(context).order_details_screen_order_details,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -1387,7 +1387,7 @@ class _OrderDetailsState extends State<OrderDetails> {
               ? FlatButton(
                   color: MyTheme.soft_accent_color,
                   child: Text(
-                    AppLocalizations.of(context)!
+                    AppLocalizations.of(context)
                         .order_details_screen_make_offline_payment,
                     style: TextStyle(color: MyTheme.font_grey),
                   ),

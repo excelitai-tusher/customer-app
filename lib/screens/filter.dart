@@ -19,16 +19,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:one_context/one_context.dart';
 
 class WhichFilter {
-  String? option_key;
-  String? name;
+  String option_key;
+  String name;
 
   WhichFilter(this.option_key, this.name);
 
   static List<WhichFilter> getWhichFilterList() {
     return <WhichFilter>[
-      WhichFilter('product', AppLocalizations.of(OneContext().context!)!.filter_screen_product),
-      WhichFilter('sellers', AppLocalizations.of(OneContext().context!)!.filter_screen_sellers),
-      WhichFilter('brands', AppLocalizations.of(OneContext().context!)!.filter_screen_brands),
+      WhichFilter('product', AppLocalizations.of(OneContext().context).filter_screen_product),
+      WhichFilter('sellers', AppLocalizations.of(OneContext().context).filter_screen_sellers),
+      WhichFilter('brands', AppLocalizations.of(OneContext().context).filter_screen_brands),
     ];
   }
 }
@@ -55,13 +55,13 @@ class _FilterState extends State<Filter> {
 
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  ScrollController? _scrollController;
-  WhichFilter? _selectedFilter;
-  String? _givenSelectedFilterOptionKey; // may be it can come from another page
+  ScrollController _scrollController;
+  WhichFilter _selectedFilter;
+  String _givenSelectedFilterOptionKey; // may be it can come from another page
   var _selectedSort = "";
 
   List<WhichFilter> _which_filter_list = WhichFilter.getWhichFilterList();
-  List<DropdownMenuItem<WhichFilter>> ? _dropdownWhichFilterItems;
+  List<DropdownMenuItem<WhichFilter>> _dropdownWhichFilterItems;
   List<dynamic> _selectedCategories = [];
   List<dynamic> _selectedBrands = [];
 
@@ -70,10 +70,10 @@ class _FilterState extends State<Filter> {
   final TextEditingController _maxPriceController = new TextEditingController();
 
   //--------------------
-  List<dynamic>? _filterBrandList = List();
-  bool? _filteredBrandsCalled = false;
-  List<dynamic>? _filterCategoryList = List();
-  bool? _filteredCategoriesCalled = false;
+  List<dynamic> _filterBrandList = List();
+  bool _filteredBrandsCalled = false;
+  List<dynamic> _filterCategoryList = List();
+  bool _filteredCategoriesCalled = false;
 
   List<dynamic> _searchSuggestionList = List();
 
@@ -135,12 +135,12 @@ class _FilterState extends State<Filter> {
 
     _dropdownWhichFilterItems =
         buildDropdownWhichFilterItems(_which_filter_list);
-    _selectedFilter = _dropdownWhichFilterItems![0].value;
+    _selectedFilter = _dropdownWhichFilterItems[0].value;
 
-    for (int x = 0; x < _dropdownWhichFilterItems!.length; x++) {
-      if (_dropdownWhichFilterItems![x].value!.option_key ==
+    for (int x = 0; x < _dropdownWhichFilterItems.length; x++) {
+      if (_dropdownWhichFilterItems[x].value.option_key ==
           _givenSelectedFilterOptionKey) {
-        _selectedFilter = _dropdownWhichFilterItems![x].value;
+        _selectedFilter = _dropdownWhichFilterItems[x].value;
       }
     }
 
@@ -290,10 +290,10 @@ class _FilterState extends State<Filter> {
 
   _onSearchSubmit() {
     reset();
-    if (_selectedFilter!.option_key == "sellers") {
+    if (_selectedFilter.option_key == "sellers") {
       resetShopList();
       fetchShopData();
-    } else if (_selectedFilter!.option_key == "brands") {
+    } else if (_selectedFilter.option_key == "brands") {
       resetBrandList();
       fetchBrandData();
     } else {
@@ -309,10 +309,10 @@ class _FilterState extends State<Filter> {
   }
 
   _onWhichFilterChange() {
-    if (_selectedFilter!.option_key == "sellers") {
+    if (_selectedFilter.option_key == "sellers") {
       resetShopList();
       fetchShopData();
-    } else if (_selectedFilter!.option_key == "brands") {
+    } else if (_selectedFilter.option_key == "brands") {
       resetBrandList();
       fetchBrandData();
     } else {
@@ -344,8 +344,8 @@ class _FilterState extends State<Filter> {
       color: Colors.white,
       child: Center(
         child: Text(_totalProductData == _productList.length
-            ? AppLocalizations.of(context)!.common_no_more_products
-            : AppLocalizations.of(context)!.common_loading_more_products),
+            ? AppLocalizations.of(context).common_no_more_products
+            : AppLocalizations.of(context).common_loading_more_products),
       ),
     );
   }
@@ -357,8 +357,8 @@ class _FilterState extends State<Filter> {
       color: Colors.white,
       child: Center(
         child: Text(_totalBrandData == _brandList.length
-            ? AppLocalizations.of(context)!.common_no_more_brands
-            : AppLocalizations.of(context)!.common_loading_more_brands),
+            ? AppLocalizations.of(context).common_no_more_brands
+            : AppLocalizations.of(context).common_loading_more_brands),
       ),
     );
   }
@@ -370,8 +370,8 @@ class _FilterState extends State<Filter> {
       color: Colors.white,
       child: Center(
         child: Text(_totalShopData == _shopList.length
-            ? AppLocalizations.of(context)!.common_no_more_shops
-            : AppLocalizations.of(context)!.common_loading_more_shops),
+            ? AppLocalizations.of(context).common_no_more_shops
+            : AppLocalizations.of(context).common_loading_more_shops),
       ),
     );
   }
@@ -390,9 +390,9 @@ class _FilterState extends State<Filter> {
         key: _scaffoldKey,
         backgroundColor: Colors.white,
         body: Stack(overflow: Overflow.visible, children: [
-          _selectedFilter!.option_key == 'product'
+          _selectedFilter.option_key == 'product'
               ? buildProductList()
-              : (_selectedFilter!.option_key == 'brands'
+              : (_selectedFilter.option_key == 'brands'
                   ? buildBrandList()
                   : buildShopList()),
           Positioned(
@@ -403,9 +403,9 @@ class _FilterState extends State<Filter> {
           ),
           Align(
               alignment: Alignment.bottomCenter,
-              child: _selectedFilter!.option_key == 'product'
+              child: _selectedFilter.option_key == 'product'
                   ? buildProductLoadingContainer()
-                  : (_selectedFilter!.option_key == 'brands'
+                  : (_selectedFilter.option_key == 'brands'
                       ? buildBrandLoadingContainer()
                       : buildShopLoadingContainer()))
         ]),
@@ -448,7 +448,7 @@ class _FilterState extends State<Filter> {
               child: Icon(Icons.expand_more, color: Colors.black54),
             ),
             hint: Text(
-              AppLocalizations.of(context)!.filter_screen_products,
+              AppLocalizations.of(context).filter_screen_products,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 13,
@@ -458,7 +458,7 @@ class _FilterState extends State<Filter> {
             underline: SizedBox(),
             value: _selectedFilter,
             items: _dropdownWhichFilterItems,
-            onChanged: (WhichFilter? selectedFilter) {
+            onChanged: (WhichFilter selectedFilter) {
               setState(() {
                 _selectedFilter = selectedFilter;
               });
@@ -469,10 +469,10 @@ class _FilterState extends State<Filter> {
         ),
         GestureDetector(
           onTap: () {
-            _selectedFilter!.option_key == "product"
-                ? _scaffoldKey.currentState!.openEndDrawer()
+            _selectedFilter.option_key == "product"
+                ? _scaffoldKey.currentState.openEndDrawer()
                 : ToastComponent.showDialog(
-                AppLocalizations.of(context)!.filter_screen_sort_warning,
+                AppLocalizations.of(context).filter_screen_sort_warning,
                     context,
                     gravity: Toast.CENTER,
                     duration: Toast.LENGTH_LONG);
@@ -498,7 +498,7 @@ class _FilterState extends State<Filter> {
                   ),
                   SizedBox(width: 2),
                   Text(
-                    AppLocalizations.of(context)!.filter_screen_filter,
+                    AppLocalizations.of(context).filter_screen_filter,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 13,
@@ -511,7 +511,7 @@ class _FilterState extends State<Filter> {
         ),
         GestureDetector(
           onTap: () {
-            _selectedFilter!.option_key == "product"
+            _selectedFilter.option_key == "product"
                 ? showDialog(
                     context: context,
                     builder: (_) => Directionality(
@@ -528,7 +528,7 @@ class _FilterState extends State<Filter> {
                                   Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
                                       child: Text(
-                                        AppLocalizations.of(context)!.filter_screen_sort_products_by,
+                                        AppLocalizations.of(context).filter_screen_sort_products_by,
                                       )),
                                   RadioListTile(
                                     dense: true,
@@ -537,7 +537,7 @@ class _FilterState extends State<Filter> {
                                     activeColor: MyTheme.font_grey,
                                     controlAffinity:
                                         ListTileControlAffinity.leading,
-                                    title:  Text(AppLocalizations.of(context)!.filter_screen_default),
+                                    title:  Text(AppLocalizations.of(context).filter_screen_default),
                                     onChanged: (value) {
                                       setState(() {
                                         _selectedSort = value;
@@ -553,7 +553,7 @@ class _FilterState extends State<Filter> {
                                     activeColor: MyTheme.font_grey,
                                     controlAffinity:
                                         ListTileControlAffinity.leading,
-                                    title:  Text(AppLocalizations.of(context)!.filter_screen_price_high_to_low),
+                                    title:  Text(AppLocalizations.of(context).filter_screen_price_high_to_low),
                                     onChanged: (value) {
                                       setState(() {
                                         _selectedSort = value;
@@ -569,7 +569,7 @@ class _FilterState extends State<Filter> {
                                     activeColor: MyTheme.font_grey,
                                     controlAffinity:
                                         ListTileControlAffinity.leading,
-                                    title:  Text(AppLocalizations.of(context)!.filter_screen_price_low_to_high),
+                                    title:  Text(AppLocalizations.of(context).filter_screen_price_low_to_high),
                                     onChanged: (value) {
                                       setState(() {
                                         _selectedSort = value;
@@ -601,7 +601,7 @@ class _FilterState extends State<Filter> {
                                     activeColor: MyTheme.font_grey,
                                     controlAffinity:
                                         ListTileControlAffinity.leading,
-                                    title:  Text(AppLocalizations.of(context)!.filter_screen_popularity),
+                                    title:  Text(AppLocalizations.of(context).filter_screen_popularity),
                                     onChanged: (value) {
                                       setState(() {
                                         _selectedSort = value;
@@ -617,7 +617,7 @@ class _FilterState extends State<Filter> {
                                     activeColor: MyTheme.font_grey,
                                     controlAffinity:
                                         ListTileControlAffinity.leading,
-                                    title: Text(AppLocalizations.of(context)!.filter_screen_top_rated),
+                                    title: Text(AppLocalizations.of(context).filter_screen_top_rated),
                                     onChanged: (value) {
                                       setState(() {
                                         _selectedSort = value;
@@ -632,7 +632,7 @@ class _FilterState extends State<Filter> {
                             actions: [
                               FlatButton(
                                 child: Text(
-                                  AppLocalizations.of(context)!.common_close_in_all_capital,
+                                  AppLocalizations.of(context).common_close_in_all_capital,
                                   style: TextStyle(color: MyTheme.medium_grey),
                                 ),
                                 onPressed: () {
@@ -644,7 +644,7 @@ class _FilterState extends State<Filter> {
                           ),
                     ))
                 : ToastComponent.showDialog(
-                AppLocalizations.of(context)!.filter_screen_filter_warning,
+                AppLocalizations.of(context).filter_screen_filter_warning,
                     context,
                     gravity: Toast.CENTER,
                     duration: Toast.LENGTH_LONG);
@@ -703,21 +703,21 @@ class _FilterState extends State<Filter> {
                 suggestionsCallback: (pattern) async {
                   //return await BackendService.getSuggestions(pattern);
                   var suggestions =  await SearchRepository()
-                      .getSearchSuggestionListResponse(query_key: pattern,type: _selectedFilter!.option_key);
+                      .getSearchSuggestionListResponse(query_key: pattern,type: _selectedFilter.option_key);
                   //print(suggestions.toString());
                   return suggestions;
                 },
                 loadingBuilder: (context){
                   return Container(
                     height: 50,
-                    child: Center(child: Text(AppLocalizations.of(context)!.filter_screen_loading_suggestions,style:TextStyle(color: MyTheme.medium_grey))),
+                    child: Center(child: Text(AppLocalizations.of(context).filter_screen_loading_suggestions,style:TextStyle(color: MyTheme.medium_grey))),
                   );
                 },
                 itemBuilder: (context, suggestion) {
                   //print(suggestion.toString());
-                  var subtitle = "${AppLocalizations.of(context)!.filter_screen_searched_for} ${suggestion.count} ${AppLocalizations.of(context)!.filter_screen_times}";
+                  var subtitle = "${AppLocalizations.of(context).filter_screen_searched_for} ${suggestion.count} ${AppLocalizations.of(context).filter_screen_times}";
                   if(suggestion.type != "search"){
-                    subtitle = "${suggestion!.type_string} ${AppLocalizations.of(context)!.filter_screen_found}";
+                    subtitle = "${suggestion.type_string} ${AppLocalizations.of(context).filter_screen_found}";
                   }
                   return ListTile(
                     dense: true,
@@ -728,7 +728,7 @@ class _FilterState extends State<Filter> {
                 noItemsFoundBuilder: (context){
                   return Container(
                     height: 50,
-                    child: Center(child: Text(AppLocalizations.of(context)!.filter_screen_no_suggestion_available,style:TextStyle(color: MyTheme.medium_grey))),
+                    child: Center(child: Text(AppLocalizations.of(context).filter_screen_no_suggestion_available,style:TextStyle(color: MyTheme.medium_grey))),
                   );
                 },
                 onSuggestionSelected: (suggestion) {
@@ -747,7 +747,7 @@ class _FilterState extends State<Filter> {
                     _onSearchSubmit();
                   },
                   decoration: InputDecoration(
-                      hintText: AppLocalizations.of(context)!.filter_screen_search_here,
+                      hintText: AppLocalizations.of(context).filter_screen_search_here,
                       hintStyle: TextStyle(
                           fontSize: 12.0, color: MyTheme.textfield_grey),
                       enabledBorder: OutlineInputBorder(
@@ -791,7 +791,7 @@ class _FilterState extends State<Filter> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                          AppLocalizations.of(context)!.filter_screen_price_range,
+                          AppLocalizations.of(context).filter_screen_price_range,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
@@ -809,7 +809,7 @@ class _FilterState extends State<Filter> {
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [_amountValidator],
                                 decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!.filter_screen_minimum,
+                                    hintText: AppLocalizations.of(context).filter_screen_minimum,
                                     hintStyle: TextStyle(
                                         fontSize: 12.0,
                                         color: MyTheme.textfield_grey),
@@ -844,7 +844,7 @@ class _FilterState extends State<Filter> {
                                 keyboardType: TextInputType.number,
                                 inputFormatters: [_amountValidator],
                                 decoration: InputDecoration(
-                                    hintText: AppLocalizations.of(context)!.filter_screen_maximum,
+                                    hintText: AppLocalizations.of(context).filter_screen_maximum,
                                     hintStyle: TextStyle(
                                         fontSize: 12.0,
                                         color: MyTheme.textfield_grey),
@@ -881,7 +881,7 @@ class _FilterState extends State<Filter> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Text(
-                          AppLocalizations.of(context)!.filter_screen_categories,
+                          AppLocalizations.of(context).filter_screen_categories,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
@@ -891,7 +891,7 @@ class _FilterState extends State<Filter> {
                               height: 100,
                               child: Center(
                                 child: Text(
-                                  AppLocalizations.of(context)!.common_no_category_is_available,
+                                  AppLocalizations.of(context).common_no_category_is_available,
                                   style: TextStyle(color: MyTheme.font_grey),
                                 ),
                               ),
@@ -902,7 +902,7 @@ class _FilterState extends State<Filter> {
                       Padding(
                         padding: const EdgeInsets.only(left: 16.0),
                         child: Text(
-                          AppLocalizations.of(context)!.filter_screen_brands,
+                          AppLocalizations.of(context).filter_screen_brands,
                           style: TextStyle(
                               fontSize: 14, fontWeight: FontWeight.bold),
                         ),
@@ -912,7 +912,7 @@ class _FilterState extends State<Filter> {
                               height: 100,
                               child: Center(
                                 child: Text(
-                                  AppLocalizations.of(context)!.common_no_brand_is_available,
+                                  AppLocalizations.of(context).common_no_brand_is_available,
                                   style: TextStyle(color: MyTheme.font_grey),
                                 ),
                               ),
@@ -937,7 +937,7 @@ class _FilterState extends State<Filter> {
                         borderRadius: BorderRadius.circular(4.0),
                       ),
                       child: Text(
-                        AppLocalizations.of(context)!.common_clear_in_all_capital,
+                        AppLocalizations.of(context).common_clear_in_all_capital,
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
@@ -962,7 +962,7 @@ class _FilterState extends State<Filter> {
                         if (min != "" && max != "") {
                           if (max.compareTo(min) < 0) {
                             ToastComponent.showDialog(
-                                AppLocalizations.of(context)!.filter_screen_min_max_warning,
+                                AppLocalizations.of(context).filter_screen_min_max_warning,
                                 context,
                                 gravity: Toast.CENTER,
                                 duration: Toast.LENGTH_LONG);
@@ -998,7 +998,7 @@ class _FilterState extends State<Filter> {
                 dense: true,
                 title: Text(brand.name),
                 value: _selectedBrands.contains(brand.id),
-                onChanged: (bool? value) {
+                onChanged: (bool value) {
                   if (value) {
                     setState(() {
                       _selectedBrands.add(brand.id);
@@ -1029,7 +1029,7 @@ class _FilterState extends State<Filter> {
                 dense: true,
                 title: Text(category.name),
                 value: _selectedCategories.contains(category.id),
-                onChanged: (bool? value) {
+                onChanged: (bool value) {
                   if (value) {
                     setState(() {
                       _selectedCategories.clear();
@@ -1110,7 +1110,7 @@ class _FilterState extends State<Filter> {
         ),
       );
     } else if (_totalProductData == 0) {
-      return Center(child: Text( AppLocalizations.of(context)!.common_no_product_is_available));
+      return Center(child: Text( AppLocalizations.of(context).common_no_product_is_available));
     } else {
       return Container(); // should never be happening
     }
@@ -1176,7 +1176,7 @@ class _FilterState extends State<Filter> {
         ),
       );
     } else if (_totalBrandData == 0) {
-      return Center(child: Text(AppLocalizations.of(context)!.common_no_brand_is_available));
+      return Center(child: Text(AppLocalizations.of(context).common_no_brand_is_available));
     } else {
       return Container(); // should never be happening
     }
@@ -1251,7 +1251,7 @@ class _FilterState extends State<Filter> {
         ),
       );
     } else if (_totalShopData == 0) {
-      return Center(child: Text(AppLocalizations.of(context)!.common_no_shop_is_available));
+      return Center(child: Text(AppLocalizations.of(context).common_no_shop_is_available));
     } else {
       return Container(); // should never be happening
     }

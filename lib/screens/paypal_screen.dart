@@ -17,7 +17,7 @@ class PaypalScreen extends StatefulWidget {
   String payment_method_key;
 
   PaypalScreen(
-      {Key? key,
+      {Key key,
       this.amount = 0.00,
       this.payment_type = "",
       this.payment_method_key = ""})
@@ -33,7 +33,7 @@ class _PaypalScreenState extends State<PaypalScreen> {
   String _initial_url = "";
   bool _initial_url_fetched = false;
 
-  WebViewController _webViewController!;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -135,13 +135,13 @@ class _PaypalScreenState extends State<PaypalScreen> {
         widget.payment_type == "cart_payment") {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.common_creating_order),
+          child: Text(AppLocalizations.of(context).common_creating_order),
         ),
       );
     } else if (_initial_url_fetched == false) {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.paypal_screen_fetching_paypal_url),
+          child: Text(AppLocalizations.of(context).paypal_screen_fetching_paypal_url),
         ),
       );
     } else {
@@ -186,7 +186,7 @@ backgroundColor: Colors.white,
         ),
       ),
       title: Text(
-          AppLocalizations.of(context)!.paypal_screen_pay_with_paypal,
+          AppLocalizations.of(context).paypal_screen_pay_with_paypal,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

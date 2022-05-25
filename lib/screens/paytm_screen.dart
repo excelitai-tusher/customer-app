@@ -18,7 +18,7 @@ class PaytmScreen extends StatefulWidget {
   String payment_method_key;
 
   PaytmScreen(
-      {Key? key,
+      {Key key,
       this.amount = 0.00,
       this.payment_type = "",
       this.payment_method_key = ""})
@@ -32,7 +32,7 @@ class _PaytmScreenState extends State<PaytmScreen> {
   int _combined_order_id = 0;
   bool _order_init = false;
 
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -91,7 +91,7 @@ class _PaytmScreenState extends State<PaytmScreen> {
   }
 
   void getData() {
-    _webViewController!
+    _webViewController
         .evaluateJavascript("document.body.innerText")
         .then((data) {
       var decodedJSON = jsonDecode(data);
@@ -128,7 +128,7 @@ class _PaytmScreenState extends State<PaytmScreen> {
         widget.payment_type == "cart_payment") {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.common_creating_order),
+          child: Text(AppLocalizations.of(context).common_creating_order),
         ),
       );
     } else {
@@ -141,7 +141,7 @@ class _PaytmScreenState extends State<PaytmScreen> {
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
               _webViewController = controller;
-              _webViewController!.loadUrl(initial_url);
+              _webViewController.loadUrl(initial_url);
             },
             onWebResourceError: (error) {
               //(error.description);
@@ -171,7 +171,7 @@ class _PaytmScreenState extends State<PaytmScreen> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.paytm_screen_pay_with_paytm,
+        AppLocalizations.of(context).paytm_screen_pay_with_paytm,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

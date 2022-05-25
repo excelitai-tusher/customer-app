@@ -9,10 +9,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class FlashDealProducts extends StatefulWidget {
-  FlashDealProducts({Key? key, this.flash_deal_id, this.flash_deal_name})
+  FlashDealProducts({Key key, this.flash_deal_id, this.flash_deal_name})
       : super(key: key);
-  final int? flash_deal_id;
-  final String? flash_deal_name;
+  final int flash_deal_id;
+  final String flash_deal_name;
 
   @override
   _FlashDealProductsState createState() => _FlashDealProductsState();
@@ -21,35 +21,34 @@ class FlashDealProducts extends StatefulWidget {
 class _FlashDealProductsState extends State<FlashDealProducts> {
   TextEditingController _searchController = new TextEditingController();
 
-  Future<dynamic>? _future;
-
-  List<dynamic>? _searchList;
-  List<dynamic>? _fullList;
-  ScrollController? _scrollController;
+  Future<dynamic> _future;
+  List<dynamic> _searchList;
+  List<dynamic> _fullList;
+  ScrollController _scrollController;
 
   @override
   void initState() {
     // TODO: implement initState
     _future =
-        ProductRepository().getFlashDealProducts(id: widget.flash_deal_id!);
+        ProductRepository().getFlashDealProducts(id: widget.flash_deal_id);
     _searchList = [];
     _fullList = [];
     super.initState();
   }
 
   _buildSearchList(search_key) async {
-    _searchList!.clear();
-    print(_fullList!.length);
+    _searchList.clear();
+    print(_fullList.length);
 
     if (search_key.isEmpty) {
-      _searchList!.addAll(_fullList!);
+      _searchList.addAll(_fullList);
       setState(() {});
       //print("_searchList.length on empty " + _searchList.length.toString());
       //print("_fullList.length on empty " + _fullList.length.toString());
     } else {
-      for (var i = 0; i < _fullList!.length; i++) {
+      for (var i = 0; i < _fullList.length; i++) {
         if (StringHelper().stringContains(_fullList[i].name, search_key)) {
-          _searchList!.add(_fullList[i]);
+          _searchList.add(_fullList[i]);
           setState(() {});
         }
       }
@@ -107,7 +106,7 @@ backgroundColor: Colors.white,
             onTap: () {},
             autofocus: true,
             decoration: InputDecoration(
-                hintText: "${AppLocalizations.of(context)!.flash_deal_products_screen_search_products_from} : " + widget.flash_deal_name,
+                hintText: "${AppLocalizations.of(context).flash_deal_products_screen_search_products_from} : " + widget.flash_deal_name,
                 hintStyle:
                     TextStyle(fontSize: 14.0, color: MyTheme.textfield_grey),
                 enabledBorder: OutlineInputBorder(
@@ -143,9 +142,9 @@ backgroundColor: Colors.white,
             return Container();
           } else if (snapshot.hasData) {
             var productResponse = snapshot.data;
-            if (_fullList!.length == 0) {
-              _fullList!.addAll(productResponse.products);
-              _searchList!.addAll(productResponse.products);
+            if (_fullList.length == 0) {
+              _fullList.addAll(productResponse.products);
+              _searchList.addAll(productResponse.products);
               //print('xcalled');
             }
 
@@ -155,7 +154,7 @@ backgroundColor: Colors.white,
               child: GridView.builder(
                 // 2
                 //addAutomaticKeepAlives: true,
-                itemCount: _searchList!.length,
+                itemCount: _searchList.length,
                 controller: _scrollController,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -168,12 +167,12 @@ backgroundColor: Colors.white,
                 itemBuilder: (context, index) {
                   // 3
                   return ProductCard(
-                      id: _searchList![index].id,
-                      image: _searchList![index].thumbnail_image,
-                      name: _searchList![index].name,
-                      main_price: _searchList![index].main_price,
-                      stroked_price: _searchList![index].stroked_price,
-                      has_discount: _searchList![index].has_discount);
+                      id: _searchList[index].id,
+                      image: _searchList[index].thumbnail_image,
+                      name: _searchList[index].name,
+                      main_price: _searchList[index].main_price,
+                      stroked_price: _searchList[index].stroked_price,
+                      has_discount: _searchList[index].has_discount);
                 },
               ),
             );

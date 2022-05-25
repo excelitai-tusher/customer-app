@@ -59,15 +59,15 @@ class _LoginState extends State<Login> {
     var password = _passwordController.text.toString();
 
     if (_login_by == 'email' && email == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.login_screen_email_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).login_screen_email_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (_login_by == 'phone' && _phone == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.login_screen_phone_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).login_screen_phone_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (password == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.login_screen_password_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).login_screen_password_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -96,7 +96,7 @@ class _LoginState extends State<Login> {
           sound: true,
         );
 
-        String? fcmToken = await _fcm.getToken();
+        String fcmToken = await _fcm.getToken();
 
         if (fcmToken != null) {
           print("--fcm token--");
@@ -126,7 +126,7 @@ class _LoginState extends State<Login> {
       // by default we get the userId, email,name and picture
       final userData = await FacebookAuth.instance.getUserData();
       var loginResponse = await AuthRepository().getSocialLoginResponse("facebook",
-          userData['name'].toString(), userData['email'].toString(), userData['id'].toString(),access_token: facebookLogin.accessToken!.token);
+          userData['name'].toString(), userData['email'].toString(), userData['id'].toString(),access_token: facebookLogin.accessToken.token);
       print("..........................${loginResponse.toString()}");
       if (loginResponse.result == false) {
         ToastComponent.showDialog(loginResponse.message, context,
@@ -161,7 +161,7 @@ class _LoginState extends State<Login> {
 
       GoogleSignInAuthentication googleSignInAuthentication =
       await googleUser.authentication;
-      String accessToken = googleSignInAuthentication.accessToken!;
+      String accessToken = googleSignInAuthentication.accessToken;
 
 
       var loginResponse = await AuthRepository().getSocialLoginResponse("google",
@@ -201,7 +201,7 @@ class _LoginState extends State<Login> {
       final authResult = await twitterLogin.login();
 
       var loginResponse = await AuthRepository().getSocialLoginResponse("twitter",
-          authResult.user!.name, authResult.user!.email, authResult.user!.id.toString(),access_token: authResult.authToken);
+          authResult.user.name, authResult.user.email, authResult.user.id.toString(),access_token: authResult.authToken);
       print(loginResponse);
       if (loginResponse.result == false) {
         ToastComponent.showDialog(loginResponse.message, context,
@@ -256,7 +256,7 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      "${AppLocalizations.of(context)!.login_screen_login_to} " + AppConfig.app_name,
+                      "${AppLocalizations.of(context).login_screen_login_to} " + AppConfig.app_name,
                       style: TextStyle(
                           color: MyTheme.accent_color,
                           fontSize: 18,
@@ -271,7 +271,7 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            _login_by == "email" ? AppLocalizations.of(context)!.login_screen_email : AppLocalizations.of(context).login_screen_phone,
+                            _login_by == "email" ? AppLocalizations.of(context).login_screen_email : AppLocalizations.of(context).login_screen_phone,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -301,7 +301,7 @@ class _LoginState extends State<Login> {
                                           });
                                         },
                                         child: Text(
-                                            AppLocalizations.of(context)!.login_screen_or_login_with_phone,
+                                            AppLocalizations.of(context).login_screen_or_login_with_phone,
                                           style: TextStyle(
                                               color: MyTheme.accent_color,
                                               fontStyle: FontStyle.italic,
@@ -325,7 +325,7 @@ class _LoginState extends State<Login> {
                                     onInputChanged: (PhoneNumber number) {
                                       print(number.phoneNumber);
                                       setState(() {
-                                        _phone = number.phoneNumber!;
+                                        _phone = number.phoneNumber;
                                       });
                                     },
                                     onInputValidated: (bool value) {
@@ -360,7 +360,7 @@ class _LoginState extends State<Login> {
                                     });
                                   },
                                   child: Text(
-                                    AppLocalizations.of(context)!.login_screen_or_login_with_email,
+                                    AppLocalizations.of(context).login_screen_or_login_with_email,
                                     style: TextStyle(
                                         color: MyTheme.accent_color,
                                         fontStyle: FontStyle.italic,
@@ -373,7 +373,7 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            AppLocalizations.of(context)!.login_screen_password,
+                            AppLocalizations.of(context).login_screen_password,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -405,7 +405,7 @@ class _LoginState extends State<Login> {
                                   }));
                                 },
                                 child: Text(
-                                    AppLocalizations.of(context)!.login_screen_forgot_password,
+                                    AppLocalizations.of(context).login_screen_forgot_password,
                                   style: TextStyle(
                                       color: MyTheme.accent_color,
                                       fontStyle: FontStyle.italic,
@@ -432,7 +432,7 @@ class _LoginState extends State<Login> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
                               child: Text(
-                                AppLocalizations.of(context)!.login_screen_log_in,
+                                AppLocalizations.of(context).login_screen_log_in,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -448,7 +448,7 @@ class _LoginState extends State<Login> {
                           padding: const EdgeInsets.only(top: 20.0),
                           child: Center(
                               child: Text(
-                                AppLocalizations.of(context)!.login_screen_or_create_new_account,
+                                AppLocalizations.of(context).login_screen_or_create_new_account,
                             style: TextStyle(
                                 color: MyTheme.medium_grey, fontSize: 12),
                           )),
@@ -470,7 +470,7 @@ class _LoginState extends State<Login> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
                               child: Text(
-                                AppLocalizations.of(context)!.login_screen_sign_up,
+                                AppLocalizations.of(context).login_screen_sign_up,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -492,7 +492,7 @@ class _LoginState extends State<Login> {
                             padding: const EdgeInsets.only(top: 20.0),
                             child: Center(
                                 child: Text(
-                                  AppLocalizations.of(context)!.login_screen_login_with,
+                                  AppLocalizations.of(context).login_screen_login_with,
                               style: TextStyle(
                                   color: MyTheme.medium_grey, fontSize: 14),
                             )),

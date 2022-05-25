@@ -18,32 +18,32 @@ class PaymentStatus {
 
   static List<PaymentStatus> getPaymentStatusList() {
     return <PaymentStatus>[
-      PaymentStatus('', AppLocalizations.of(OneContext().context!)!.order_list_screen_all),
-      PaymentStatus('paid', AppLocalizations.of(OneContext().context!)!.order_list_screen_paid),
-      PaymentStatus('unpaid', AppLocalizations.of(OneContext().context!)!.order_list_screen_unpaid),
+      PaymentStatus('', AppLocalizations.of(OneContext().context).order_list_screen_all),
+      PaymentStatus('paid', AppLocalizations.of(OneContext().context).order_list_screen_paid),
+      PaymentStatus('unpaid', AppLocalizations.of(OneContext().context).order_list_screen_unpaid),
     ];
   }
 }
 
 class DeliveryStatus {
-  String? option_key;
-  String? name;
+  String option_key;
+  String name;
 
   DeliveryStatus(this.option_key, this.name);
 
   static List<DeliveryStatus> getDeliveryStatusList() {
     return <DeliveryStatus>[
-      DeliveryStatus('', AppLocalizations.of(OneContext().context!)!.order_list_screen_all),
-      DeliveryStatus('confirmed', AppLocalizations.of(OneContext().context!)!.order_list_screen_confirmed),
-      DeliveryStatus('on_delivery', AppLocalizations.of(OneContext().context!)!.order_list_screen_on_delivery),
-      DeliveryStatus('delivered', AppLocalizations.of(OneContext().context!)!.order_list_screen_delivered),
+      DeliveryStatus('', AppLocalizations.of(OneContext().context).order_list_screen_all),
+      DeliveryStatus('confirmed', AppLocalizations.of(OneContext().context).order_list_screen_confirmed),
+      DeliveryStatus('on_delivery', AppLocalizations.of(OneContext().context).order_list_screen_on_delivery),
+      DeliveryStatus('delivered', AppLocalizations.of(OneContext().context).order_list_screen_delivered),
     ];
   }
 }
 
 class OrderList extends StatefulWidget {
-  OrderList({Key? key, this.from_checkout = false}) : super(key: key);
-  final bool? from_checkout;
+  OrderList({Key key, this.from_checkout = false}) : super(key: key);
+  final bool from_checkout;
 
   @override
   _OrderListState createState() => _OrderListState();
@@ -57,20 +57,20 @@ class _OrderListState extends State<OrderList> {
   List<DeliveryStatus> _deliveryStatusList =
       DeliveryStatus.getDeliveryStatusList();
 
-  PaymentStatus? _selectedPaymentStatus;
-  DeliveryStatus? _selectedDeliveryStatus;
+  PaymentStatus _selectedPaymentStatus;
+  DeliveryStatus _selectedDeliveryStatus;
 
-  List<DropdownMenuItem<PaymentStatus>>? _dropdownPaymentStatusItems;
-  List<DropdownMenuItem<DeliveryStatus>>? _dropdownDeliveryStatusItems;
+  List<DropdownMenuItem<PaymentStatus>> _dropdownPaymentStatusItems;
+  List<DropdownMenuItem<DeliveryStatus>> _dropdownDeliveryStatusItems;
 
   //------------------------------------
   List<dynamic> _orderList = [];
-  bool? _isInitial = true;
-  int? _page = 1;
-  int? _totalData = 0;
-  bool? _showLoadingContainer = false;
-  String? _defaultPaymentStatusKey = '';
-  String? _defaultDeliveryStatusKey = '';
+  bool _isInitial = true;
+  int _page = 1;
+  int _totalData = 0;
+  bool _showLoadingContainer = false;
+  String _defaultPaymentStatusKey = '';
+  String _defaultDeliveryStatusKey = '';
 
   @override
   void initState() {
@@ -109,15 +109,15 @@ class _OrderListState extends State<OrderList> {
     _dropdownDeliveryStatusItems =
         buildDropdownDeliveryStatusItems(_deliveryStatusList);
 
-    for (int x = 0; x < _dropdownPaymentStatusItems!.length; x++) {
-      if (_dropdownPaymentStatusItems![x].value!.option_key ==
+    for (int x = 0; x < _dropdownPaymentStatusItems.length; x++) {
+      if (_dropdownPaymentStatusItems[x].value.option_key ==
           _defaultPaymentStatusKey) {
-        _selectedPaymentStatus = _dropdownPaymentStatusItems![x].value;
+        _selectedPaymentStatus = _dropdownPaymentStatusItems[x].value;
       }
     }
 
-    for (int x = 0; x < _dropdownDeliveryStatusItems!.length; x++) {
-      if (_dropdownDeliveryStatusItems![x].value!.option_key ==
+    for (int x = 0; x < _dropdownDeliveryStatusItems.length; x++) {
+      if (_dropdownDeliveryStatusItems[x].value.option_key ==
           _defaultDeliveryStatusKey) {
         _selectedDeliveryStatus = _dropdownDeliveryStatusItems[x].value;
       }
@@ -142,19 +142,20 @@ class _OrderListState extends State<OrderList> {
   Future<void> _onRefresh() async {
     reset();
     resetFilterKeys();
-    for (int x = 0; x < _dropdownPaymentStatusItems1.length; x++) {
-      if (_dropdownPaymentStatusItems![x].value!.option_key ==
+    //_dropdownPaymentStatusItems1
+    for (int x = 0; x < _dropdownDeliveryStatusItems.length; x++) {
+      if (_dropdownPaymentStatusItems[x].value.option_key ==
           _defaultPaymentStatusKey) {
-        _selectedPaymentStatus = _dropdownPaymentStatusItems![x].value;
+        _selectedPaymentStatus = _dropdownPaymentStatusItems[x].value;
       }
     }
 
-    for (int x = 0; x < _dropdownDeliveryStatusItems!.length; x++) {
-      if (_dropdownDeliveryStatusItems![x].value!.option_key ==
+    for (int x = 0; x < _dropdownDeliveryStatusItems.length; x++) {
+      if (_dropdownDeliveryStatusItems[x].value.option_key ==
           _defaultDeliveryStatusKey) {
-        _selectedDeliveryStatus = _dropdownDeliveryStatusItems![x].value;
+        _selectedDeliveryStatus = _dropdownDeliveryStatusItems[x].value;
       }
-    }
+    };
     setState(() {});
     fetchData();
   }
@@ -162,8 +163,8 @@ class _OrderListState extends State<OrderList> {
   fetchData() async {
     var orderResponse = await OrderRepository().getOrderList(
         page: _page,
-        payment_status: _selectedPaymentStatus!.option_key,
-        delivery_status: _selectedDeliveryStatus!.option_key);
+        payment_status: _selectedPaymentStatus.option_key,
+        delivery_status: _selectedDeliveryStatus.option_key);
     //print("or:"+orderResponse.toJson().toString());
     _orderList.addAll(orderResponse.orders);
     _isInitial = false;
@@ -193,7 +194,7 @@ class _OrderListState extends State<OrderList> {
       items.add(
         DropdownMenuItem(
           value: item,
-          child: Text(item.name!),
+          child: Text(item.name),
         ),
       );
     }
@@ -204,7 +205,7 @@ class _OrderListState extends State<OrderList> {
   Widget build(BuildContext context) {
     return WillPopScope(
         onWillPop: () {
-          if (widget.from_checkout!) {
+          if (widget.from_checkout) {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return Main();
             }));
@@ -229,13 +230,13 @@ class _OrderListState extends State<OrderList> {
 
   Container buildLoadingContainer() {
     return Container(
-      height: _showLoadingContainer! ? 36 : 0,
+      height: _showLoadingContainer ? 36 : 0,
       width: double.infinity,
       color: Colors.white,
       child: Center(
         child: Text(_totalData == _orderList.length
-            ? AppLocalizations.of(context)!.order_list_screen_no_more_orders
-            : AppLocalizations.of(context)!.order_list_screen_loading_more_orders),
+            ? AppLocalizations.of(context).order_list_screen_no_more_orders
+            : AppLocalizations.of(context).order_list_screen_loading_more_orders),
       ),
     );
   }
@@ -262,7 +263,7 @@ class _OrderListState extends State<OrderList> {
                 child: Icon(Icons.expand_more, color: Colors.black54),
               ),
               hint: Text(
-                AppLocalizations.of(context)!.order_list_screen_all,
+                AppLocalizations.of(context).order_list_screen_all,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 13,
@@ -272,7 +273,7 @@ class _OrderListState extends State<OrderList> {
               underline: SizedBox(),
               value: _selectedPaymentStatus,
               items: _dropdownPaymentStatusItems,
-              onChanged: (PaymentStatus? selectedFilter) {
+              onChanged: (PaymentStatus selectedFilter) {
                 setState(() {
                   _selectedPaymentStatus = selectedFilter;
                 });
@@ -314,7 +315,7 @@ class _OrderListState extends State<OrderList> {
                 child: Icon(Icons.expand_more, color: Colors.black54),
               ),
               hint: Text(
-                AppLocalizations.of(context)!.order_list_screen_all,
+                AppLocalizations.of(context).order_list_screen_all,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 13,
@@ -324,7 +325,7 @@ class _OrderListState extends State<OrderList> {
               underline: SizedBox(),
               value: _selectedDeliveryStatus,
               items: _dropdownDeliveryStatusItems,
-              onChanged: (DeliveryStatus? selectedFilter) {
+              onChanged: (DeliveryStatus selectedFilter) {
                 setState(() {
                   _selectedDeliveryStatus = selectedFilter;
                 });
@@ -376,7 +377,7 @@ class _OrderListState extends State<OrderList> {
             builder: (context) => IconButton(
               icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
               onPressed: () {
-                if (widget.from_checkout!) {
+                if (widget.from_checkout) {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return Main();
                   }));
@@ -387,7 +388,7 @@ class _OrderListState extends State<OrderList> {
             ),
           ),
           Text(
-            AppLocalizations.of(context)!.profile_screen_purchase_history,
+            AppLocalizations.of(context).profile_screen_purchase_history,
             style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
           ),
         ],
@@ -396,7 +397,7 @@ class _OrderListState extends State<OrderList> {
   }
 
   buildOrderListList() {
-    if (_isInitial! && _orderList.length == 0) {
+    if (_isInitial && _orderList.length == 0) {
       return SingleChildScrollView(
           child: ListView.builder(
         controller: _scrollController,
@@ -455,7 +456,7 @@ class _OrderListState extends State<OrderList> {
         ),
       );
     } else if (_totalData == 0) {
-      return Center(child: Text(AppLocalizations.of(context)!.common_no_data_available));
+      return Center(child: Text(AppLocalizations.of(context).common_no_data_available));
     } else {
       return Container(); // should never be happening
     }
@@ -525,7 +526,7 @@ class _OrderListState extends State<OrderList> {
                     ),
                   ),
                   Text(
-                    "${AppLocalizations.of(context)!.order_list_screen_payment_status} - ",
+                    "${AppLocalizations.of(context).order_list_screen_payment_status} - ",
                     style: TextStyle(color: MyTheme.font_grey, fontSize: 13),
                   ),
                   Text(
@@ -555,7 +556,7 @@ class _OrderListState extends State<OrderList> {
                   ),
                 ),
                 Text(
-                  "${AppLocalizations.of(context)!.order_list_screen_delivery_status} -",
+                  "${AppLocalizations.of(context).order_list_screen_delivery_status} -",
                   style: TextStyle(color: MyTheme.font_grey, fontSize: 13),
                 ),
                 Text(

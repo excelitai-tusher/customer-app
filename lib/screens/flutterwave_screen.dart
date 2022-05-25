@@ -16,7 +16,7 @@ class FlutterwaveScreen extends StatefulWidget {
   String payment_method_key;
 
   FlutterwaveScreen(
-      {Key? key,
+      {Key key,
       this.amount = 0.00,
       this.payment_type = "",
       this.payment_method_key = ""})
@@ -32,7 +32,7 @@ class _FlutterwaveScreenState extends State<FlutterwaveScreen> {
   String _initial_url = "";
   bool _initial_url_fetched = false;
 
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -102,7 +102,7 @@ class _FlutterwaveScreenState extends State<FlutterwaveScreen> {
   }
 
   void getData() {
-    _webViewController!
+    _webViewController
         .evaluateJavascript("document.body.innerText")
         .then((data) {
       var decodedJSON = jsonDecode(data);
@@ -154,7 +154,7 @@ class _FlutterwaveScreenState extends State<FlutterwaveScreen> {
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
               _webViewController = controller;
-              _webViewController!.loadUrl(_initial_url);
+              _webViewController.loadUrl(_initial_url);
             },
             onWebResourceError: (error) {
               //(error.description);

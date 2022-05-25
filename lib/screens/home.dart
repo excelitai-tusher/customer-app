@@ -27,7 +27,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class Home extends StatefulWidget {
-  Home({Key? key, this.title, this.show_back_button = false, go_back = true})
+  Home({Key key, this.title, this.show_back_button = false, go_back = true})
       : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
@@ -39,9 +39,9 @@ class Home extends StatefulWidget {
   // used by the build method of the State. Fields in a Widget subclass are
   // always marked "final".
 
-  final String? title;
-  bool? show_back_button;
-  bool? go_back;
+  final String title;
+  bool show_back_button;
+  bool go_back;
 
   @override
   _HomeState createState() => _HomeState();
@@ -50,11 +50,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> with TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   int _current_slider = 0;
-  ScrollController? _featuredProductScrollController;
+  ScrollController _featuredProductScrollController;
   ScrollController _mainScrollController = ScrollController();
 
-  AnimationController? pirated_logo_controller;
-  Animation? pirated_logo_animation;
+  AnimationController pirated_logo_controller;
+  Animation pirated_logo_animation;
 
   var _carouselImageList = [];
   var _featuredCategoryList = [];
@@ -163,15 +163,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         vsync: this, duration: Duration(milliseconds: 2000));
     pirated_logo_animation = Tween(begin: 40.0, end: 60.0).animate(
         CurvedAnimation(
-            curve: Curves.bounceOut, parent: pirated_logo_controller!));
+            curve: Curves.bounceOut, parent: pirated_logo_controller));
 
-    pirated_logo_controller!.addStatusListener((AnimationStatus status) {
+    pirated_logo_controller.addStatusListener((AnimationStatus status) {
       if (status == AnimationStatus.completed) {
-        pirated_logo_controller!.repeat();
+        pirated_logo_controller.repeat();
       }
     });
 
-    pirated_logo_controller!.forward();
+    pirated_logo_controller.forward();
   }
 
   @override
@@ -190,7 +190,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     return WillPopScope(
       onWillPop: () async {
         CommonFunctions(context).appExitDialog();
-        return widget.go_back!;
+        return widget.go_back;
       },
       child: Directionality(
         textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
@@ -230,11 +230,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                             left: 20,
                                             top: 0,
                                             child: AnimatedBuilder(
-                                                animation: pirated_logo_animation!,
+                                                animation: pirated_logo_animation,
                                                 builder: (context, child) {
                                                   return Image.asset(
                                                     "assets/pirated_square.png",
-                                                    height: pirated_logo_animation!
+                                                    height: pirated_logo_animation
                                                         .value,
                                                     color: Colors.white,
                                                   );
@@ -289,7 +289,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  AppLocalizations.of(context)!.home_screen_featured_categories,
+                                  AppLocalizations.of(context).home_screen_featured_categories,
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -326,7 +326,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  AppLocalizations.of(context)!.home_screen_featured_products,
+                                  AppLocalizations.of(context).home_screen_featured_products,
                                   style: TextStyle(fontSize: 16),
                                 ),
                               ],
@@ -397,7 +397,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         },
       );
     } else if (_totalProductData == 0) {
-      return Center(child: Text(AppLocalizations.of(context)!.common_no_product_is_available));
+      return Center(child: Text(AppLocalizations.of(context).common_no_product_is_available));
     } else {
       return Container(); // should never be happening
     }
@@ -490,7 +490,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           height: 100,
           child: Center(
               child: Text(
-            AppLocalizations.of(context)!.home_screen_no_category_found,
+            AppLocalizations.of(context).home_screen_no_category_found,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else {
@@ -533,7 +533,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 Padding(
                   padding: const EdgeInsets.only(top: 8),
                   child: Text(
-                    AppLocalizations.of(context)!.home_screen_top_categories,
+                    AppLocalizations.of(context).home_screen_top_categories,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Color.fromRGBO(132, 132, 132, 1),
@@ -570,7 +570,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     )),
                 Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text(AppLocalizations.of(context)!.home_screen_brands,
+                    child: Text(AppLocalizations.of(context).home_screen_brands,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Color.fromRGBO(132, 132, 132, 1),
@@ -603,7 +603,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     )),
                 Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text(AppLocalizations.of(context)!.home_screen_top_sellers,
+                    child: Text(AppLocalizations.of(context).home_screen_top_sellers,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Color.fromRGBO(132, 132, 132, 1),
@@ -636,7 +636,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     )),
                 Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text(AppLocalizations.of(context)!.home_screen_todays_deal,
+                    child: Text(AppLocalizations.of(context).home_screen_todays_deal,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Color.fromRGBO(132, 132, 132, 1),
@@ -669,7 +669,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     )),
                 Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text(AppLocalizations.of(context)!.home_screen_flash_deal,
+                    child: Text(AppLocalizations.of(context).home_screen_flash_deal,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Color.fromRGBO(132, 132, 132, 1),
@@ -762,7 +762,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context)!.home_screen_no_carousel_image_found,
+                AppLocalizations.of(context).home_screen_no_carousel_image_found,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else {
@@ -778,14 +778,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       backgroundColor: Colors.white,
       leading: GestureDetector(
         onTap: () {
-          _scaffoldKey.currentState!.openDrawer();
+          _scaffoldKey.currentState.openDrawer();
         },
-        child: widget.show_back_button!
+        child: widget.show_back_button
             ? Builder(
                 builder: (context) => IconButton(
                     icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
                     onPressed: () {
-                      if(widget.go_back!){
+                      if(widget.go_back){
                         return;
                       }
                       return Navigator.of(context).pop();
@@ -830,7 +830,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       actions: <Widget>[
         InkWell(
           onTap: () {
-            ToastComponent.showDialog(AppLocalizations.of(context)!.common_coming_soon, context,
+            ToastComponent.showDialog(AppLocalizations.of(context).common_coming_soon, context,
                 gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
           },
           child: Visibility(
@@ -859,7 +859,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       },
       autofocus: false,
       decoration: InputDecoration(
-          hintText: AppLocalizations.of(context)!.home_screen_search,
+          hintText: AppLocalizations.of(context).home_screen_search,
           hintStyle: TextStyle(fontSize: 12.0, color: MyTheme.textfield_grey),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: MyTheme.textfield_grey, width: 0.5),
@@ -892,8 +892,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       color: Colors.white,
       child: Center(
         child: Text(_totalProductData == _featuredProductList.length
-            ? AppLocalizations.of(context)!.common_no_more_products
-            : AppLocalizations.of(context)!.common_loading_more_products),
+            ? AppLocalizations.of(context).common_no_more_products
+            : AppLocalizations.of(context).common_loading_more_products),
       ),
     );
   }

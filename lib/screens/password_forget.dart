@@ -46,11 +46,11 @@ class _PasswordForgetState extends State<PasswordForget> {
     var email = _emailController.text.toString();
 
     if (_send_code_by == 'email' && email == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.password_forget_screen_email_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).password_forget_screen_email_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (_send_code_by == 'phone' && _phone == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.password_forget_screen_phone_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).password_forget_screen_phone_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -122,7 +122,7 @@ class _PasswordForgetState extends State<PasswordForget> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            _send_code_by == "email" ? AppLocalizations.of(context)!.password_forget_screen_email : AppLocalizations.of(context)!.password_forget_screen_phone,
+                            _send_code_by == "email" ? AppLocalizations.of(context).password_forget_screen_email : AppLocalizations.of(context).password_forget_screen_phone,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -152,7 +152,7 @@ class _PasswordForgetState extends State<PasswordForget> {
                                           });
                                         },
                                         child: Text(
-                                          AppLocalizations.of(context)!.password_forget_screen_send_code_via_phone,
+                                          AppLocalizations.of(context).password_forget_screen_send_code_via_phone,
                                           style: TextStyle(
                                               color: MyTheme.accent_color,
                                               fontStyle: FontStyle.italic,
@@ -176,7 +176,7 @@ class _PasswordForgetState extends State<PasswordForget> {
                                     onInputChanged: (PhoneNumber number) {
                                       print(number.phoneNumber);
                                       setState(() {
-                                        _phone = number.phoneNumber!;
+                                        _phone = number.phoneNumber;
                                       });
                                     },
                                     onInputValidated: (bool value) {
@@ -209,7 +209,7 @@ class _PasswordForgetState extends State<PasswordForget> {
                                     });
                                   },
                                   child: Text(
-                                    AppLocalizations.of(context)!.password_forget_screen_send_code_via_email,
+                                    AppLocalizations.of(context).password_forget_screen_send_code_via_email,
                                     style: TextStyle(
                                         color: MyTheme.accent_color,
                                         fontStyle: FontStyle.italic,

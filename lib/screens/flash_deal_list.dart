@@ -167,7 +167,7 @@ class _FlashDealListState extends State<FlashDealList> {
           return GestureDetector(
             onTap: () {
               if (time == null) {
-                ToastComponent.showDialog(AppLocalizations.of(context)!.flash_deal_list_screen_flash_deal_has_ended, context,
+                ToastComponent.showDialog(AppLocalizations.of(context).flash_deal_list_screen_flash_deal_has_ended, context,
                     gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
               } else {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {

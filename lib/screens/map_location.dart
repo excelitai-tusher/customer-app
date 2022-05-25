@@ -18,7 +18,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class MapLocation extends StatefulWidget {
-  MapLocation({Key? key, this.address}) : super(key: key);
+  MapLocation({Key key, this.address}) : super(key: key);
   var address;
 
   @override
@@ -27,17 +27,17 @@ class MapLocation extends StatefulWidget {
 
 class MapLocationState extends State<MapLocation>
     with SingleTickerProviderStateMixin {
-  PickResult? selectedPlace;
+  PickResult selectedPlace;
   static LatLng kInitialPosition = LatLng(
       51.52034098371205, -0.12637399200000668); // London , arbitary value
 
-  GoogleMapController? _controller;
+  GoogleMapController _controller;
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
     _controller = controller;
     String value = await DefaultAssetBundle.of(context)
         .loadString('assets/map_style.json');
-    _controller!.setMapStyle(value);
+    _controller.setMapStyle(value);
     setState(() {});
   }
 
@@ -86,7 +86,7 @@ class MapLocationState extends State<MapLocation>
   @override
   Widget build(BuildContext context) {
     return PlacePicker(
-      hintText:  AppLocalizations.of(context)!.map_location_screen_your_delivery_location,
+      hintText:  AppLocalizations.of(context).map_location_screen_your_delivery_location,
       apiKey: OtherConfig.GOOGLE_MAP_API_KEY,
       initialPosition: kInitialPosition,
       useCurrentLocation: false,
@@ -133,7 +133,7 @@ class MapLocationState extends State<MapLocation>
                 child: state == SearchingState.Searching
                     ? Center(
                         child: Text(
-                          AppLocalizations.of(context)!.map_location_screen_calculating,
+                          AppLocalizations.of(context).map_location_screen_calculating,
                         style: TextStyle(color: MyTheme.font_grey),
                       ))
                     : Padding(
@@ -148,7 +148,7 @@ class MapLocationState extends State<MapLocation>
                                     padding: const EdgeInsets.only(
                                         left: 2.0, right: 2.0),
                                     child: Text(
-                                      selectedPlace!.formattedAddress!,
+                                      selectedPlace.formattedAddress,
                                       maxLines: 2,
                                       style:
                                           TextStyle(color: MyTheme.medium_grey),
@@ -169,7 +169,7 @@ class MapLocationState extends State<MapLocation>
                                   bottomRight: const Radius.circular(4.0),
                                 )),
                                 child: Text(
-                                  AppLocalizations.of(context)!.map_location_screen_pick_here,
+                                  AppLocalizations.of(context).map_location_screen_pick_here,
                                   style: TextStyle(color: Colors.white),
                                 ),
                                 onPressed: () {

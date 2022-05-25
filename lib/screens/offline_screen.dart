@@ -26,13 +26,13 @@ class OfflineScreen extends StatefulWidget {
   final double rechargeAmount;
 
   OfflineScreen(
-      {Key? key,
-      required this.order_id,
-      required this.details,
-      required this.payment_type,
-      required this.offline_payment_id,
+      {Key key,
+      this.order_id,
+      this.details,
+      this.payment_type,
+      this.offline_payment_id,
       this.isWalletRecharge = false,
-      required this.rechargeAmount})
+      this.rechargeAmount})
       : super(key: key);
 
   @override
@@ -47,10 +47,10 @@ class _OfflineState extends State<OfflineScreen> {
   TextEditingController _trxIdController = TextEditingController();
 
   final ImagePicker _picker = ImagePicker();
-  XFile? _photo_file;
-  String? _photo_path = "";
-  int? _photo_upload_id = 0;
-  BuildContext? loadingcontext;
+  XFile _photo_file;
+  String _photo_path = "";
+  int _photo_upload_id = 0;
+  BuildContext loadingcontext;
 
   Future<void> _onPageRefresh() async {
     reset();
@@ -72,7 +72,7 @@ class _OfflineState extends State<OfflineScreen> {
 
     if (amount == "" || name == "" || trx_id == "") {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.offline_screen_amount_name_trxid_warning,
+          AppLocalizations.of(context).offline_screen_amount_name_trxid_warning,
           context,
           gravity: Toast.CENTER,
           duration: Toast.LENGTH_LONG);
@@ -81,7 +81,7 @@ class _OfflineState extends State<OfflineScreen> {
 
     if (_photo_path == "" || _photo_upload_id == 0) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.offline_screen_photo_warning, context,
+          AppLocalizations.of(context).offline_screen_photo_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -93,7 +93,7 @@ class _OfflineState extends State<OfflineScreen> {
               name: name,
               trx_id: trx_id,
               photo: _photo_upload_id);
-      Navigator.pop(loadingcontext!);
+      Navigator.pop(loadingcontext);
       if (submitResponse.result == false) {
         ToastComponent.showDialog(submitResponse.message, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
@@ -111,8 +111,8 @@ class _OfflineState extends State<OfflineScreen> {
               amount: amount,
               name: name,
               trx_id: trx_id,
-              photo: _photo_upload_id!);
-      Navigator.pop(loadingcontext!);
+              photo: _photo_upload_id);
+      Navigator.pop(loadingcontext);
       if (submitResponse.result == false) {
         ToastComponent.showDialog(submitResponse.message, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
@@ -136,23 +136,23 @@ class _OfflineState extends State<OfflineScreen> {
           context: context,
           builder: (BuildContext context) => CupertinoAlertDialog(
                 title:
-                    Text(AppLocalizations.of(context)!.common_photo_permission),
+                    Text(AppLocalizations.of(context).common_photo_permission),
                 content: Text(
-                    AppLocalizations.of(context)!.common_app_needs_permission),
+                    AppLocalizations.of(context).common_app_needs_permission),
                 actions: <Widget>[
                   CupertinoDialogAction(
-                    child: Text(AppLocalizations.of(context)!.common_deny),
+                    child: Text(AppLocalizations.of(context).common_deny),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   CupertinoDialogAction(
-                    child: Text(AppLocalizations.of(context)!.common_settings),
+                    child: Text(AppLocalizations.of(context).common_settings),
                     onPressed: () => openAppSettings(),
                   ),
                 ],
               ));
     } else if (status.isRestricted) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.common_give_photo_permission, context,
+          AppLocalizations.of(context).common_give_photo_permission, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
     } else if (status.isGranted) {
       //file = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -160,14 +160,14 @@ class _OfflineState extends State<OfflineScreen> {
 
       if (_photo_file == null) {
         ToastComponent.showDialog(
-            AppLocalizations.of(context)!.common_no_file_chosen, context,
+            AppLocalizations.of(context).common_no_file_chosen, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       //return;
-      String base64Image = FileHelper.getBase64FormateFile(_photo_file!.path);
-      String fileName = _photo_file!.path.split("/").last;
+      String base64Image = FileHelper.getBase64FormateFile(_photo_file.path);
+      String fileName = _photo_file.path.split("/").last;
 
       var imageUpdateResponse =
           await FileRepository().getSimpleImageUploadResponse(
@@ -221,7 +221,7 @@ class _OfflineState extends State<OfflineScreen> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.offline_screen_offline_payment,
+        AppLocalizations.of(context).offline_screen_offline_payment,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -235,7 +235,7 @@ class _OfflineState extends State<OfflineScreen> {
           height: 100,
           child: Center(
               child: Text(
-            AppLocalizations.of(context)!.common_login_warning,
+            AppLocalizations.of(context).common_login_warning,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else {
@@ -281,7 +281,7 @@ class _OfflineState extends State<OfflineScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Text(
-                AppLocalizations.of(context)!.offline_screen_fields_mandatory,
+                AppLocalizations.of(context).offline_screen_fields_mandatory,
                 style: TextStyle(
                     color: MyTheme.grey_153,
                     fontWeight: FontWeight.w600,
@@ -291,7 +291,7 @@ class _OfflineState extends State<OfflineScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Text(
-                AppLocalizations.of(context)!
+                AppLocalizations.of(context)
                     .offline_screen_fill_up_necessary_info,
                 style: TextStyle(color: MyTheme.grey_153, fontSize: 14.0),
               ),
@@ -299,7 +299,7 @@ class _OfflineState extends State<OfflineScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 4.0),
               child: Text(
-                "${AppLocalizations.of(context)!.offline_screen_amount}*",
+                "${AppLocalizations.of(context).offline_screen_amount}*",
                 style: TextStyle(
                     color: MyTheme.accent_color, fontWeight: FontWeight.w600),
               ),
@@ -319,7 +319,7 @@ class _OfflineState extends State<OfflineScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 4.0),
               child: Text(
-                "${AppLocalizations.of(context)!.offline_screen_name}*",
+                "${AppLocalizations.of(context).offline_screen_name}*",
                 style: TextStyle(
                     color: MyTheme.accent_color, fontWeight: FontWeight.w600),
               ),
@@ -339,7 +339,7 @@ class _OfflineState extends State<OfflineScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 4.0),
               child: Text(
-                "${AppLocalizations.of(context)!.offline_screen_transaction_id}*",
+                "${AppLocalizations.of(context).offline_screen_transaction_id}*",
                 style: TextStyle(
                     color: MyTheme.accent_color, fontWeight: FontWeight.w600),
               ),
@@ -359,7 +359,7 @@ class _OfflineState extends State<OfflineScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 4.0),
               child: Text(
-                "${AppLocalizations.of(context)!.offline_screen_photo_proof}* (${AppLocalizations.of(context)!.offline_screen_only_image_file_allowed})",
+                "${AppLocalizations.of(context).offline_screen_photo_proof}* (${AppLocalizations.of(context).offline_screen_only_image_file_allowed})",
                 style: TextStyle(
                     color: MyTheme.accent_color, fontWeight: FontWeight.w600),
               ),
@@ -384,7 +384,7 @@ class _OfflineState extends State<OfflineScreen> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0))),
                       child: Text(
-                        AppLocalizations.of(context)!.offline_screen_photo_proof,
+                        AppLocalizations.of(context).offline_screen_photo_proof,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
@@ -400,7 +400,7 @@ class _OfflineState extends State<OfflineScreen> {
                     ? Padding(
                         padding: const EdgeInsets.all(8.0),
                         child:
-                            Text(AppLocalizations.of(context)!.common_selected),
+                            Text(AppLocalizations.of(context).common_selected),
                       )
                     : Container()
               ],
@@ -426,7 +426,7 @@ class _OfflineState extends State<OfflineScreen> {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0))),
                       child: Text(
-                        AppLocalizations.of(context)!.common_submit,
+                        AppLocalizations.of(context).common_submit,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
@@ -458,7 +458,7 @@ class _OfflineState extends State<OfflineScreen> {
               SizedBox(
                 width: 10,
               ),
-              Text("${AppLocalizations.of(context)!.loading_text}"),
+              Text("${AppLocalizations.of(context).loading_text}"),
             ],
           ));
         });

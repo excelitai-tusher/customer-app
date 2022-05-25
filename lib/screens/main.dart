@@ -15,16 +15,16 @@ import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Main extends StatefulWidget {
-  Main({Key? key, go_back = true}) : super(key: key);
+  Main({Key key, go_back = true}) : super(key: key);
 
-  bool? go_back;
+  bool go_back;
 
   @override
   _MainState createState() => _MainState();
 }
 
 class _MainState extends State<Main> {
-  int? _currentIndex = 0;
+  int _currentIndex = 0;
   var _children = [
     Home(),
     CategoryList(
@@ -68,14 +68,14 @@ class _MainState extends State<Main> {
         } else {
           CommonFunctions(context).appExitDialog();
         }
-        return widget.go_back!;
+        return widget.go_back;
       },
       child: Directionality(
         textDirection:
             app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
         child: Scaffold(
           extendBody: true,
-          body: _children[_currentIndex!],
+          body: _children[_currentIndex],
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
           //specify the location of the FAB
@@ -110,7 +110,7 @@ class _MainState extends State<Main> {
               child: BottomNavigationBar(
                 type: BottomNavigationBarType.fixed,
                 onTap: onTapped,
-                currentIndex: _currentIndex!,
+                currentIndex: _currentIndex,
                 backgroundColor: Colors.white.withOpacity(0.8),
                 fixedColor: Theme.of(context).accentColor,
                 unselectedItemColor: Color.fromRGBO(153, 153, 153, 1),
@@ -123,14 +123,18 @@ class _MainState extends State<Main> {
                             : Color.fromRGBO(153, 153, 153, 1),
                         height: 20,
                       ),
-                      title: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          AppLocalizations.of(context)!
-                              .main_screen_bottom_navigation_home,
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      )),
+
+                      label: "AppLocalizations.of(context).main_screen_bottom_navigation_home,",
+
+                      // icon: Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: Text(
+                      //     AppLocalizations.of(context)
+                      //         .main_screen_bottom_navigation_home,
+                      //     style: TextStyle(fontSize: 12),
+                      //   ),
+                      // ),
+                  ),
                   BottomNavigationBarItem(
                       icon: Image.asset(
                         "assets/categories.png",
@@ -139,20 +143,22 @@ class _MainState extends State<Main> {
                             : Color.fromRGBO(153, 153, 153, 1),
                         height: 20,
                       ),
-                      title: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          AppLocalizations.of(context)!
-                              .main_screen_bottom_navigation_categories,
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      )),
+                      label: "AppLocalizations.of(context).main_screen_bottom_navigation_categories,",
+                      // title: Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: Text(
+                      //     AppLocalizations.of(context)
+                      //         .main_screen_bottom_navigation_categories,
+                      //     style: TextStyle(fontSize: 12),
+                      //   ),
+                      // ),
+                  ),
                   BottomNavigationBarItem(
                     icon: Icon(
                       Icons.circle,
                       color: Colors.transparent,
                     ),
-                    title: Text(""),
+                    //title: Text(""),
                   ),
                   BottomNavigationBarItem(
                       icon: Image.asset(
@@ -162,14 +168,16 @@ class _MainState extends State<Main> {
                             : Color.fromRGBO(153, 153, 153, 1),
                         height: 20,
                       ),
-                      title: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          AppLocalizations.of(context)!
-                              .main_screen_bottom_navigation_cart,
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      )),
+                      label: " AppLocalizations.of(context).main_screen_bottom_navigation_cart,",
+                      // title: Padding(
+                      //   padding: const EdgeInsets.all(8.0),
+                      //   child: Text(
+                      //     AppLocalizations.of(context)
+                      //         .main_screen_bottom_navigation_cart,
+                      //     style: TextStyle(fontSize: 12),
+                      //   ),
+                      // ),
+                  ),
                   BottomNavigationBarItem(
                     icon: Image.asset(
                       "assets/profile.png",
@@ -178,14 +186,15 @@ class _MainState extends State<Main> {
                           : Color.fromRGBO(153, 153, 153, 1),
                       height: 20,
                     ),
-                    title: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        AppLocalizations.of(context)!
-                            .main_screen_bottom_navigation_profile,
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ),
+                    label: "AppLocalizations.of(context).main_screen_bottom_navigation_profile,",
+                    // title: Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: Text(
+                    //     AppLocalizations.of(context)
+                    //         .main_screen_bottom_navigation_profile,
+                    //     style: TextStyle(fontSize: 12),
+                    //   ),
+                    // ),
                   ),
                 ],
               ),

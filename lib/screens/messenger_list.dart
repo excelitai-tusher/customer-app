@@ -112,8 +112,8 @@ class _MessengerListState extends State<MessengerList> {
       color: Colors.white,
       child: Center(
         child: Text(_totalData == _list.length
-            ? AppLocalizations.of(context)!.common_no_more_items
-            : AppLocalizations.of(context)!.common_loading_more_items),
+            ? AppLocalizations.of(context).common_no_more_items
+            : AppLocalizations.of(context).common_loading_more_items),
       ),
     );
   }
@@ -129,7 +129,7 @@ backgroundColor: Colors.white,
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.messenger_list_screen_messages,
+        AppLocalizations.of(context).messenger_list_screen_messages,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
