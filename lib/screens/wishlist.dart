@@ -106,7 +106,7 @@ class _WishlistState extends State<Wishlist> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.wishlist_screen_my_wishlist,
+        AppLocalizations.of(context).wishlist_screen_my_wishlist,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -120,7 +120,7 @@ class _WishlistState extends State<Wishlist> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context)!.wishlist_screen_login_warning,
+                AppLocalizations.of(context).wishlist_screen_login_warning,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else if (_wishlistInit == true && _wishlistItems.length == 0) {
@@ -146,7 +146,7 @@ class _WishlistState extends State<Wishlist> {
       return Container(
           height: 100,
           child: Center(
-              child: Text(AppLocalizations.of(context)!.common_no_item_is_available,
+              child: Text(AppLocalizations.of(context).common_no_item_is_available,
                   style: TextStyle(color: MyTheme.font_grey))));
     }
   }

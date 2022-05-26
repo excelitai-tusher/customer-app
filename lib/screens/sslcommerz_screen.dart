@@ -16,7 +16,7 @@ class SslCommerzScreen extends StatefulWidget {
   String payment_method_key;
 
   SslCommerzScreen(
-      {Key? key,
+      {Key key,
       this.amount = 0.00,
       this.payment_type = "",
       this.payment_method_key = ""})
@@ -33,7 +33,7 @@ class _SslCommerzScreenState extends State<SslCommerzScreen> {
   String _initial_url = "";
   bool _initial_url_fetched = false;
 
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -102,7 +102,7 @@ class _SslCommerzScreenState extends State<SslCommerzScreen> {
   }
 
   void getData() {
-    _webViewController!
+    _webViewController
         .evaluateJavascript("document.body.innerText")
         .then((data) {
       var decodedJSON = jsonDecode(data);
@@ -142,13 +142,13 @@ class _SslCommerzScreenState extends State<SslCommerzScreen> {
         widget.payment_type == "cart_payment") {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.common_creating_order),
+          child: Text(AppLocalizations.of(context).common_creating_order),
         ),
       );
     }else if (_initial_url_fetched == false) {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.sslcommerz_screen_fetching_sslcommerz_url),
+          child: Text(AppLocalizations.of(context).sslcommerz_screen_fetching_sslcommerz_url),
         ),
       );
     } else {
@@ -161,7 +161,7 @@ class _SslCommerzScreenState extends State<SslCommerzScreen> {
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
               _webViewController = controller;
-              _webViewController!.loadUrl(_initial_url);
+              _webViewController.loadUrl(_initial_url);
             },
             onWebResourceError: (error) {},
             onPageFinished: (page) {
@@ -193,7 +193,7 @@ backgroundColor: Colors.white,
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.sslcommerz_screen_pay_with_sslcommerz  ,
+        AppLocalizations.of(context).sslcommerz_screen_pay_with_sslcommerz  ,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

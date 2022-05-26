@@ -12,7 +12,7 @@ class TopSellingProducts extends StatefulWidget {
 }
 
 class _TopSellingProductsState extends State<TopSellingProducts> {
-  ScrollController? _scrollController;
+  ScrollController _scrollController;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _TopSellingProductsState extends State<TopSellingProducts> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.top_selling_products_screen_top_selling_products,
+        AppLocalizations.of(context).top_selling_products_screen_top_selling_products,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -74,10 +74,10 @@ class _TopSellingProductsState extends State<TopSellingProducts> {
                 itemBuilder: (context, index) {
                   // 3
                   return ProductCard(
-                    id: productResponse!.products[index].id,
-                    image: productResponse!.products[index].thumbnail_image,
-                    name: productResponse!.products[index].name,
-                    main_price: productResponse!.products[index].main_price,
+                    id: productResponse.products[index].id,
+                    image: productResponse.products[index].thumbnail_image,
+                    name: productResponse.products[index].name,
+                    main_price: productResponse.products[index].main_price,
                     stroked_price:
                         productResponse.products[index].stroked_price,
                     has_discount: productResponse.products[index].has_discount,

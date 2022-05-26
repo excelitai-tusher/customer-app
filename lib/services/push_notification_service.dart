@@ -21,7 +21,7 @@ class PushNotificationService {
       provisional: false,
       sound: true,
     );
-    String? fcmToken = await _fcm.getToken();
+    String fcmToken = await _fcm.getToken();
 
     if (fcmToken != null) {
       print("--fcm token--");
@@ -52,8 +52,8 @@ class PushNotificationService {
       // barrierDismissible: false,
       builder: (context) => AlertDialog(
         content: ListTile(
-          title: Text(message.notification!.title!),
-          subtitle: Text(message.notification!.body!),
+          title: Text(message.notification.title),
+          subtitle: Text(message.notification.body),
         ),
         actions: <Widget>[
           FlatButton(

@@ -14,7 +14,7 @@ class VideoDescription extends StatefulWidget {
 }
 
 class _VideoDescriptionState extends State<VideoDescription> {
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -54,7 +54,7 @@ class _VideoDescriptionState extends State<VideoDescription> {
               javascriptMode: JavascriptMode.unrestricted,
               onWebViewCreated: (controller) {
                 _webViewController = controller;
-                _webViewController!.loadUrl(widget.url);
+                _webViewController.loadUrl(widget.url);
 
               },
               onWebResourceError: (error) {},

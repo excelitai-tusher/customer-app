@@ -8,9 +8,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SellerProducts extends StatefulWidget {
 
-  SellerProducts({Key? key,this.id, this.shop_name}) : super(key: key);
-  final int?  id;
-  final String? shop_name;
+  SellerProducts({Key key,this.id, this.shop_name}) : super(key: key);
+  final int  id;
+  final String shop_name;
 
   @override
   _SellerProductsState createState() => _SellerProductsState();
@@ -61,7 +61,7 @@ class _SellerProductsState extends State<SellerProducts> {
   }
 
   fetchData() async {
-    var productResponse = await ProductRepository().getShopProducts(id:widget.id!,page: _page, name: _searchKey);
+    var productResponse = await ProductRepository().getShopProducts(id:widget.id,page: _page, name: _searchKey);
     _productList.addAll(productResponse.products);
     _isInitial = false;
     _totalData = productResponse.meta.total;
@@ -109,8 +109,8 @@ class _SellerProductsState extends State<SellerProducts> {
       color: Colors.white,
       child: Center(
         child: Text(_totalData == _productList.length
-            ? AppLocalizations.of(context)!.common_no_more_products
-            : AppLocalizations.of(context)!.common_loading_more_products),
+            ? AppLocalizations.of(context).common_no_more_products
+            : AppLocalizations.of(context).common_loading_more_products),
       ),
     );
   }
@@ -141,7 +141,7 @@ backgroundColor: Colors.white,
           },
           autofocus: true,
           decoration: InputDecoration(
-              hintText: "${AppLocalizations.of(context)!.seller_products_screen_search_products_of_shop} : "  + widget.shop_name!,
+              hintText: "${AppLocalizations.of(context).seller_products_screen_search_products_of_shop} : "  + widget.shop_name,
               hintStyle: TextStyle(
                   fontSize: 14.0, color: MyTheme.textfield_grey),
               enabledBorder: OutlineInputBorder(
@@ -215,7 +215,7 @@ backgroundColor: Colors.white,
          ),
        );
      }else if (_totalData == 0) {
-       return Center(child: Text(AppLocalizations.of(context)!.common_no_data_available));
+       return Center(child: Text(AppLocalizations.of(context).common_no_data_available));
      } else {
        return Container(); // should never be happening
      }

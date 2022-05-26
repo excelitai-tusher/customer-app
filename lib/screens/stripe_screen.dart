@@ -17,7 +17,7 @@ class StripeScreen extends StatefulWidget {
   String payment_method_key;
 
   StripeScreen(
-      {Key? key,
+      {Key key,
       this.amount = 0.00,
       this.payment_type = "",
       this.payment_method_key = ""})
@@ -31,7 +31,7 @@ class _StripeScreenState extends State<StripeScreen> {
   int _combined_order_id = 0;
   bool _order_init = false;
 
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -72,7 +72,7 @@ class _StripeScreenState extends State<StripeScreen> {
   }
 
   void getData() {
-    _webViewController!
+    _webViewController
         .evaluateJavascript("document.body.innerText")
         .then((data) {
       var decodedJSON = jsonDecode(data);
@@ -110,7 +110,7 @@ class _StripeScreenState extends State<StripeScreen> {
         widget.payment_type == "cart_payment") {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.common_creating_order),
+          child: Text(AppLocalizations.of(context).common_creating_order),
         ),
       );
     } else {
@@ -123,7 +123,7 @@ class _StripeScreenState extends State<StripeScreen> {
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
               _webViewController = controller;
-              _webViewController!.loadUrl(initial_url);
+              _webViewController.loadUrl(initial_url);
             },
             onWebResourceError: (error) {},
             onPageFinished: (page) {
@@ -133,7 +133,7 @@ class _StripeScreenState extends State<StripeScreen> {
                 getData();
               } else if (page.contains("/stripe/cancel")) {
                 ToastComponent.showDialog(
-                    AppLocalizations.of(context)!.common_payment_cancelled,
+                    AppLocalizations.of(context).common_payment_cancelled,
                     context,
                     gravity: Toast.CENTER,
                     duration: Toast.LENGTH_LONG);
@@ -158,7 +158,7 @@ class _StripeScreenState extends State<StripeScreen> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.stripe_screen_pay_with_stripe,
+        AppLocalizations.of(context).stripe_screen_pay_with_stripe,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

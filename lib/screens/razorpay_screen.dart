@@ -17,7 +17,7 @@ class RazorpayScreen extends StatefulWidget {
   String payment_method_key;
 
   RazorpayScreen(
-      {Key? key,
+      {Key key,
       this.amount = 0.00,
       this.payment_type = "",
       this.payment_method_key = ""})
@@ -31,7 +31,7 @@ class _RazorpayScreenState extends State<RazorpayScreen> {
   int _combined_order_id = 0;
   bool _order_init = false;
 
-  WebViewController? _webViewController;
+  WebViewController _webViewController;
 
   @override
   void initState() {
@@ -85,7 +85,7 @@ class _RazorpayScreenState extends State<RazorpayScreen> {
     print('called.........');
     var payment_details = '';
 
-    _webViewController!
+    _webViewController
         .evaluateJavascript("document.body.innerText")
         .then((data) {
       var decodedJSON = jsonDecode(data);
@@ -149,7 +149,7 @@ class _RazorpayScreenState extends State<RazorpayScreen> {
         widget.payment_type == "cart_payment") {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context)!.common_creating_order),
+          child: Text(AppLocalizations.of(context).common_creating_order),
         ),
       );
     } else {
@@ -160,7 +160,7 @@ class _RazorpayScreenState extends State<RazorpayScreen> {
             javascriptMode: JavascriptMode.unrestricted,
             onWebViewCreated: (controller) {
               _webViewController = controller;
-              _webViewController!.loadUrl(initial_url);
+              _webViewController.loadUrl(initial_url);
             },
             onWebResourceError: (error) {},
             onPageFinished: (page) {
@@ -184,7 +184,7 @@ backgroundColor: Colors.white,
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.razorpay_screen_pay_with_razorpay,
+        AppLocalizations.of(context).razorpay_screen_pay_with_razorpay,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

@@ -4,14 +4,14 @@ import 'package:active_ecommerce_flutter/screens/product_details.dart';
 import 'package:active_ecommerce_flutter/app_config.dart';
 
 class MiniProductCard extends StatefulWidget {
-  int? id;
-  String? image;
-  String? name;
-  String? main_price;
-  String? stroked_price;
-  bool? has_discount;
+  int id;
+  String image;
+  String name;
+  String main_price;
+  String stroked_price;
+  bool has_discount;
 
-  MiniProductCard({Key? key, this.id, this.image, this.name, this.main_price,this.stroked_price,this.has_discount})
+  MiniProductCard({Key key, this.id, this.image, this.name, this.main_price,this.stroked_price,this.has_discount})
       : super(key: key);
 
   @override
@@ -45,13 +45,13 @@ class _MiniProductCardState extends State<MiniProductCard> {
                           top: Radius.circular(16), bottom: Radius.zero),
                       child: FadeInImage.assetNetwork(
                         placeholder: 'assets/placeholder.png',
-                        image:  widget.image!,
+                        image:  widget.image,
                         fit: BoxFit.cover,
                       ))),
               Padding(
                 padding: EdgeInsets.fromLTRB(8, 4, 8, 0),
                 child: Text(
-                  widget.name!,
+                  widget.name,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: TextStyle(
@@ -64,7 +64,7 @@ class _MiniProductCardState extends State<MiniProductCard> {
               Padding(
                 padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
                 child: Text(
-                  widget.main_price!,
+                  widget.main_price,
                   textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
@@ -74,10 +74,10 @@ class _MiniProductCardState extends State<MiniProductCard> {
                       fontWeight: FontWeight.w600),
                 ),
               ),
-              widget.has_discount! ? Padding(
+              widget.has_discount ? Padding(
                 padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
                 child: Text(
-                  widget.stroked_price!,
+                  widget.stroked_price,
                   textAlign: TextAlign.left,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,

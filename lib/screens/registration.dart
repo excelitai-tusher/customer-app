@@ -55,32 +55,32 @@ class _RegistrationState extends State<Registration> {
     var password_confirm = _passwordConfirmController.text.toString();
 
     if (name == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.registration_screen_name_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_name_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (_register_by == 'email' && email == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.registration_screen_email_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_email_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (_register_by == 'phone' && _phone == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.registration_screen_phone_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_phone_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (password == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.registration_screen_password_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_password_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (password_confirm == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.registration_screen_password_confirm_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_password_confirm_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (password.length < 6) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context)!.registration_screen_password_length_warning, context,
+          AppLocalizations.of(context).registration_screen_password_length_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     } else if (password != password_confirm) {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.registration_screen_password_match_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_password_match_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -140,7 +140,7 @@ class _RegistrationState extends State<Registration> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      "${AppLocalizations.of(context)!.registration_screen_join} " + AppConfig.app_name,
+                      "${AppLocalizations.of(context).registration_screen_join} " + AppConfig.app_name,
                       style: TextStyle(
                           color: MyTheme.accent_color,
                           fontSize: 18,
@@ -155,7 +155,7 @@ class _RegistrationState extends State<Registration> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            AppLocalizations.of(context)!.registration_screen_name,
+                            AppLocalizations.of(context).registration_screen_name,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -176,7 +176,7 @@ class _RegistrationState extends State<Registration> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            _register_by == "email" ? AppLocalizations.of(context)!.registration_screen_email : AppLocalizations.of(context).registration_screen_phone,
+                            _register_by == "email" ? AppLocalizations.of(context).registration_screen_email : AppLocalizations.of(context).registration_screen_phone,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -206,7 +206,7 @@ class _RegistrationState extends State<Registration> {
                                           });
                                         },
                                         child: Text(
-                                          AppLocalizations.of(context)!.registration_screen_or_register_with_phone,
+                                          AppLocalizations.of(context).registration_screen_or_register_with_phone,
                                           style: TextStyle(
                                               color: MyTheme.accent_color,
                                               fontStyle: FontStyle.italic,
@@ -230,7 +230,7 @@ class _RegistrationState extends State<Registration> {
                                     onInputChanged: (PhoneNumber number) {
                                       print(number.phoneNumber);
                                       setState(() {
-                                        _phone = number.phoneNumber!;
+                                        _phone = number.phoneNumber;
                                       });
                                     },
                                     onInputValidated: (bool value) {
@@ -263,7 +263,7 @@ class _RegistrationState extends State<Registration> {
                                     });
                                   },
                                   child: Text(
-                                    AppLocalizations.of(context)!.registration_screen_or_register_with_email,
+                                    AppLocalizations.of(context).registration_screen_or_register_with_email,
                                     style: TextStyle(
                                         color: MyTheme.accent_color,
                                         fontStyle: FontStyle.italic,
@@ -276,7 +276,7 @@ class _RegistrationState extends State<Registration> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            AppLocalizations.of(context)!.registration_screen_password,
+                            AppLocalizations.of(context).registration_screen_password,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -301,7 +301,7 @@ class _RegistrationState extends State<Registration> {
                                 ),
                               ),
                               Text(
-                                AppLocalizations.of(context)!.registration_screen_password_length_recommendation,
+                                AppLocalizations.of(context).registration_screen_password_length_recommendation,
                                 style: TextStyle(
                                     color: MyTheme.textfield_grey,
                                     fontStyle: FontStyle.italic),
@@ -312,7 +312,7 @@ class _RegistrationState extends State<Registration> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            AppLocalizations.of(context)!.registration_screen_retype_password,
+                            AppLocalizations.of(context).registration_screen_retype_password,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -350,7 +350,7 @@ class _RegistrationState extends State<Registration> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
                               child: Text(
-                                AppLocalizations.of(context)!.registration_screen_register_sign_up,
+                                AppLocalizations.of(context).registration_screen_register_sign_up,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -366,7 +366,7 @@ class _RegistrationState extends State<Registration> {
                           padding: const EdgeInsets.only(top: 20.0),
                           child: Center(
                               child: Text(
-                                AppLocalizations.of(context)!.registration_screen_already_have_account,
+                                AppLocalizations.of(context).registration_screen_already_have_account,
                             style: TextStyle(
                                 color: MyTheme.medium_grey, fontSize: 12),
                           )),
@@ -388,7 +388,7 @@ class _RegistrationState extends State<Registration> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
                               child: Text(
-                                AppLocalizations.of(context)!.registration_screen_log_in,
+                                AppLocalizations.of(context).registration_screen_log_in,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,

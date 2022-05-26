@@ -4,14 +4,14 @@ import 'package:active_ecommerce_flutter/screens/product_details.dart';
 import 'package:active_ecommerce_flutter/app_config.dart';
 class ProductCard extends StatefulWidget {
 
-  int? id;
-  String? image;
-  String? name;
-  String? main_price;
-  String? stroked_price;
-  bool? has_discount;
+  int id;
+  String image;
+  String name;
+  String main_price;
+  String stroked_price;
+  bool has_discount;
 
-  ProductCard({Key? key,this.id, this.image, this.name, this.main_price,this.stroked_price,this.has_discount}) : super(key: key);
+  ProductCard({Key key,this.id, this.image, this.name, this.main_price,this.stroked_price,this.has_discount}) : super(key: key);
 
   @override
   _ProductCardState createState() => _ProductCardState();
@@ -48,7 +48,7 @@ class _ProductCardState extends State<ProductCard> {
                           top: Radius.circular(16), bottom: Radius.zero),
                       child: FadeInImage.assetNetwork(
                         placeholder: 'assets/placeholder.png',
-                        image:  widget.image!,
+                        image:  widget.image,
                         fit: BoxFit.cover,
                       ))),
               Container(
@@ -59,7 +59,7 @@ class _ProductCardState extends State<ProductCard> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(16, 8, 16, 0),
                       child: Text(
-                        widget.name!,
+                        widget.name,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextStyle(
@@ -72,7 +72,7 @@ class _ProductCardState extends State<ProductCard> {
                     Padding(
                       padding: EdgeInsets.fromLTRB(16, 4, 16, 0),
                       child: Text(
-                        widget.main_price!,
+                        widget.main_price,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -82,10 +82,10 @@ class _ProductCardState extends State<ProductCard> {
                             fontWeight: FontWeight.w600),
                       ),
                     ),
-                   widget.has_discount! ? Padding(
+                   widget.has_discount ? Padding(
                       padding: EdgeInsets.fromLTRB(16, 0, 16, 8),
                       child: Text(
-                        widget.stroked_price!,
+                        widget.stroked_price,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,

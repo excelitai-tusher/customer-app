@@ -21,9 +21,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class RechargeWallet extends StatefulWidget {
-  double? amount;
+  double amount;
 
-  RechargeWallet({Key? key, this.amount}) : super(key: key);
+  RechargeWallet({Key key, this.amount}) : super(key: key);
 
   @override
   _RechargeWalletState createState() => _RechargeWalletState();
@@ -91,21 +91,21 @@ class _RechargeWalletState extends State<RechargeWallet> {
     print(widget.amount);
 
     if (_selected_payment_method == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context)!.common_payment_choice_warning, context,
+      ToastComponent.showDialog(AppLocalizations.of(context).common_payment_choice_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
 
     if (_selected_payment_method == "stripe_payment") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return StripeScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
@@ -119,14 +119,14 @@ class _RechargeWalletState extends State<RechargeWallet> {
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return PaypalScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
       }));
     } else if (_selected_payment_method == "razorpay") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -140,98 +140,98 @@ class _RechargeWalletState extends State<RechargeWallet> {
       }));
     } else if (_selected_payment_method == "paystack") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return PaystackScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
       }));
     } else if (_selected_payment_method == "iyzico") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return IyzicoScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
       }));
     } else if (_selected_payment_method == "bkash") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return BkashScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
       }));
     } else if (_selected_payment_method == "nagad") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return NagadScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
       }));
     } else if (_selected_payment_method == "sslcommerz_payment") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return SslCommerzScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
       }));
     } else if (_selected_payment_method == "flutterwave") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return FlutterwaveScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
       }));
     } else if (_selected_payment_method == "paytm") {
       if (widget.amount == 0.00) {
-        ToastComponent.showDialog(AppLocalizations.of(context)!.common_nothing_to_pay, context,
+        ToastComponent.showDialog(AppLocalizations.of(context).common_nothing_to_pay, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
         return PaytmScreen(
-          amount: widget.amount!,
+          amount: widget.amount,
           payment_type: "wallet_payment",
           payment_method_key: _selected_payment_method_key,
         );
@@ -298,7 +298,7 @@ class _RechargeWalletState extends State<RechargeWallet> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context)!.recharge_wallet_screen_recharge_wallet,
+        AppLocalizations.of(context).recharge_wallet_screen_recharge_wallet,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,
@@ -331,7 +331,7 @@ class _RechargeWalletState extends State<RechargeWallet> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context)!.common_no_payment_method_added,
+                AppLocalizations.of(context).common_no_payment_method_added,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     }
@@ -446,7 +446,7 @@ class _RechargeWalletState extends State<RechargeWallet> {
                 borderRadius: BorderRadius.circular(0.0),
               ),
               child: Text(
-                AppLocalizations.of(context)!.recharge_wallet_screen_recharge_wallet,
+                AppLocalizations.of(context).recharge_wallet_screen_recharge_wallet,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 16,
